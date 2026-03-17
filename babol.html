@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babol · Lucía Rodríguez</title>
+    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --sidebar-width: 220px;
+            --font: 'Courier Prime', monospace;
+            --display: 'Bebas Neue', sans-serif;
+            --accent: #7094b4;
+        }
+        html, body { background: #fff; color: #111; }
+        body { display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            height: 100vh;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+        }
+        .site-name a { font-family: var(--font); font-size: 18pt; font-weight: 700; display: block; color: #111; text-decoration: none; margin-bottom: 40px; }
+        .site-name a:hover { opacity: 0.45; }
+        nav { display: flex; flex-direction: column; gap: 10px; }
+        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
+        nav a:hover { opacity: 0.45; }
+        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
+        .sidebar-divider { width: 32px; height: 1px; background: #111; }
+        .copyright { font-family: var(--font); font-size: 8pt; font-style: italic; color: #444; line-height: 1.6; }
+
+        /* ── MAIN ── */
+        .main {
+            flex: 1;
+            border-left: 1px solid #e8e8e8;
+            overflow-y: auto;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: #111;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            /*mix-blend-mode: luminosity;*/
+        }
+
+        .hero-placeholder {
+            position: absolute;
+            inset: 0;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-size: 8pt;
+            font-style: italic;
+            color: #333;
+            letter-spacing: 0.12em;
+        }
+
+        .hero-title {
+            position: relative;
+            z-index: 2;
+            padding: 0 56px 48px;
+            width: 100%;
+        }
+
+        .hero-label {
+            font-family: var(--font);
+            font-size: 7.5pt;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .hero-name {
+            font-family: var(--display);
+            font-size: clamp(80px, 14vw, 180px);
+            color: #fff;
+            line-height: 0.88;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-sub {
+            font-family: var(--font);
+            font-size: 9pt;
+            font-style: italic;
+            color: rgba(255,255,255,0.5);
+            margin-top: 16px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Año flotante arriba derecha */
+        .hero-year {
+            position: absolute;
+            top: 36px;
+            right: 48px;
+            font-family: var(--font);
+            font-size: 8pt;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.15em;
+            z-index: 2;
+        }
+
+        /* ── DESCRIPCIÓN ── */
+        .section-desc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .desc-text {
+            padding: 64px 56px;
+            border-right: 1px solid #e8e8e8;
+        }
+
+        .section-tag {
+            font-family: var(--font);
+            font-size: 7pt;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .desc-body {
+            font-family: var(--font);
+            font-size: 11pt;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .desc-img {
+            position: relative;
+            min-height: 360px;
+            background: #f5f3f0;
+            overflow: hidden;
+        }
+
+        .desc-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .desc-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-size: 7.5pt;
+            font-style: italic;
+            color: #bbb;
+            letter-spacing: 0.1em;
+            position: absolute;
+            inset: 0;
+        }
+
+        /* ── FICHA TÉCNICA ── */
+        .section-ficha {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .ficha-left {
+            padding: 64px 56px;
+            border-right: 1px solid #e8e8e8;
+        }
+
+        .ficha-accent {
+            font-family: var(--display);
+            font-size: clamp(48px, 6vw, 80px);
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 40px;
+            background: #111;
+            display: inline-block;
+            padding: 8px 18px;
+        }
+
+        .ficha-table { width: 100%; border-collapse: collapse; }
+        .ficha-table tr { border-bottom: 1px solid #eee; }
+        .ficha-table td {
+            font-family: var(--font);
+            font-size: 9pt;
+            padding: 12px 0;
+            vertical-align: top;
+        }
+        .ficha-table td:first-child {
+            color: #999;
+            width: 120px;
+            font-style: italic;
+        }
+        .ficha-table td:last-child { color: #111; font-weight: 700; }
+
+        .ficha-right {
+            padding: 64px 48px;
+            background: var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ficha-right .section-tag { color: #666; }
+
+        .materials-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+        .materials-list li {
+            font-family: var(--font);
+            font-size: 10.5pt;
+            font-weight: 700;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .materials-list li::before {
+            content: '—';
+            color: rgba(0,0,0,0.3);
+            font-weight: 400;
+        }
+        .materials-list li:last-child { border-bottom: none; }
+
+        /* ── PROCESO ── */
+        .section-proceso {
+            padding: 64px 56px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .proceso-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 32px;
+            background: #e8e8e8;
+        }
+
+        .proceso-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            background: #f0ede8;
+            overflow: hidden;
+        }
+
+        .proceso-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .proceso-item:hover img { transform: scale(1.04); }
+
+        .proceso-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .proceso-num {
+            font-family: var(--display);
+            font-size: 48px;
+            color: #ddd;
+            line-height: 1;
+        }
+
+        .proceso-label-txt {
+            font-family: var(--font);
+            font-size: 7pt;
+            font-style: italic;
+            color: #bbb;
+            letter-spacing: 0.1em;
+        }
+
+        /* Etiqueta de cada paso */
+        .proceso-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 14px;
+            font-family: var(--font);
+            font-size: 7.5pt;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .proceso-item:hover .proceso-caption { opacity: 1; }
+
+        /* ── FOOTER MARCA ── */
+        .section-footer {
+            padding: 80px 56px;
+            background: #7094b4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-title {
+            font-family: var(--display);
+            font-size: clamp(36px, 5vw, 64px);
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-back {
+            font-family: var(--font);
+            font-size: 8pt;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+            transition: opacity 0.2s;
+        }
+        .footer-back:hover { opacity: 0.6; }
+
+        /* Animación entrada */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="site-name">
+                <a href="index.html">Hola!</a>
+            </div>
+            <nav>
+                <a href="contacto.html">Calma</a>
+                <a href="babol.html">Babol</a>
+                <a href="proyectos.html">Luminaria</a>
+                <a href="proyectos.html">Radio</a>
+                <a href="laCaraB.html">La Cara B</a>
+                <a href="SYNC.html">SYNC</a>
+                <a href="cv.html">CV & Contacto</a>
+                <a href="cv.html">Sobre mí</a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-divider"></div>
+            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-placeholder">foto principal · images/babol-hero.jpg</div>
+            <img class="hero-img" src="images/1.jpg" alt="Babol">
+            <div class="hero-year">2024</div>
+            <div class="hero-title">
+                <div class="hero-name">Babol</div>
+                <div class="hero-sub">Butaca · Diseño Industrial</div>
+            </div>
+        </section>
+
+        <!-- DESCRIPCIÓN -->
+        <section class="section-desc">
+            <div class="desc-text reveal">
+                <div class="section-tag">Sobre el proyecto</div>
+                <p class="desc-body">
+                    Babol nace de la idea de que sentarse puede ser un acto con carácter. Una butaca que no ocupa espacio en silencio, sino que lo define.<br><br>
+                    Formas redondeadas, estructura ligera y un tapizado que invita a quedarse. Diseñada para interiores que buscan algo entre lo funcional y lo inesperado.
+                </p>
+            </div>
+            <div class="desc-img reveal">
+                <div class="desc-img-placeholder">foto detalle · images/babol-detalle.jpg</div>
+                <!-- <img src="images/babol-detalle.jpg" alt="Detalle Babol"> -->
+            </div>
+        </section>
+
+        <!-- FICHA TÉCNICA -->
+        <section class="section-ficha">
+            <div class="ficha-left reveal">
+                <div class="section-tag">Ficha técnica</div>
+                <table class="ficha-table">
+                    <tr><td>Alto</td><td>82 cm</td></tr>
+                    <tr><td>Ancho</td><td>74 cm</td></tr>
+                    <tr><td>Fondo</td><td>68 cm</td></tr>
+                    <tr><td>Asiento</td><td>44 cm del suelo</td></tr>
+                    <tr><td>Peso</td><td>12 kg</td></tr>
+                    <tr><td>Acabado</td><td>Tapizado / madera lacada</td></tr>
+                    <tr><td>Año</td><td>2024</td></tr>
+                </table>
+            </div>
+            <div class="ficha-right reveal">
+                <div class="section-tag">Materiales</div>
+                <ul class="materials-list">
+                    <li>Estructura de madera de haya</li>
+                    <li>Espuma de alta densidad</li>
+                    <li>Tapizado en bouclé</li>
+                    <li>Patas en madera natural</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PROCESO -->
+        <section class="section-proceso reveal">
+            <div class="section-tag">Proceso de diseño</div>
+
+            <div class="proceso-grid">
+
+                <div class="proceso-item">
+                    <div class="proceso-placeholder">
+                        <div class="proceso-num">01</div>
+                        <div class="proceso-label-txt">sketch · images/babol-sketch1.jpg</div>
+                    </div>
+                    <!-- <img src="images/babol-sketch1.jpg" alt="Sketch inicial"> -->
+                    <div class="proceso-caption">Sketch inicial — exploración de formas</div>
+                </div>
+
+                <div class="proceso-item">
+                    <div class="proceso-placeholder">
+                        <div class="proceso-num">02</div>
+                        <div class="proceso-label-txt">maqueta · images/babol-maqueta.jpg</div>
+                    </div>
+                    <!-- <img src="images/babol-maqueta.jpg" alt="Maqueta"> -->
+                    <div class="proceso-caption">Maqueta a escala 1:5</div>
+                </div>
+
+                <div class="proceso-item">
+                    <div class="proceso-placeholder">
+                        <div class="proceso-num">03</div>
+                        <div class="proceso-label-txt">prototipo · images/babol-proto.jpg</div>
+                    </div>
+                    <!-- <img src="images/babol-proto.jpg" alt="Prototipo"> -->
+                    <div class="proceso-caption">Prototipo final — prueba de materiales</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <div class="section-footer">
+            <div class="footer-title">Babol — 2024</div>
+            <a class="footer-back" href="proyectos.html">← Volver a proyectos</a>
+        </div>
+
+    </main>
+
+    <script>
+        // Animación reveal al hacer scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => observer.observe(r));
+    </script>
+
+</body>
+</html>

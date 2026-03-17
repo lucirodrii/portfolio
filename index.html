@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lucía Rodríguez ∙ Designer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
+        html, body { height: 100%; background: #fff; color: #111; }
+        .page { display: flex; min-height: 100vh;  }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            height: 100vh;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .site-name { font-family: var(--font); font-size: 20pt; font-weight: 700; margin-bottom: 40px; }
+        nav { display: flex; flex-direction: column; gap: 10px; }
+        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
+        nav a:hover { opacity: 0.45; }
+        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
+        .sidebar-divider { width: 32px; height: 1px; background: #111; }
+        .copyright { font-family: var(--font); font-size: 8.9pt; font-style: italic; color: #444; line-height: 1.6; }
+
+        .gallery { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); height: 100vh; }
+        .project-card { position: relative; overflow: hidden; display: block; height: 100vh; text-decoration: none; background: #1a1a1a; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease, filter 0.7s ease; filter: saturate(0.9); }
+        .project-card:hover img { transform: scale(1.04); filter: saturate(1.1); }
+        .card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 22px; background: linear-gradient(to top, rgba(0,0,0,0.65), transparent); opacity: 0; transform: translateY(6px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .project-card:hover .card-info { opacity: 1; transform: translateY(0); }
+        .card-title { font-family: var(--font); font-size: 14pt; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .card-category { font-family: var(--font); font-size: 12pt; font-style: italic; color: rgba(255,255,255,0.7); }
+        @media (max-width: 1024px) {
+
+    :root {
+        --sidebar-width: 180px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        height: 60vh;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .page {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* SIDEBAR pasa arriba */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 24px 20px;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11pt;
+    }
+
+    .site-name {
+        font-size: 16pt;
+        margin-bottom: 20px;
+    }
+
+    /* GALERÍA */
+    .gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .project-card {
+        height: 70vh;
+    }
+
+    /* INFO siempre visible (no hover en móvil) */
+    .card-info {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    }
+
+}
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="site-name">Hola!</div>
+            <nav>
+                <a href="calma.html">Calma</a>
+                <a href="luminaria.html">Luminaria</a>
+                <a href="laCaraB.html">La Cara B</a>
+                <a href="SYNC.html">SYNC</a>
+                <a href="cv.html">CV & Contacto</a>
+                <a href="sobreMi.html">Sobre mí</a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-divider"></div>
+            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+        </div>
+    </aside>
+
+    <main class="gallery">
+        <a class="project-card" href="proyecto1.html">
+            <img src="images/1.png" alt="Proyecto 1">
+            <div class="card-info">
+                <div class="card-title">Bom Incense Holder</div>
+                <div class="card-category">Producto · Branding</div>
+            </div>
+        </a>
+        <a class="project-card" href="cnc.html">
+            <img src="images/1.jpeg" alt="Proyecto 2">
+            <div class="card-info">
+                <div class="card-title">Lienzo CNC</div>
+                <div class="card-category">Producto</div>
+            </div>
+        </a>
+        <a class="project-card" href="LQSQ.html">
+            <img src="images/3.png" alt="Proyecto 3">
+            <div class="card-info">
+                <div class="card-title">Lo que se queda en casa</div>
+                <div class="card-category">Fotografía · Editorial</div>
+            </div>
+        </a>
+    </main>
+
+</div>
+</body>
+
+<script>
+    const boton = getElementsbyClass('site-name');
+</script>
+</html>

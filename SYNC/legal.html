@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="legalModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Aviso Legal y Términos de Uso</h2>
+      <p><strong>Titular:</strong> Lucía Rodríguez<br>
+        <strong>Domicilio:</strong> Valencia, España<br>
+        <strong>Correo electrónico:</strong> luciarodriguezcuenca12@gmail.com<br>
+        <strong>Sede del festival:</strong> Berlín, Alemania
+      </p>
+
+      <p>SYNC Film Festival es un proyecto académico que simula un festival de cine independiente. Este sitio web tiene
+        carácter demostrativo y no persigue fines comerciales.</p>
+
+      <h3>Propiedad Intelectual</h3>
+      <p>Todos los contenidos del sitio web (textos, logotipos, imágenes o diseños) son propiedad de sus respectivos
+        autores o se utilizan con fines educativos. Queda prohibida su reproducción total o parcial sin autorización
+        expresa.</p>
+
+      <h3>Condiciones de uso</h3>
+      <ul>
+        <li><strong>Uso permitido:</strong> El usuario se compromete a utilizar el sitio con fines lícitos y educativos.
+        </li>
+        <li><strong>Responsabilidad:</strong> SYNC Film Festival no garantiza la exactitud ni la disponibilidad continua
+          de los contenidos.</li>
+        <li><strong>Enlaces externos:</strong> El sitio puede incluir enlaces a páginas de terceros sobre las que no se
+          tiene control ni responsabilidad.</li>
+        <li><strong>Protección de datos:</strong> El uso de los formularios implica la aceptación de la Política de
+          Privacidad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const legalModal = document.getElementById("legalModal");
+    const openLegal = document.getElementById("openLegal");
+    const closes = document.querySelectorAll(".close");
+
+    openLegal.onclick = () => legalModal.style.display = "flex";
+    closes.forEach(btn => btn.onclick = () => {
+      legalModal.style.display = "none";
+    });
+    window.onclick = e => {
+      if (e.target === legalModal) legalModal.style.display = "none";
+    };
+  </script>
+</body>
+
+</html>

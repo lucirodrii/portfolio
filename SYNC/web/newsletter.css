@@ -1,0 +1,133 @@
+body {
+    background-image: url("../FOTOS/coline-hasle-TOtsi_24-7c-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+section {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding: 20px 40px;
+    position: absolute; 
+    top: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header a {
+    color: #F0E37C;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px; 
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+header a:hover {
+    color: white; 
+}
+
+
+
+form {
+    background-color: #F0E37C;
+    padding: 30px 40px;
+    border-radius: 6px;
+    max-width: 600px;
+    text-align: left;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    background-color: #F0E37C ;
+    color: #121212;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: lighter;
+    font-size: 14px;
+    height: 120px;
+}
+
+footer a {
+    color: #121212;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;   
+}
+
+.redes {
+    width: 30px;
+    height: 30px;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 80%;
+    padding: 8px 10px;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-family: 'Roboto Mono', monospace;
+    color: #121212;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: #121212;
+    box-shadow: 0 0 6px rgba(18, 18, 18, 0.4);
+    background-color: white;
+}
+
+::placeholder {
+    color: #555;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+button {
+    background: transparent;
+    color: #121212;
+    border: 2px solid #121212;
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #121212;
+    color: #F0E37C;
+}
+
