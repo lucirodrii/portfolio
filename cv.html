@@ -290,107 +290,395 @@
             background: #111;
             color: #fff;
         }
+
+        /* SOBRE MÍ */
+.about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.about-image img {
+width: 200%;
+    height: 420px; /* altura fija para más presencia */
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.about-text p {
+    font-family: var(--font);
+    font-size: 10pt;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .about-grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+    }
+
+   .about-image {
+    position: relative;
+}
+
+.about-image::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    z-index: -1;
+}
+}
+    </style>
+</head>
+
+
+
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Sobre mí ∙ Lucía Rodríguez</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
+        html, body { height: 100%; background: #fff; color: #111; }
+
+        .page { display: flex; height: 100vh; overflow: hidden; }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            height: 100vh;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .site-name { font-family: var(--font); font-size: 20pt; font-weight: 700; margin-bottom: 40px; }
+
+        nav { display: flex; flex-direction: column; gap: 10px; }
+        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
+        nav a:hover { opacity: 0.45; }
+
+        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
+        .sidebar-divider { width: 32px; height: 1px; background: #111; }
+        .copyright { font-family: var(--font); font-size: 8.9pt; font-style: italic; color: #444; line-height: 1.6; }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            overflow-y: auto;
+            height: 100vh;
+            border-left: 1px solid #eee;
+            scroll-behavior: smooth;
+        }
+
+        /* HERO (solo sobre mí + contacto visible) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .about-text {
+            max-width: 520px; /* evita que invada la imagen */
+        }
+
+        .about-text p {
+            font-family: var(--font);
+            font-size: 11pt;
+            line-height: 1.9;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        /* CONTACTO */
+        .contact {
+            margin-top: 40px;
+        }
+
+        .contact a {
+            font-family: var(--font);
+            font-size: 14pt;
+            text-decoration: none;
+            color: #111;
+        }
+
+        /* FLECHA */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font);
+            font-size: 14pt;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%,100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 8px); }
+        }
+
+        /* RESTO CONTENIDO */
+        .content {
+            padding: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .page { flex-direction: column; }
+
+            .sidebar { width: 100%; height: auto; }
+
+            .about-grid { grid-template-columns: 1fr; }
+
+            .about-image img { height: 300px; }
+        }
+
+        
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
+
+        html, body { height: 100%; background: #fff; color: #111; }
+
+        .page { display: flex; height: 100vh; overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            height: 100vh;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .site-name { font-family: var(--font); font-size: 20pt; font-weight: 700; margin-bottom: 40px; }
+
+        nav { display: flex; flex-direction: column; gap: 10px; }
+        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; }
+        nav a:hover { opacity: 0.45; }
+
+        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
+        .sidebar-divider { width: 32px; height: 1px; background: #111; }
+        .copyright { font-family: var(--font); font-size: 8.9pt; font-style: italic; color: #444; }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            overflow-y: auto;
+            height: 100vh;
+            border-left: 1px solid #eee;
+            scroll-behavior: smooth;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .about-text { max-width: 520px; }
+
+        .about-text p {
+            font-family: var(--font);
+            font-size: 11pt;
+            line-height: 1.9;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .contact { margin-top: 40px; }
+
+        .contact a {
+            font-family: var(--font);
+            font-size: 14pt;
+            text-decoration: none;
+            color: #111;
+        }
+
+        /* FLECHA */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18pt;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%,100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 8px); }
+        }
+
+        /* CONTENIDO */
+        .content {
+            padding: 120px 80px;
+        }
+
+        .cv-section { margin-bottom: 60px; }
+
+        .section-label {
+            font-family: var(--font);
+            font-size: 16pt;
+            margin-bottom: 20px;
+        }
+
+        .cv-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            margin-bottom: 12px;
+        }
+
+        .cv-year { color: #aaa; font-family: var(--font); }
+        .cv-item-title { font-family: var(--font); }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .page { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image img { height: 320px; }
+        }
     </style>
 </head>
 
 <body>
-    <div class="page">
+<div class="page">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="site-name">
-                    <a href="index.html">Hola!</a>
-                </div>
-                <nav>
-                    <a href="contacto.html">Calma</a>
-                    <a href="proyectos.html">Babol</a>
-                    <a href="proyectos.html">Luminaria</a>
-                    <a href="proyectos.html">Radio</a>
-                    <a href="proyectos.html">La Cara B</a>
-                    <a href="proyectos.html">SYNC</a>
-                    <a href="cv.html">CV & Contacto</a>
-                    <a href="cv.html">Sobre mí</a>
-                </nav>
-            </div>
-            <div class="sidebar-footer">
-                <div class="sidebar-divider"></div>
-                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
-            </div>
-        </aside>
-
-        <!-- CV -->
-        <main class="cv-main">
-
-            <div class="cv-header cv-section">
-                <div class="cv-name">Contacto</div>
-                <div class="cv-contact">
-                    <a href="mailto:luciarodriguezcn@gmail.com">luciarodriguezcn@gmail.com</a>
-                    <!--<a href="#">LinkedIn</a>-->
-                </div>
-            </div>
-
-            <!-- EXPERIENCIA 
-        <div class="cv-section">
-            <div class="section-label">Experiencia</div>
-
-            <div class="cv-row">
-                <div class="cv-year">2023 — hoy</div>
-                <div>
-                    <div class="cv-item-title">Diseñadora Freelance</div>
-                    <div class="cv-item-sub">Autónoma, Madrid</div>
-                    <div class="cv-item-desc">Identidad visual, dirección de arte editorial y diseño digital para clientes de moda, cultura y gastronomía.</div>
-                </div>
-            </div>
-
-            <div class="cv-row">
-                <div class="cv-year">2021 — 2023</div>
-                <div>
-                    <div class="cv-item-title">Diseñadora Junior</div>
-                    <div class="cv-item-sub">Estudio Ejemplo, Barcelona</div>
-                    <div class="cv-item-desc">Proyectos de branding, packaging y comunicación visual para marcas nacionales.</div>
-                </div>
-            </div>
-
-            <div class="cv-row">
-                <div class="cv-year">2020</div>
-                <div>
-                    <div class="cv-item-title">Prácticas de Diseño</div>
-                    <div class="cv-item-sub">Agencia Ejemplo, Madrid</div>
-                    <div class="cv-item-desc">Apoyo en campañas digitales y producción gráfica.</div>
-                </div>
-            </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+<div class="site-name">
+    <a href="index.html">Hola!</a>
+</div>            <nav>
+                <a href="#">Calma</a>
+                <a href="#">Luminaria</a>
+                <a href="#">La Cara B</a>
+                <a href="#">SYNC</a>
+                <a href="#">Sobre mí & CV</a>
+                <a href="#">Contacto</a>
+            </nav>
         </div>
-        -->
+        <div class="sidebar-footer">
+            <div class="sidebar-divider"></div>
+            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+        </div>
+    </aside>
 
-            <!-- EDUCACIÓN -->
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="images/lucia.jpg" alt="Lucía">
+                </div>
+
+                <div class="about-text">
+                    <p>
+                        Soy Lucía, diseñadora interesada en la relación entre <em>objeto, imagen y narrativa</em>.
+                        Trabajo entre producto, fotografía y entorno digital.
+                    </p>
+                    <p>
+                        Me atraen los procesos lentos, los materiales honestos y lo cotidiano.
+                    </p>
+                    <p>
+                        Entiendo cada proyecto como un sistema donde pensar y hacer van juntos.
+                    </p>
+
+                
+                </div>
+            </div>
+
+            <div class="scroll-indicator">↓</div>
+        </section>
+
+        <!-- CONTENIDO EXTRA -->
+        <section class="content">
+
             <div class="cv-section">
                 <div class="section-label">Estudios</div>
-
                 <div class="cv-row">
                     <div class="cv-year">2022 — 2026</div>
-                    <div>
-                        <div class="cv-item-title">Grado en Diseño de Producto</div>
-                        <div class="cv-item-sub">EASD Valencia</div>
-                    </div>
+                    <div class="cv-item-title">Diseño de Producto · EASD Valencia</div>
                 </div>
-
                 <div class="cv-row">
-                    <div class="cv-year">2024 - 2026</div>
-                    <div>
-                        <div class="cv-item-title">Grado Superior en Desarrollo de Aplicaciones Web</div>
-                        <div class="cv-item-sub">IES Abastos, Valencia</div>
-                    </div>
+                    <div class="cv-year">2024 — 2026</div>
+                    <div class="cv-item-title">DAW · IES Abastos</div>
                 </div>
             </div>
+
+                
 
             <!-- SKILLS -->
             <div class="cv-section">
                 <div class="section-label">Habilidades</div>
                 <div class="skills-grid">
                     <div class="skill-tag">Diseño de Producto</div>
-                    <div class="skill-tag">Desarrollo Web</div>
-                    <div class="skill-tag">Fotografía y Identidad Visual</div>
+                    <div class="skill-tag">Diseño y Desarrollo Web</div>
+                    <div class="skill-tag">Fotografía de Producto</div>
                     <div class="skill-tag">SolidWorks</div>
                     <div class="skill-tag">Rhino</div>
                     <div class="skill-tag">Cinema4D</div>
@@ -432,16 +720,11 @@
                 </div>
             </div>
 
-            <!-- DESCARGA 
-            <div class="cv-section">
-                <a class="cv-download" href="web/cv-lucia-rodriguez.pdf" download>
-                    ↓ &nbsp;Descargar PDF
-                </a>
-            </div> -->
+        </section>
 
-        </main>
+    </main>
 
-    </div>
+</div>
 </body>
-
 </html>
+

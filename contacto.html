@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto · Lucía Rodríguez</title>
+
+<link rel="icon" href="web/images/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
+
+body { font-family: var(--font); background: #fff; color: #111; }
+.page { display: flex; min-height: 100vh; }
+
+/* SIDEBAR */
+.sidebar {
+    width: var(--sidebar-width);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.site-name { font-size: 20pt; font-weight: 700; margin-bottom: 40px; }
+
+nav { display: flex; flex-direction: column; gap: 10px; }
+nav a { text-decoration: none; color: #111; font-size: 15pt; }
+nav a:hover { opacity: 0.4; }
+
+.sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-divider { width: 32px; height: 1px; background: #111; }
+.copyright { font-size: 9pt; color: #444; }
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 80px;
+    border-left: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-title {
+    font-size: 22pt;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-info a {
+    font-size: 16pt;
+    text-decoration: none;
+    color: #111;
+    transition: opacity 0.2s;
+}
+
+.contact-info a:hover { opacity: 0.4; }
+
+.contact-note {
+    margin-top: 60px;
+    font-size: 10pt;
+    color: #666;
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+/* FORM */
+.form {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+}
+
+input, textarea {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    font-family: var(--font);
+    font-size: 12pt;
+    background: transparent;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #111;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 18px;
+    border: 1px solid #111;
+    background: transparent;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .page { flex-direction: column; }
+    .sidebar { width: 100%; }
+    .main { padding: 40px 20px; }
+}
+
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<aside class="sidebar">
+    <div>
+        <div class="site-name">Hola!</div>
+        <nav>
+            <a href="#">Calma</a>
+            <a href="#">Luminaria</a>
+            <a href="#">La Cara B</a>
+            <a href="#">SYNC</a>
+            <a href="#">CV & Contacto</a>
+            <a href="#">Sobre mí</a>
+        </nav>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+    </div>
+</aside>
+
+<main class="main">
+
+    <div class="contact-title">Contacto</div>
+
+    <div class="contact-info">
+        <a href="mailto:luciarodriguezcn@gmail.com">luciarodriguezcn@gmail.com</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+    </div>
+
+    <div class="contact-note">
+        Si quieres trabajar juntas, colaborar o simplemente decir hola, puedes escribirme por email o usar el formulario.
+    </div>
+
+    <form class="form">
+        <input type="text" placeholder="Nombre">
+        <input type="email" placeholder="Email">
+        <textarea rows="4" placeholder="Mensaje"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+
+</main>
+
+</div>
+</body>
+</html>
