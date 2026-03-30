@@ -10,11 +10,42 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
-        html, body { height: 100%; background: #fff; color: #111; overflow: hidden;
+       html, body {
+    min-height: 100%;
+    background: #fff;
+    color: #111;
     overflow-x: hidden;
-    overflow-y: scroll;
 }
-        .page { display: flex; height: 100vh; }
+
+ .content {
+            padding: 80px;
+        }
+ @media (max-width: 768px) {
+            .page { flex-direction: column; }
+
+            .sidebar { width: 100%; height: auto; }
+
+            .about-grid { grid-template-columns: 1fr; }
+
+            .about-image img { height: 300px; }
+        }
+
+        .page { display: flex;
+ }
+
+.main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+}
+
+/* LIMITAR ANCHO DEL CONTENIDO */
+.carousel-wrap,
+.project-longtext {
+    max-width: 1300px;
+    margin: auto;
+    
+}
+
 
         /* ── SIDEBAR ── */
         .sidebar {
@@ -26,7 +57,7 @@
             flex-direction: column;
             justify-content: space-between;
             flex-shrink: 0;
-            position: relative;
+            position: fixed;
             z-index: 10;
         }
         .site-name a { font-family: var(--font); font-size: 18pt; font-weight: 700; display: block; color: #111; text-decoration: none; margin-bottom: 40px; }
@@ -43,7 +74,6 @@
             flex: 1;
             position: relative;
             height: 100vh;
-            overflow: hidden;
             background: #111;
         }
 
@@ -189,7 +219,7 @@
         .key-hint {
             position: absolute;
             bottom: 20px;
-            left: 50%;
+            left: 20%;
             transform: translateX(-50%);
             font-family: var(--font);
             font-size: 7pt;
@@ -201,18 +231,12 @@
 
         /* DESCRIPCIÓN DEL PROYECTO */
 
-.project-longtext{
-    position: absolute;
-    top: 100vh;
-    left: var(--sidebar-width);
-    right: 0;
-    background: #fff;
-
-    /* MISMO SISTEMA QUE SLIDE */
-    padding-left: 48px;
-    padding-right: 120px;
+.project-longtext {
+    position: relative;
+    margin-left: 60px;
     padding-top: 80px;
     padding-bottom: 80px;
+    background: #fff;
 }
 
 .longtext-inner{
@@ -245,12 +269,9 @@
                 <a href="index.html">Hola!</a>
             </div>
             <nav>
-                <a href="calma.html">Calma</a>
-                <a href="proyectos.html">Luminaria</a>
-                <a href="laCaraB.html">La Cara B</a>
-                <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">CV & Contacto</a>
-                <a href="sobreMi.html">Sobre mí</a>
+                <a href="works.html">Work</a>
+                <a href="cv.html">About me</a>
+                <a href="sobreMi.html">Contact</a>
             </nav>
         </div>
         <div class="sidebar-footer">
@@ -259,6 +280,7 @@
         </div>
     </aside>
 
+    <main class="main">
     <!-- CAROUSEL -->
     <div class="carousel-wrap" id="carousel">
 
@@ -306,13 +328,19 @@
             <div class="slide">
                  <img src="images/12.jpg" alt="">
                 <div class="slide-info">
-                    <div class="slide-book-title">LQSQ</div>
-                    <div class="slide-desc">Quinta imagen.</div>
+                    <div class="slide-book-title"></div>
+                    <div class="slide-desc"></div>
                 </div>
             </div>
 
         </div>
         
+        <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            Ver proyecto ↓
+        </button>
+    </div>
 
         <!-- Flechas -->
         <button class="arrow arrow-prev" id="prev">&#8592;</button>
@@ -321,7 +349,7 @@
         <!-- Contador -->
         <div class="counter" id="counter">1 / 5</div>
 
-        <div class="key-hint">← → para navegar</div>
+        <!--<div class="key-hint">← → para navegar</div>-->
     </div>
 
     <!-- DESCRIPCIÓN EXTENDIDA -->
@@ -358,6 +386,7 @@
 
     </div>
 </section>
+</main>
 
 </div>
 
@@ -393,34 +422,13 @@
         if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
     });
 
-    // scroll hacia la descripción
-window.addEventListener('wheel', e => {
-    if (e.deltaY > 0 && window.scrollY === 0) {
-        window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
-        });
+
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
     }
-});
-
-// scroll hacia abajo y hacia arriba entre secciones
-window.addEventListener('wheel', e => {
-
-    if (e.deltaY > 0 && window.scrollY === 0) {
-        window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    if (e.deltaY < 0 && window.scrollY > 0) {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
-});
+}
 </script>
 </body>
 </html>

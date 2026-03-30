@@ -1,155 +1,403 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Lucía Rodríguez ∙ Designer</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="web/images/favicon.png" type="image/png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
-        html, body { height: 100%; background: #fff; color: #111; }
-        .page { display: flex; min-height: 100vh;  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto · Lucía Rodríguez</title>
 
-        .sidebar {
-            width: var(--sidebar-width);
-            min-width: var(--sidebar-width);
-            height: 100vh;
-            padding: 36px 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .site-name { font-family: var(--font); font-size: 20pt; font-weight: 700; margin-bottom: 40px; }
-        nav { display: flex; flex-direction: column; gap: 10px; }
-        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
-        nav a:hover { opacity: 0.45; }
-        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
-        .sidebar-divider { width: 32px; height: 1px; background: #111; }
-        .copyright { font-family: var(--font); font-size: 8.9pt; font-style: italic; color: #444; line-height: 1.6; }
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
 
-        .gallery { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); height: 100vh; }
-        .project-card { position: relative; overflow: hidden; display: block; height: 100vh; text-decoration: none; background: #1a1a1a; }
-        .project-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease, filter 0.7s ease; filter: saturate(0.9); }
-        .project-card:hover img { transform: scale(1.04); filter: saturate(1.1); }
-        .card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 22px; background: linear-gradient(to top, rgba(0,0,0,0.65), transparent); opacity: 0; transform: translateY(6px); transition: opacity 0.4s ease, transform 0.4s ease; }
-        .project-card:hover .card-info { opacity: 1; transform: translateY(0); }
-        .card-title { font-family: var(--font); font-size: 14pt; font-weight: 700; color: #fff; margin-bottom: 3px; }
-        .card-category { font-family: var(--font); font-size: 12pt; font-style: italic; color: rgba(255,255,255,0.7); }
-        @media (max-width: 1024px) {
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-        --sidebar-width: 180px;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .project-card {
-        height: 60vh;
-    }
-
+:root {
+    --font: 'Courier Prime', monospace;
+    --bg-color: white; /* azul oscuro */
+    --text-color: black; /* blanco */
+    --link-hover: #8a0d01; /* azul claro al hover */
 }
-@media (max-width: 768px) {
 
+body {
+    font-family: var(--font);
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* LAYOUT */
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 400px;
+    padding: 40px 30px; /* espacio interno uniforme */
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-name a {
+    display: block;       /* ocupa todo el ancho disponible */
+    font-size: 16pt;
+    text-decoration: none;
+    color: var(--text-color);
+    margin-bottom: 0px;  /* separa del nav */
+}
+
+.site-name a:hover {
+    color: var(--link-hover);
+}
+
+nav {
+    position: fixed;
+    top: 45px;
+    right: 40px;
+
+    display: flex;
+    gap: 48px;
+}
+
+nav a {
+    display: block;       /* ocupa todo el ancho del sidebar */
+    font-size: 12pt;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+nav a:hover,
+.site-name a:hover {
+    color: var(--link-hover);
+}
+
+.img-center {
+    width: 100%;
+    max-width: 800px;   /* controla el ancho del contenido */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 180px;
+
+    margin-top: 250px;
+    padding-bottom: 240px;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img-center img {
+    width: 620px;
+    height: auto;
+      object-fit: cover; /* mantiene la proporción y recorta si es necesario */
+    transition: transform 0.5s ease;
+    overflow: hidden; /* asegura que nada se salga */
+}
+
+/* TEXTO */
+.contact-block {
+    max-width: 520px;
+}
+
+.contact-title {
+    font-size: 82pt;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;   /* distancia desde abajo */
+    right: 40px;    /* distancia desde la derecha */
+}
+
+.contact-text {
+    font-size: 14pt;
+    color: var(--text-color);
+    position: absolute;
+    bottom: 285px;   
+    right: 1380px;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
     .page {
         flex-direction: column;
-        height: auto;
     }
 
-    /* SIDEBAR pasa arriba */
-    .sidebar {
-        width: 100%;
-        height: auto;
-        padding: 24px 20px;
-    }
-
-    nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 11pt;
-    }
-
-    .site-name {
-        font-size: 16pt;
-        margin-bottom: 20px;
-    }
-
-    /* GALERÍA */
-    .gallery {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-
-    .project-card {
-        height: 70vh;
-    }
-
-    /* INFO siempre visible (no hover en móvil) */
-    .card-info {
-        opacity: 1;
-        transform: translateY(0);
-        background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-    }
-
+    .main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
-    </style>
+}
+
+.img-center img.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.img-center img.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/*------------------------------------------*/
+
+/* Contenedor de filtros */
+.filters {
+    position: fixed;          /* se queda fijo en pantalla */
+    left: 40px;               /* distancia desde la izquierda */
+    top: 60%;                 /* lo baja al centro */
+    transform: translateY(-50%); /* centra perfectamente */
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    font-size: 11pt;
+}
+
+.filters label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+/* Mueve el input al final */
+.filters input {
+    order: 2;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 1px solid black; /* borde */
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: black; /* relleno */
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.caption {
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 40px;
+    background: rgb(255, 255, 255); /* importante para que no se mezcle con imágenes */
+
+    z-index: 1000;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.img-center > * {
+    transition: opacity 0.4s ease;
+}
+
+/* Animación de giro suave */
+@keyframes giro-suave {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(5deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.img-center a[href="bom.html"] {
+    display: block;          /* ocupa todo el ancho disponible */
+    position: relative;
+}
+
+/* Fondo al hacer hover sobre Bom */
+.img-center a[href="bom.html"]:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+/* Caption de Bom inicialmente oculto */
+.img-center a[href="bom.html"] + .caption {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar caption al hacer hover */
+.img-center a[href="bom.html"]:hover + .caption {
+    opacity: 1;
+}
+
+
+/* Clase para la animación */
+.animate-rotate:hover {
+    animation: giro-suave 3s ease-in-out infinite;
+}
+
+</style>
 </head>
+
+
 <body>
+<header class="header">
+    <div class="site-name">
+        <a href="index.html">Lucía Rodríguez</a>
+    </div>
+
+    <nav>
+        <a href="about-me.html">About me</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 <div class="page">
 
-    <aside class="sidebar">
-        <div class="sidebar-top">
-            <div class="site-name">Hola!</div>
-            <nav>
-                <a href="calma.html">Calma</a>
-                <a href="luminaria.html">Luminaria</a>
-                <a href="laCaraB.html">La Cara B</a>
-                <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">Sobre mí & CV</a>
-            </nav>
-        </div>
-        <div class="sidebar-footer">
-            <div class="sidebar-divider"></div>
-            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
-        </div>
-    </aside>
+      <div class="filters">
+    <label>
+        <input type="radio" name="category" value="all" checked>
+        Todos
+    </label>
 
-    <main class="gallery">
-        <a class="project-card" href="proyecto1.html">
-            <img src="images/1.png" alt="Proyecto 1">
-            <div class="card-info">
-                <div class="card-title">Bom Incense Holder</div>
-                <div class="card-category">Producto · Branding</div>
+    <label>
+        <input type="radio" name="category" value="producto">
+        Producto
+    </label>
+
+    <label>
+        <input type="radio" name="category" value="web">
+        Web
+    </label>
+
+    <label>
+        <input type="radio" name="category" value="otros">
+        Otros
+    </label>
+</div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <div class="img-center">
+            <div>   
+                <a href="LQSQ.html">
+                    <img src="images/11.jpg" alt="" data-category="otros">
+                </a><p class="caption">Lo Que Se Queda</p>
             </div>
-        </a>
-        <a class="project-card" href="cnc.html">
-            <img src="images/1.jpeg" alt="Proyecto 2">
-            <div class="card-info">
-                <div class="card-title">Lienzo CNC</div>
-                <div class="card-category">Producto</div>
+
+            <div>   
+                <a href="cnc.html">
+                    <img src="images/3.1.jpeg" alt="" class="scroll-reveal" data-category="producto">
+                </a><p class="caption">Prototipo CNC</p>
             </div>
-        </a>
-        <a class="project-card" href="LQSQ.html">
-            <img src="images/3.png" alt="Proyecto 3">
-            <div class="card-info">
-                <div class="card-title">Lo que se queda en casa</div>
-                <div class="card-category">Fotografía · Editorial</div>
+
+            <div>   
+                <a href="bom.html">
+                    <img src="images/6.6.png" alt="" class="scroll-reveal animate-rotate" data-category="producto">
+                </a><p class="caption">Bom</p>
             </div>
-        </a>
+
+            <div>   
+                <a href="calma.html">
+                    <img src="images/5.5.png" alt="" class="scroll-reveal" data-category="producto">
+                </a><p class="caption">Colección Calma EASD x Royo</p>
+            </div>
+
+            <div>   
+                <a href="SYNC.html">
+                    <img src="images/3.2.png" alt="" class="scroll-reveal" data-category="web">
+                </a><p class="caption">SYNC</p>
+            </div>
+
+            <div>   
+                <a href="laCaraB.html">
+                    <img src="images/7.png" alt="" class="scroll-reveal" data-category="web">
+                </a><p class="caption">La Cara B</p>
+            </div>
+        </div>
+
+
     </main>
 
 </div>
+
 </body>
 
 <script>
-    const boton = getElementsbyClass('site-name');
+const scrollImages = document.querySelectorAll('.img-center img.scroll-reveal');
+const images = document.querySelectorAll('.img-center img');
+
+function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    scrollImages.forEach(img => {
+        const top = img.getBoundingClientRect().top;
+        if(top < windowHeight - 100){ // cuando la imagen está cerca de entrar
+            img.classList.add('visible');
+        }
+    });
+}
+
+// Detectar scroll y también al cargar la página
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+//--------------------------------------------------------------------
+
+const radios = document.querySelectorAll('input[name="category"]');
+const items = document.querySelectorAll('.img-center > div, .img-center > img');
+
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        const category = radio.value;
+
+        items.forEach(item => {
+            // Busca la imagen dentro del div si existe
+            const img = item.tagName === 'IMG' ? item : item.querySelector('img');
+
+            if(!img) return;
+
+            // Mostrar u ocultar con fade
+            if(category === 'all' || img.dataset.category === category){
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+});
 </script>
 </html>

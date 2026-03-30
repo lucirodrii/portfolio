@@ -323,8 +323,8 @@
                 <a href="proyectos.html">Luminaria</a>
                 <a href="laCaraB.html">La Cara B</a>
                 <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">CV & Contacto</a>
-                <a href="sobreMi.html">Sobre mí</a>
+                <a href="cv.html">Sobre mí & CV</a>
+                <a href="sobreMi.html">Contacto</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
@@ -342,6 +342,12 @@
                 <div class="slide active" style="overflow:hidden;">
                     <iframe src="LaCaraB/index.html"
                         style="width:100%; height:100%; border:none; display:block;"></iframe>
+                         <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            Ver proyecto ↓
+        </button>
+    </div>
                     <div class="slide-info">
                         
                     </div>
@@ -367,7 +373,7 @@
             <p>
             La Cara B es una web ficticia dedicada a la venta de vinilos, discos y merchandising 
             de música. La identidad visual apuesta por la simplicidad, el equilibrio y una estética 
-            contemporánea, pensada para un público joven y creativo, pero también al público general. 
+            contemporánea, pensada para un público joven y creativo, pero también atractiva al público general. 
             </p>
 
             <p>
@@ -432,6 +438,14 @@ window.addEventListener('wheel', e => {
     }
 
 });
+
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
     </script>
 </body>
 

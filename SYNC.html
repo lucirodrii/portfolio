@@ -30,10 +30,10 @@
             color: #111;
         }
 
-        .page {
-            display: flex;
-            height: 100vh;
-        }
+     .page {
+    display: flex;
+    min-height: 100vh;
+}
 
         /* ── SIDEBAR ── */
         .sidebar {
@@ -48,6 +48,7 @@
             position: relative;
             z-index: 10;
         }
+
 
         .site-name a {
             font-family: var(--font);
@@ -78,7 +79,7 @@
         }
 
         nav a:hover {
-            opacity: 0.45;
+            color: #bddbfa;
         }
 
         .sidebar-footer {
@@ -269,40 +270,43 @@
             pointer-events: none;
         }
 
-           /* DESCRIPCIÓN DEL PROYECTO */
+        /* DESCRIPCIÓN DEL PROYECTO */
 
-.project-longtext{
-    position: absolute;
-    top: 100vh;
-    left: var(--sidebar-width);
-    right: 0;
-    background: #fff;
+        .project-longtext {
+            position: absolute;
+            top: 100vh;
+            left: var(--sidebar-width);
+            right: 0;
+            background: #fff;
 
-    /* MISMO SISTEMA QUE SLIDE */
-    padding-left: 48px;
-    padding-right: 120px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
+            /* MISMO SISTEMA QUE SLIDE */
+            padding-left: 48px;
+            padding-right: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
 
-.longtext-inner{
-    max-width: 720px;
-    margin-left: 0;
-}
+        .longtext-inner {
+            max-width: 720px;
+            margin-left: 0;
+        }
 
-.longtext-title{
-    font-family: var(--font);
-    font-size: 16pt;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
 
-.longtext-text p{
-    font-family: var(--font);
-    font-size: 10pt;
-    line-height: 1.8;
-    margin-bottom: 18px;
-}
+        .longtext-title {
+            font-family: var(--font);
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .longtext-text p {
+            font-family: var(--font);
+            font-size: 10pt;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        
     </style>
 </head>
 
@@ -316,12 +320,12 @@
                     <a href="index.html">Hola!</a>
                 </div>
                 <nav>
-        <a href="calma.html">Calma</a>
-                <a href="proyectos.html">Luminaria</a>
-                <a href="laCaraB.html">La Cara B</a>
-                <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">CV & Contacto</a>
-                <a href="sobreMi.html">Sobre mí</a>
+                    <a href="calma.html">Calma</a>
+                    <a href="proyectos.html">Luminaria</a>
+                    <a href="laCaraB.html">La Cara B</a>
+                    <a href="SYNC.html">SYNC</a>
+                    <a href="cv.html">Sobre mí & CV</a>
+                    <a href="sobreMi.html">Contacto</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
@@ -336,12 +340,20 @@
             <div class="slides" id="slides">
 
                 <!-- Slide 1 — iframe -->
-                <div class="slide active" style="overflow:hidden;">
-                    <iframe src="SYNC/index.html"
-                        style="width:100%; height:100%; border:none; display:block;"></iframe>
-                    <div class="slide-info">
-                    </div>
-                </div>
+                <div class="slide active" style="overflow:hidden; position: relative;">
+    <iframe src="SYNC/index.html" style="width:100%; height:100%; border:none; display:block;"></iframe>
+    
+
+    <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            Ver proyecto ↓
+        </button>
+    </div>
+
+    <div class="slide-info"></div>
+</div>
+                
             </div>
 
             <!-- Flechas -->
@@ -349,34 +361,36 @@
             <!-- Contador -->
 
         </div>
- <!-- DESCRIPCIÓN EXTENDIDA -->
-<section class="project-longtext" id="longtext">
-    <div class="longtext-inner">
+        <!-- DESCRIPCIÓN EXTENDIDA -->
+        <section class="project-longtext" id="longtext">
+            <div class="longtext-inner">
 
-        <div class="longtext-title">
-            SYNC · Diseño y Desarrollo Web 
-        </div>
-    
+                <div class="longtext-title">
+                    SYNC · Diseño y Desarrollo Web
+                </div>
 
-        <div class="longtext-text">
-            <p>
-            SYNC es un proyecto para un festival ficticio dedicado al cine independiente y experimental. Su objetivo es 
-            acercar el mundo audiovisual al público general. Su identidad visual combina dinamismo y contemporaneidad, 
-            diseñada para un público joven, creativo y curioso.
-            </p>
 
-            <p>
-            Durante el proceso de investigación y diseño se tuvieron en cuenta antecedentes como el Edinburgh Film Festival o Tribeca Film Festival.
-            </p>
+                <div class="longtext-text">
+                    <p>
+                        SYNC es un proyecto para un festival ficticio dedicado al cine independiente y experimental. La identidad visual combina dinamismo y
+                        contemporaneidad,
+                        diseñada para un público joven, creativo y curioso. Durante el proceso de investigación y diseño se tuvieron en cuenta antecedentes como el
+                        Edinburgh Film Festival o Tribeca Film Festival.
+                    </p>
 
-            <p>
-            HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma 
+                    <p>
+                        El objetivo era crear una página web estática atractiva y funcional usando únicamente HTML, CSS Y JavaScript. Se llevó a cabo mediante el uso de modales 
+                         y hover effects.
+                    </p>
 
-            </p>
-        </div>
+                    <p>
+                        HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma
 
-    </div>
-</section>
+                    </p>
+                </div>
+
+            </div>
+        </section>
     </div>
 
     <script>
@@ -410,6 +424,13 @@
             const diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
         });
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
     </script>
 </body>
 
