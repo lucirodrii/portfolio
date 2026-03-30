@@ -21,6 +21,7 @@
         :root {
             --sidebar-width: 220px;
             --font: 'Courier Prime', monospace;
+
         }
 
         html,
@@ -61,7 +62,7 @@
         }
 
         .site-name a:hover {
-            opacity: 0.45;
+            color: #8a0d01;
         }
 
         nav {
@@ -101,6 +102,8 @@
             color: #444;
             line-height: 1.6;
         }
+
+        
 
         /* ── CAROUSEL AREA ── */
         .carousel-wrap {
@@ -306,7 +309,34 @@
             margin-bottom: 18px;
         }
 
-        
+       @media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-wrap {
+        height: calc(100vh - 80px); /* altura completa menos padding si quieres */
+    }
+
+    .slide {
+        height: 100%; /* asegurar que el slide ocupe todo el carousel */
+    }
+
+    .slide iframe {
+        height: 100%; /* iframe ocupa todo el slide */
+    }
+
+    .project-longtext {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
     </style>
 </head>
 
@@ -317,14 +347,11 @@
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="site-name">
-                    <a href="index.html">Hola!</a>
+                    <a href="index.html">Lucía Rodríguez</a>
                 </div>
                 <nav>
-                    <a href="calma.html">Calma</a>
-                    <a href="proyectos.html">Luminaria</a>
-                    <a href="laCaraB.html">La Cara B</a>
-                    <a href="SYNC.html">SYNC</a>
-                    <a href="cv.html">Sobre mí & CV</a>
+                    <a href="index.html">Trabajos</a>
+                    <a href="cv.html">Sobre mí</a>
                     <a href="sobreMi.html">Contacto</a>
                 </nav>
             </div>
@@ -407,8 +434,6 @@
             counter.textContent = `${current + 1} / ${slides.length}`;
         }
 
-        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
         // Teclado
         document.addEventListener('keydown', e => {

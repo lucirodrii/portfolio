@@ -61,7 +61,7 @@
         }
 
         .site-name a:hover {
-            opacity: 0.45;
+            color: #8a0d01;
         }
 
         nav {
@@ -108,7 +108,7 @@
             position: relative;
             height: 100vh;
             overflow: hidden;
-            background: #111;
+            background: #ffffff;
         }
 
         /* Slides */
@@ -121,18 +121,18 @@
 
         .slide {
             min-width: 100%;
-            height: 100%;
+            height: 80%;
             position: relative;
             flex-shrink: 0;
+            top: 40px;
         }
 
         .slide img {
             width: 100%;
-            height: 100%;
+            height: 80%;
             object-fit: cover;
             display: block;
             user-select: none;
-                filter: contrast(1.02) saturate(1.02);
 
         }
 
@@ -151,18 +151,7 @@
             letter-spacing: 0.12em;
         }
 
-        /* Overlay oscuro suave para que el texto se lea */
-        .slide::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.18) 0%,
-                    transparent 35%,
-                    transparent 60%,
-                    rgba(0, 0, 0, 0.55) 100%);
-            pointer-events: none;
-        }
+       
 
         /* ── INFO PANEL (título + descripción) ── */
         .slide-info {
@@ -203,12 +192,12 @@
         /* ── FLECHAS ── */
         .arrow {
             position: absolute;
-            top: 50%;
+            top: 55%;
             transform: translateY(-50%);
             z-index: 10;
             background: none;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            color: #fff;
+            border: 1px solid black;
+            color: black;
             width: 44px;
             height: 44px;
             display: flex;
@@ -226,11 +215,11 @@
         }
 
         .arrow-prev {
-            left: 20px;
+            left: 50px;
         }
 
         .arrow-next {
-            right: 20px;
+            right: 50px;
         }
 
         /* ── CONTADOR ── */
@@ -241,7 +230,7 @@
             z-index: 10;
             font-family: var(--font);
             font-size: 8pt;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(4,4,4);
             letter-spacing: 0.12em;
         }
 
@@ -307,6 +296,46 @@
     line-height: 1.8;
     margin-bottom: 18px;
 }
+
+/* Slide con varias imágenes */
+.slide.multi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid de 3 imágenes */
+.multi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    gap: 10px;
+    width: 80%;
+    height: 26%;
+}
+
+/* Imágenes dentro del grid */
+.multi-grid img {
+    width: 100%;
+    height: 65%;
+    object-fit: cover; /* o contain si no quieres recorte */
+}
+
+@media (max-width: 768px) {
+    .page {
+        flex-direction: column;
+    }
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .main {
+        margin-left: 0;
+    }
+    .carousel-wrap {
+        height: 60vh; /* más manejable en móvil */
+    }
+}
     </style>
 </head>
 
@@ -317,15 +346,12 @@
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="site-name">
-                    <a href="index.html">Hola!</a>
+                    <a href="index.html">Lucía Rodríguez</a>
                 </div>
                 <nav>
-                    <a href="calma.html">Calma</a>
-                <a href="proyectos.html">Luminaria</a>
-                <a href="laCaraB.html">La Cara B</a>
-                <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">CV & Contacto</a>
-                <a href="sobreMi.html">Sobre mí</a>
+                <a href="index.html">Work</a>
+                <a href="about-me.html">About Me</a>
+                <a href="contact.html">Contact</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
@@ -342,43 +368,48 @@
             <div class="slides" id="slides">
 
                 <!-- Slide 1 -->
-                <div class="slide active">
-                    <img src="images/3.jpeg" alt="">
-                    <div class="slide-info">
-                        <div class="slide-book-title">Lienzo · CNC</div>
-                        <div class="slide-desc">Prototipo de taburete o mesita auxiliar fabricado mediante CNC, concebido 
-                            como un lienzo en blanco para ser bordado e intervenido libremente por el usuario. </div>
-                    </div>
-                </div>
 
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <img src="images/6.jpeg" alt="">
+                <div class="slide multi">
+    <div class="multi-grid">
+        <img src="images/3.1.jpeg" alt="">
+        <img src="images/7.jpeg" alt="">
+    </div>
+</div>
+
+
+                    <div class="slide">
+                    <img src="images/22.png" alt="">
                     <div class="slide-info">
                        
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <img src="images/7.jpeg" alt="">
+                   <div class="slide">
+                    <img src="images/24.png" alt="">
                     <div class="slide-info">
                        
                     </div>
                 </div>
+
 
             
 
             </div>
+
+              <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            Ver proyecto ↓
+        </button>
+    </div>
 
             <!-- Flechas -->
             <button class="arrow arrow-prev" id="prev">&#8592;</button>
             <button class="arrow arrow-next" id="next">&#8594;</button>
 
             <!-- Contador -->
-            <div class="counter" id="counter">1 / 5</div>
+            <div class="counter" id="counter">1 / 3</div>
 
-            <div class="key-hint">← → para navegar</div>
         </div>
     <!-- DESCRIPCIÓN EXTENDIDA -->
 <section class="project-longtext" id="longtext">
@@ -471,6 +502,13 @@ window.addEventListener('wheel', e => {
     }
 
 });
+
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
+    }
+}
     </script>
 </body>
 

@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calma · Lucía Rodríguez</title>
+    <title>LQSQ · Lucía Rodríguez</title>
     <link rel="icon" href="web/images/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
-        html, body { background: #fff; color: #111; }
-        body { display: flex; min-height: 100vh; }
+       html, body {
+    min-height: 100%;
+    background: #fff;
+    color: #111;
+    overflow-x: hidden;
+}
+
+ .content {
+            padding: 80px;
+        }
+ @media (max-width: 768px) {
+            .page { flex-direction: column; }
+
+            .sidebar { width: 100%; height: auto; }
+
+            .about-grid { grid-template-columns: 1fr; }
+
+            .about-image img { height: 300px; }
+        }
+
+        .page { display: flex;
+ }
+
+.main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+}
+
+/* LIMITAR ANCHO DEL CONTENIDO */
+.carousel-wrap,
+.project-longtext {
+    max-width: 1300px;
+    margin: auto;
+    
+}
+
 
         /* ── SIDEBAR ── */
         .sidebar {
@@ -23,462 +57,210 @@
             flex-direction: column;
             justify-content: space-between;
             flex-shrink: 0;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            z-index: 10;
         }
         .site-name a { font-family: var(--font); font-size: 18pt; font-weight: 700; display: block; color: #111; text-decoration: none; margin-bottom: 40px; }
         .site-name a:hover { opacity: 0.45; }
         nav { display: flex; flex-direction: column; gap: 10px; }
         nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
         nav a:hover { opacity: 0.45; }
-        nav a.active { border-bottom: 1px solid #111; }
         .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
         .sidebar-divider { width: 32px; height: 1px; background: #111; }
-        .copyright { font-family: var(--font); font-size: 8pt; font-style: italic; color: #999; line-height: 1.6; }
+        .copyright { font-family: var(--font); font-size: 8pt; font-style: italic; color: #444; line-height: 1.6; }
 
-        /* ── MAIN ── */
-        .main { flex: 1; border-left: 1px solid #e8e8e8; overflow-y: auto; }
-        .main::-webkit-scrollbar { width: 4px; }
-        .main::-webkit-scrollbar-thumb { background: #ddd; }
+       .carousel-wrap {
+    overflow: hidden; /* importante para que las imágenes no se salgan del carrusel */
+    height: 100vh;
+    position: relative;
+}
 
-        /* animación base */
-        .reveal {
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: transform;
+}
+
+.slide {
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: center; /* centra horizontal */
+    align-items: center;     /* centra vertical */
+}
+
+.slide img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover; /* mantiene la proporción sin deformar */
+    display: block;
+}
+
+
+      
+
+        /* ── INFO PANEL (título + descripción) ── */
+        .slide-info {
+            position: absolute;
+            bottom: 48px;
+            left: 48px;
+            right: 120px;
+            z-index: 5;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ── HERO ── */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 100vh;
-            border-bottom: 1px solid #e8e8e8;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
         }
 
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 52px;
-            border-right: 1px solid #e8e8e8;
+        .slide.active .slide-info {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero-tag {
+        .slide-book-title {
             font-family: var(--font);
-            font-size: 7pt;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: #999;
-        }
-
-        .hero-title {
-            font-family: var(--font);
+            font-size: 20pt;
             font-weight: 700;
-            font-size: clamp(5rem, 10vw, 9rem);
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-title em {
-            font-style: italic;
-            font-weight: 400;
-            font-size: 0.45em;
-            display: block;
-            letter-spacing: 0.02em;
-            color: #888;
-            margin-bottom: 8px;
-        }
-
-        .hero-desc {
-            font-family: var(--font);
-            font-size: 9.5pt;
-            line-height: 1.8;
-            color: #444;
-            max-width: 340px;
-        }
-
-        .hero-right {
-            position: relative;
-            overflow: hidden;
-            background: #f0eeeb;
-        }
-
-        .hero-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .img-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font);
-            font-size: 7.5pt;
-            font-style: italic;
-            color: #bbb;
-            letter-spacing: 0.1em;
-        }
-
-        .hero-year {
-            position: absolute;
-            bottom: 24px;
-            right: 28px;
-            font-family: var(--font);
-            font-size: 7pt;
-            letter-spacing: 0.18em;
-            color: #bbb;
-        }
-
-        /* ── RENDERS / FOTOS ── */
-        .section-renders {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .render-main {
-            position: relative;
-            min-height: 520px;
-            background: #f5f3f0;
-            border-right: 1px solid #e8e8e8;
-            overflow: hidden;
-        }
-
-        .render-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.7s ease;
-        }
-        .render-main:hover img { transform: scale(1.03); }
-
-        .render-side {
-            display: grid;
-            grid-template-rows: 1fr 1fr;
-        }
-
-        .render-small {
-            position: relative;
-            background: #ece9e5;
-            border-bottom: 1px solid #e8e8e8;
-            overflow: hidden;
-        }
-        .render-small:last-child { border-bottom: none; }
-
-        .render-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.7s ease;
-        }
-        .render-small:hover img { transform: scale(1.04); }
-
-        .render-num {
-            position: absolute;
-            top: 14px;
-            left: 18px;
-            font-family: var(--font);
-            font-size: 7pt;
-            letter-spacing: 0.15em;
-            color: rgba(0,0,0,0.3);
-        }
-
-        /* ── MATERIALES ── */
-        .section-materiales {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .mat-left {
-            padding: 60px 52px;
-            border-right: 1px solid #e8e8e8;
-        }
-
-        .section-label {
-            font-family: var(--font);
-            font-size: 7pt;
-            font-weight: 700;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 32px;
-        }
-
-        .mat-list { list-style: none; }
-
-        .mat-item {
-            display: grid;
-            grid-template-columns: 40px 1fr auto;
-            align-items: baseline;
-            gap: 0 16px;
-            padding: 18px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .mat-item:last-child { border-bottom: none; }
-
-        .mat-index {
-            font-family: var(--font);
-            font-size: 7pt;
-            color: #ccc;
-            letter-spacing: 0.1em;
-        }
-
-        .mat-name {
-            font-family: var(--font);
-            font-size: 10.5pt;
-            font-weight: 700;
-            color: #111;
-        }
-
-        .mat-detail {
-            font-family: var(--font);
-            font-size: 8pt;
-            font-style: italic;
-            color: #999;
-        }
-
-        .mat-right {
-            padding: 60px 52px;
-            background: #111;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .mat-right .section-label { color: #555; }
-
-        .mat-statement {
-            font-family: var(--font);
-            font-size: clamp(1.3rem, 2.5vw, 2rem);
-            font-style: italic;
             color: #fff;
-            line-height: 1.4;
+            letter-spacing: 0.06em;
+            line-height: 1.1;
+            margin-bottom: 10px;
         }
 
-        .mat-footnote {
+        .slide-desc {
             font-family: var(--font);
-            font-size: 8pt;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* ── FICHA TÉCNICA ── */
-        .section-ficha {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .ficha-cell {
-            padding: 52px 44px;
-            border-right: 1px solid #e8e8e8;
-        }
-        .ficha-cell:last-child { border-right: none; }
-
-        /* Dimensiones visuales */
-        .dim-visual {
-            margin: 28px 0;
-            display: flex;
-            gap: 8px;
-            align-items: flex-end;
-        }
-
-        .dim-box {
-            background: #f0eeeb;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font);
-            font-size: 7pt;
-            color: #aaa;
-            letter-spacing: 0.08em;
-        }
-
-        .dim-alto  { width: 52px; height: 120px; }
-        .dim-ancho { width: 100px; height: 52px; }
-        .dim-fondo { width: 44px; height: 44px; }
-
-        .dim-label {
-            font-family: var(--font);
-            font-size: 7pt;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #bbb;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            margin-right: 4px;
-        }
-
-        .specs-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-        .specs-table tr { border-bottom: 1px solid #f0f0f0; }
-        .specs-table tr:last-child { border-bottom: none; }
-        .specs-table td { font-family: var(--font); font-size: 9pt; padding: 11px 0; }
-        .specs-table td:first-child { color: #aaa; font-style: italic; width: 100px; }
-        .specs-table td:last-child { font-weight: 700; }
-
-        .ficha-big-num {
-            font-family: var(--font);
-            font-size: 4rem;
-            font-weight: 700;
-            color: #111;
-            line-height: 1;
-            margin: 20px 0 4px;
-        }
-
-        .ficha-big-unit {
-            font-family: var(--font);
-            font-size: 8pt;
-            color: #aaa;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        /* ── PROCESO ── */
-        .section-proceso {
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .proceso-header {
-            padding: 48px 52px 32px;
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .proceso-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .proceso-step {
-            border-right: 1px solid #e8e8e8;
-            overflow: hidden;
-        }
-        .proceso-step:last-child { border-right: none; }
-
-        .proceso-img {
-            position: relative;
-            aspect-ratio: 1;
-            background: #f5f3f0;
-            overflow: hidden;
-        }
-
-        .proceso-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .proceso-step:hover .proceso-img img { transform: scale(1.05); }
-
-        .proceso-img-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .proceso-big-num {
-            font-family: var(--font);
-            font-size: 3rem;
-            font-weight: 700;
-            color: #e0e0e0;
-            line-height: 1;
-        }
-
-        .proceso-img-label {
-            font-family: var(--font);
-            font-size: 7pt;
+            font-size: 9pt;
             font-style: italic;
-            color: #ccc;
-            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.7;
+            max-width: 420px;
         }
 
-        .proceso-info {
-            padding: 20px 22px 28px;
-        }
-
-        .proceso-step-label {
+        /* ── FLECHAS ── */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: none;
+            border: 1px solid black;
+            color: black;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
             font-family: var(--font);
-            font-size: 7pt;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #bbb;
-            margin-bottom: 6px;
+            font-size: 16px;
+        }
+        .arrow:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.9); }
+        .arrow-prev { left: 80px; }
+        .arrow-next { right: 80px; }
+
+        /* ── CONTADOR ── */
+        .counter {
+            position: absolute;
+            bottom: 48px;
+            right: 48px;
+            z-index: 10;
+            font-family: var(--font);
+            font-size: 8pt;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.12em;
         }
 
-        .proceso-step-title {
+        /* ── TÍTULO DEL LIBRO arriba ── */
+        .book-label {
+            position: absolute;
+            top: 32px;
+            left: 48px;
+            z-index: 10;
             font-family: var(--font);
             font-size: 10pt;
             font-weight: 700;
-            color: #111;
-            margin-bottom: 6px;
-        }
-
-        .proceso-step-desc {
-            font-family: var(--font);
-            font-size: 8pt;
-            color: #777;
-            line-height: 1.65;
-        }
-
-        /* ── FOOTER ── */
-        .page-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 48px 52px;
-        }
-
-        .footer-name {
-            font-family: var(--font);
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .footer-back {
-            font-family: var(--font);
-            font-size: 8pt;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: #111;
-            text-decoration: none;
-            border-bottom: 1px solid #111;
-            padding-bottom: 2px;
-            transition: opacity 0.2s;
+            color: rgba(255,255,255,0.55);
         }
-        .footer-back:hover { opacity: 0.45; }
+
+        /* Keyboard hint */
+        .key-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+            transform: translateX(-50%);
+            font-family: var(--font);
+            font-size: 7pt;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.14em;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* DESCRIPCIÓN DEL PROYECTO */
+
+.project-longtext {
+    position: relative;
+    margin-left: 60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #fff;
+}
+
+.longtext-inner{
+    max-width: 720px;
+    margin-left: 0;
+}
+
+.longtext-title{
+    font-family: var(--font);
+    font-size: 16pt;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.longtext-text p{
+    font-family: var(--font);
+    font-size: 10pt;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+    .page {
+        flex-direction: column;
+    }
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .main {
+        margin-left: 0;
+    }
+    .carousel-wrap {
+        height: 60vh; /* más manejable en móvil */
+    }
+}
     </style>
 </head>
 <body>
+<div class="page">
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="sidebar-top">
-            <div class="site-name"><a href="index.html">Hola!</a></div>
+            <div class="site-name">
+                <a href="index.html">Lucía Rodríguez</a>
+            </div>
             <nav>
-           <a href="calma.html">Calma</a>
-                <a href="proyectos.html">Luminaria</a>
-                <a href="laCaraB.html">La Cara B</a>
-                <a href="SYNC.html">SYNC</a>
-                <a href="cv.html">CV & Contacto</a>
-                <a href="sobreMi.html">Sobre mí</a>
+                <a href="index.html">Work</a>
+                <a href="about-me.html">About me</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
         <div class="sidebar-footer">
@@ -488,210 +270,125 @@
     </aside>
 
     <main class="main">
+    <!-- CAROUSEL -->
+    <div class="carousel-wrap" id="carousel">
 
-        <!-- HERO -->
-        <section class="hero reveal">
-            <div class="hero-left">
-                <div class="hero-tag">Diseño Industrial · Mueble de baño</div>
-                <div class="hero-title">
-                    Calma
-                </div>
-                <p class="hero-desc">Un mueble de baño que parte de la idea de que el baño es el único sitio de la casa donde uno puede estar solo de verdad. Calma propone formas suaves, materiales honestos y una presencia que no grita.</p>
-            </div>
-            <div class="hero-right">
-                <img src="images/5.png" alt="Calma">
-                <span class="hero-year">2024</span>
-            </div>
-        </section>
+        <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
 
-        <!-- RENDERS -->
-        <section class="section-renders reveal">
-            <div class="render-main">
-                <div class="img-placeholder">render frontal · images/calma-render1.jpg</div>
-                <!-- <img src="images/calma-render1.jpg" alt="Calma frontal"> -->
-                <span class="render-num">01</span>
-            </div>
-            <div class="render-side">
-                <div class="render-small">
-                    <div class="img-placeholder">detalle · images/calma-render2.jpg</div>
-                    <!-- <img src="images/calma-render2.jpg" alt="Detalle"> -->
-                    <span class="render-num">02</span>
-                </div>
-                <div class="render-small">
-                    <div class="img-placeholder">contexto · images/calma-render3.jpg</div>
-                    <!-- <img src="images/calma-render3.jpg" alt="Contexto"> -->
-                    <span class="render-num">03</span>
-                </div>
-            </div>
-        </section>
+        <div class="slides" id="slides">
 
-        <!-- MATERIALES -->
-        <section class="section-materiales reveal">
-            <div class="mat-left">
-                <div class="section-label">Materiales y acabados</div>
-                <ul class="mat-list">
-                    <li class="mat-item">
-                        <span class="mat-index">01</span>
-                        <span class="mat-name">Roble macizo</span>
-                        <span class="mat-detail">Acabado aceite natural</span>
-                    </li>
-                    <li class="mat-item">
-                        <span class="mat-index">02</span>
-                        <span class="mat-name">Tablero DM</span>
-                        <span class="mat-detail">Interior lacado en blanco</span>
-                    </li>
-                    <li class="mat-item">
-                        <span class="mat-index">03</span>
-                        <span class="mat-name">Sobre de mármol</span>
-                        <span class="mat-detail">Marquina negro · 2 cm</span>
-                    </li>
-                    <li class="mat-item">
-                        <span class="mat-index">04</span>
-                        <span class="mat-name">Herrajes latón</span>
-                        <span class="mat-detail">Acabado cepillado mate</span>
-                    </li>
-                    <li class="mat-item">
-                        <span class="mat-index">05</span>
-                        <span class="mat-name">Patas torneadas</span>
-                        <span class="mat-detail">Roble · altura regulable</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="mat-right">
-                <div class="section-label">Concepto</div>
-                <p class="mat-statement">"Materiales que mejoran con el uso, no que lo disimulan."</p>
-                <p class="mat-footnote">Cada material fue elegido por cómo envejece. El roble gana carácter, el mármol registra el tiempo, el latón se vuelve más cálido. El mueble cambia con quien lo usa.</p>
-            </div>
-        </section>
+    
 
-        <!-- FICHA TÉCNICA -->
-        <section class="section-ficha reveal">
-            <div class="ficha-cell">
-                <div class="section-label">Dimensiones</div>
-                <div class="dim-visual">
-                    <span class="dim-label">alto</span>
-                    <div class="dim-box dim-alto">85</div>
-                    <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
-                        <div class="dim-box dim-ancho">120</div>
-                        <div class="dim-box dim-fondo">48</div>
-                    </div>
-                </div>
-                <table class="specs-table">
-                    <tr><td>Alto</td><td>85 cm</td></tr>
-                    <tr><td>Ancho</td><td>120 cm</td></tr>
-                    <tr><td>Fondo</td><td>48 cm</td></tr>
-                    <tr><td>Peso</td><td>38 kg</td></tr>
-                </table>
-            </div>
-            <div class="ficha-cell">
-                <div class="section-label">Especificaciones</div>
-                <table class="specs-table">
-                    <tr><td>Tipología</td><td>Mueble suspendido</td></tr>
-                    <tr><td>Puertas</td><td>2 abatibles soft-close</td></tr>
-                    <tr><td>Cajones</td><td>1 cajón guía metálica</td></tr>
-                    <tr><td>Lavabo</td><td>Integrado / sobre encimera</td></tr>
-                    <tr><td>Instalación</td><td>Pared / patas opcionales</td></tr>
-                    <tr><td>Año</td><td>2024</td></tr>
-                </table>
-            </div>
-            <div class="ficha-cell">
-                <div class="section-label">Producción</div>
-                <div class="ficha-big-num">3</div>
-                <div class="ficha-big-unit">prototipos</div>
-                <table class="specs-table" style="margin-top:24px;">
-                    <tr><td>Fabricación</td><td>Artesanal local</td></tr>
-                    <tr><td>Acabado</td><td>A medida</td></tr>
-                    <tr><td>Plazo</td><td>6–8 semanas</td></tr>
-                </table>
-            </div>
-        </section>
 
-        <!-- PROCESO -->
-        <section class="section-proceso reveal">
-            <div class="proceso-header">
-                <div class="section-label">Proceso de diseño</div>
-                <span style="font-family:var(--font); font-size:8pt; color:#bbb; font-style:italic;">4 fases</span>
-            </div>
-            <div class="proceso-grid">
-                <div class="proceso-step">
-                    <div class="proceso-img">
-                        <div class="proceso-img-placeholder">
-                            <div class="proceso-big-num">01</div>
-                            <div class="proceso-img-label">images/calma-proceso1.jpg</div>
-                        </div>
-                        <!-- <img src="images/calma-proceso1.jpg" alt="Investigación"> -->
-                    </div>
-                    <div class="proceso-info">
-                        <div class="proceso-step-label">Fase 01</div>
-                        <div class="proceso-step-title">Investigación</div>
-                        <div class="proceso-step-desc">Análisis de uso del baño, ergonomía y referentes. Entrevistas con usuarios.</div>
-                    </div>
-                </div>
-                <div class="proceso-step">
-                    <div class="proceso-img">
-                        <div class="proceso-img-placeholder">
-                            <div class="proceso-big-num">02</div>
-                            <div class="proceso-img-label">images/calma-proceso2.jpg</div>
-                        </div>
-                        <!-- <img src="images/calma-proceso2.jpg" alt="Sketches"> -->
-                    </div>
-                    <div class="proceso-info">
-                        <div class="proceso-step-label">Fase 02</div>
-                        <div class="proceso-step-title">Sketches</div>
-                        <div class="proceso-step-desc">Exploración de formas, proporciones y soluciones de almacenaje.</div>
-                    </div>
-                </div>
-                <div class="proceso-step">
-                    <div class="proceso-img">
-                        <div class="proceso-img-placeholder">
-                            <div class="proceso-big-num">03</div>
-                            <div class="proceso-img-label">images/calma-proceso3.jpg</div>
-                        </div>
-                        <!-- <img src="images/calma-proceso3.jpg" alt="Maqueta"> -->
-                    </div>
-                    <div class="proceso-info">
-                        <div class="proceso-step-label">Fase 03</div>
-                        <div class="proceso-step-title">Maqueta 1:5</div>
-                        <div class="proceso-step-desc">Verificación de proporciones y prueba de mecanismos de apertura.</div>
-                    </div>
-                </div>
-                <div class="proceso-step">
-                    <div class="proceso-img">
-                        <div class="proceso-img-placeholder">
-                            <div class="proceso-big-num">04</div>
-                            <div class="proceso-img-label">images/calma-proceso4.jpg</div>
-                        </div>
-                        <!-- <img src="images/calma-proceso4.jpg" alt="Prototipo"> -->
-                    </div>
-                    <div class="proceso-info">
-                        <div class="proceso-step-label">Fase 04</div>
-                        <div class="proceso-step-title">Prototipo</div>
-                        <div class="proceso-step-desc">Construcción 1:1 con materiales definitivos y ajuste de detalles.</div>
-                    </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="images/3.3.png" alt="">
+                <div class="slide-info">
+                    <div class="slide-book-title"></div>
+                    <div class="slide-desc"></div>
                 </div>
             </div>
-        </section>
 
-        <!-- FOOTER -->
-        <div class="page-footer reveal">
-            <div class="footer-name">Calma — 2024</div>
-            <a class="footer-back" href="index.html">← Volver</a>
+
+            <!-- Slide 5 -->
+              <div class="slide">
+                 <img src="images/4354.png" alt="">
+                <div class="slide-info">
+                    <div class="slide-book-title"></div>
+                    <div class="slide-desc"></div>
+                </div>
+            </div>
+
+
+        </div>
+        
+        <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            Ver proyecto ↓
+        </button>
+    </div>
+
+        <!-- Flechas -->
+        <button class="arrow arrow-prev" id="prev">&#8592;</button>
+        <button class="arrow arrow-next" id="next">&#8594;</button>
+
+        <!-- Contador -->
+        <div class="counter" id="counter">1 / 2</div>
+
+        <!--<div class="key-hint">← → para navegar</div>-->
+    </div>
+
+    <!-- DESCRIPCIÓN EXTENDIDA -->
+<section class="project-longtext" id="longtext">
+    <div class="longtext-inner">
+
+        <div class="longtext-title">
+            Calma · Producto 
+        </div>
+    
+
+        <div class="longtext-text">
+            <p>
+                Con estética sencilla y cálida, líneas limpias y materiales naturales, este mueble de baño invita a la relajación y el bienestar.
+
+Sus detalles, como los tiradores circulares integrados, reflejan una filosofía donde menos es más.
+
+            </p>
+            <p>Proyecto desarrollado en la asignatura de Estudio de Diseño, en colaboración con Royo Group.
+</p>
+
+           
+           
+
+        
         </div>
 
-    </main>
+    </div>
+</section>
+</main>
 
-    <script>
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.08 });
-        reveals.forEach(r => observer.observe(r));
-    </script>
+</div>
 
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const slidesTrack = document.getElementById('slides');
+    const counter = document.getElementById('counter');
+    let current = 0;
+
+    function goTo(index) {
+        slides[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        slidesTrack.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = `${current + 1} / ${slides.length}`;
+    }
+
+    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+    // Teclado
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Swipe táctil
+    let startX = 0;
+    const wrap = document.getElementById('carousel');
+    wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    wrap.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+
+
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+</script>
 </body>
 </html>

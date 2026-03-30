@@ -123,18 +123,7 @@ nav a:hover,
 }
 
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .page {
-        flex-direction: column;
-    }
 
-    .main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-}
 
 .img-center img.scroll-reveal {
     opacity: 0;
@@ -248,10 +237,10 @@ input[type="radio"]:checked::before {
 }
 
 /* Fondo al hacer hover sobre Bom */
-.img-center a[href="bom.html"]:hover {
+/*.img-center a[href="bom.html"]:hover {
     background: rgba(0, 0, 0, 0.2);
     transition: background 0.3s ease;
-}
+} */
 
 /* Caption de Bom inicialmente oculto */
 .img-center a[href="bom.html"] + .caption {
@@ -268,6 +257,56 @@ input[type="radio"]:checked::before {
 /* Clase para la animación */
 .animate-rotate:hover {
     animation: giro-suave 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+
+    /* Layout vertical */
+    .page {
+        flex-direction: column;
+    }
+
+    /* Header más compacto */
+    .header {
+        padding: 20px;
+    }
+
+    nav {
+        position: static;
+        gap: 20px;
+    }
+
+    /* Ocultar filtros en móvil (mejor UX) */
+    .filters {
+        display: none;
+    }
+
+    /* Contenedor de imágenes */
+    .img-center {
+        margin-top: 120px;
+        gap: 80px;
+        padding: 0 20px;
+    }
+
+    /* Imágenes responsive */
+    .img-center img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Texto */
+    .contact-title {
+        position: static;
+        font-size: 36pt;
+        text-align: left;
+        margin-top: 40px;
+    }
+
+    .contact-text {
+        position: static;
+        font-size: 12pt;
+        margin-bottom: 20px;
+    }
 }
 
 </style>
@@ -314,8 +353,8 @@ input[type="radio"]:checked::before {
 
         <div class="img-center">
             <div>   
-                <a href="LQSQ.html">
-                    <img src="images/11.jpg" alt="" data-category="otros">
+                <a href="Lo-Que-Se-Queda.html">
+                    <img src="images/16.jpg" alt="" data-category="otros">
                 </a><p class="caption">Lo Que Se Queda</p>
             </div>
 

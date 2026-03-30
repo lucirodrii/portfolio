@@ -710,6 +710,63 @@
     line-height: 1.2; /* Para mantener buena legibilidad */
     font-weight: 600; /* Opcional: un poco más destacada */
 }
+
+@media (max-width: 768px) {
+
+    .page {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .main {
+        height: auto;
+    }
+
+    .hero {
+        padding: 40px 20px;
+        min-height: auto;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 280px;
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+
+    .content {
+        padding: 60px 20px;
+    }
+
+    .cv-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
     </style>
 </head>
 
