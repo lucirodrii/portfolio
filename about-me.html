@@ -1,345 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre mí · Lucía Rodríguez</title>
-    <link rel="icon" href="../images/1.png" type="image/png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --font: 'Courier Prime', monospace;
-        }
-
-        html,
-        body {
-            height: 100%;
-            background: #bddbfa;
-            color: #111;
-        }
-
-        .page {
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* ── SIDEBAR ── */
-        .sidebar {
-            width: 400;
-            height: 100vh;
-            padding: 36px 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-shrink: 0;
-        }
-
-        .site-name a {
-            font-family: var(--font);
-            font-size: 20pt;
-            font-weight: 200;
-            margin-bottom: 40px;
-            display: block;
-            color: #111;
-            text-decoration: none;
-        }
-
-        .site-name a:hover {
-            color: #e97d25;
-        }
-
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 40px;
-        }
-
-        nav a {
-            font-family: var(--font);
-            font-size: 15pt;
-            color: #111;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #e97d25;
-        }
-
-        nav a.active {
-            border-bottom: 1px solid #111;
-        }
-
-        .sidebar-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-
-        .copyright {
-            font-family: var(--font);
-            font-size: 8.9pt;
-            color: #111;
-            line-height: 1.6;
-        }
-
-        /* ── CV CONTENT ── */
-        .cv-main {
-            flex: 1;
-            height: 100vh;
-            overflow-y: auto;
-            padding: 52px 64px 80px 48px;
-            border-left: 1px solid #e8e8e8;
-        }
-
-        /* Scrollbar minimalista */
-        .cv-main::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .cv-main::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .cv-main::-webkit-scrollbar-thumb {
-            background: #ddd;
-        }
-
-        .cv-header {
-            margin-bottom: 52px;
-            padding-bottom: 28px;
-        }
-
-        .cv-name {
-            font-family: var(--font);
-            font-size: 18pt;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            margin-bottom: 6px;
-        }
-
-        .cv-role {
-            font-family: var(--font);
-            font-size: 10pt;
-            font-style: italic;
-            color: #666;
-            letter-spacing: 0.08em;
-        }
-
-        .cv-contact {
-            margin-top: 16px;
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .cv-contact a {
-            font-family: var(--font);
-            font-size: 15pt;
-            color: #111;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            padding-bottom: 1px;
-            transition: border-color 0.2s;
-        }
-
-        .cv-contact a:hover {
-            border-color: #111;
-        }
-
-        /* Secciones */
-        .cv-section {
-            margin-bottom: 44px;
-            opacity: 0;
-            transform: translateY(12px);
-            animation: fadeUp 0.5s ease forwards;
-        }
-
-        .cv-section:nth-child(2) {
-            animation-delay: 0.05s;
-        }
-
-        .cv-section:nth-child(3) {
-            animation-delay: 0.1s;
-        }
-
-        .cv-section:nth-child(4) {
-            animation-delay: 0.15s;
-        }
-
-        .cv-section:nth-child(5) {
-            animation-delay: 0.2s;
-        }
-
-        .cv-section:nth-child(6) {
-            animation-delay: 0.25s;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-label {
-            font-family: var(--font);
-            font-size: 14pt;
-            font-weight: 600;
-            color: black;
-            margin-bottom: 18px;
-        }
-
-        .cv-row {
-            display: grid;
-            grid-template-columns: 110px 1fr;
-            gap: 0 28px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #f0f0f0;
-            padding: 3px;
-            font-size: 12pt;
-
-        }
-
-        .cv-row:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .cv-year {
-            font-family: var(--font);
-            font-size: 12pt;
-            color: #aaa;
-            white-space: nowrap;
-        }
-
-        .cv-item-title {
-            font-family: var(--font);
-            font-size: 12pt;
-            margin-bottom: 5px;
-            color: #444;
-        }
-
-        .cv-item-sub {
-            font-family: var(--font);
-            font-size: 12pt;
-            color: #444;
-            margin-bottom: 5px;
-        }
-
-        .cv-item-desc {
-            font-family: var(--font);
-            font-size: 8.5pt;
-            color: #777;
-            line-height: 1.65;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px 24px;
-        }
-
-        .skill-tag {
-            font-family: var(--font);
-            font-size: 12pt;
-            color: #444;
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        /* Download button */
-        .cv-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font);
-            font-size: 8pt;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #111;
-            text-decoration: none;
-            border: 1px solid #111;
-            padding: 10px 18px;
-            margin-top: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .cv-download:hover {
-            background: #111;
-            color: #fff;
-        }
-
-        /* SOBRE MÍ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 32px;
-            align-items: start;
-        }
-
-        .about-image img {
-            width: 200%;
-            height: 420px;
-            /* altura fija para más presencia */
-            object-fit: cover;
-            filter: grayscale(100%);
-        }
-
-        .about-text p {
-            font-family: var(--font);
-            font-size: 10pt;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 12px;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                display: grid;
-                grid-template-columns: 320px 1fr;
-            }
-
-            .about-image {
-                position: relative;
-            }
-
-            .about-image::after {
-                content: "";
-                position: absolute;
-                top: 12px;
-                left: 12px;
-                width: 100%;
-                height: 100%;
-                border: 1px solid #ddd;
-                z-index: -1;
-            }
-        }
-    </style>
-</head>
-
-
-
-</html>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <title>Sobre mí ∙ Lucía Rodríguez</title>
+    <title>About me ∙ Lucía Rodríguez</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="web/images/favicon.png" type="image/png">
@@ -348,25 +11,7 @@
         rel="stylesheet">
 
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --sidebar-width: 220px;
-            --font: 'Courier Prime', monospace;
-        }
-
-        html,
-        body {
-            height: 100%;
-            background: #bddbfa;
-            color: #111;
-        }
+      
 
         .page {
             display: flex;
@@ -381,6 +26,24 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+           .hamburger {
+    display: none;
+}
+
+        .site-name a {
+            font-family: var(--font);
+            font-size: 20pt;
+            font-weight: 200;
+            margin-bottom: 40px;
+            display: block;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .site-name a:hover {
+            color: #e97d25;
         }
 
         .site-name {
@@ -424,6 +87,23 @@
             scroll-behavior: smooth;
         }
 
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 24px;
+        }
+
+        .skill-tag {
+            font-family: var(--font);
+            font-size: 12pt;
+            color: #444;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+       
 
         .about-grid {
             display: grid;
@@ -485,24 +165,7 @@
             padding: 80px;
         }
 
-        @media (max-width: 768px) {
-            .page {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image img {
-                height: 300px;
-            }
-        }
+     
 
 
         *,
@@ -685,25 +348,40 @@
             font-family: var(--font);
         }
 
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .page {
-                flex-direction: column;
-            }
+           .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Pega todo abajo */
+            position: relative;
+            gap: 6px;
+            margin-top: auto; /* empuja el footer al final */
 
-            .sidebar {
-                width: 100%;
-                height: auto;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image img {
-                height: 320px;
-            }
         }
+
+        .sidebar-footer a {
+            text-decoration: none;
+            color: var(--text-color);
+
+            font-family: var(--font)
+        }
+
+        .sidebar-divider {
+            width: 155px;
+            height: 0.5px;
+            background: #111;
+        }
+
+
+        .sidebar-footer .copyright {
+            font-family: var(--font);
+            font-size: 8.9pt;
+            color: #111;
+            line-height: 1.6;
+            text-align: left;
+            /* asegura que quede a la izquierda */
+        }
+     
 
         .hero-intro {
             font-size: 18pt !important;
@@ -726,6 +404,9 @@
                 width: 100%;
                 height: auto;
                 padding: 20px;
+                 display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* el footer no se pega arriba */
             }
 
             nav {
@@ -769,64 +450,222 @@
             .skills-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Ocultar nav-links inicialmente */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Mostrar nav-links cuando activo */
+.nav-links.active {
+    display: flex;
+}
+
+/* Sidebar en móvil con footer dentro */
+.sidebar-footer {
+    margin-top: 20px;
+}
+
+.hamburger {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+  .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 26px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        margin-top: -85px;
+    }
+
+    /* MENU DESLIZANTE */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #bddbfa;
+        padding: 80px 30px;
+        transition: left 0.4s ease;
+        z-index: 1000;
+    }
+
+    .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* clave */
+    margin-top: -50px
+}
+
+.mobile-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    font-family: var(--font);
+}
+
+.mobile-footer a {
+    text-decoration: none;
+    color: #111;
+}
+
+.mobile-footer .copyright {
+    font-size: 9pt;
+}
+
+    .mobile-menu.active {
+        left: 0;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 18pt;
+    }
+
+     .nav-links-desktop {
+        display: none; 
+    }
+
+     .sidebar-footer {
+        display: none;
+    }
+
+ 
         }
 
-        .sidebar-footer {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            /* Pega todo abajo */
-            position: relative;
-            gap: 6px;
-        }
+     
 
-        .sidebar-footer a {
-            text-decoration: none;
-            color: var(--text-color);
+        /* MOBILE MENU */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #bddbfa;
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: left 0.4s ease;
+    z-index: 1000;
+}
 
-            font-family: var(--font)
-        }
+.mobile-menu.active {
+    left: 0;
+}
 
-        .sidebar-divider {
-            width: 155px;
-            height: 0.5pt;
-            background: #111;
-        }
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    z-index: 999;
+}
 
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-        .sidebar-footer .copyright {
-            font-family: var(--font);
-            font-size: 8.9pt;
-            color: #111;
-            line-height: 1.6;
-            text-align: left;
-            /* asegura que quede a la izquierda */
-        }
+/* MOBILE MENU (ya lo tienes, solo asegúrate que tenga transición) */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #bddbfa;
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: left 0.4s ease;
+    z-index: 1000;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+     
     </style>
 </head>
 
 <body>
     <div class="page">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div>
-                <div class="site-name">
-                    <a href="index.html">Lucía Rodríguez</a>
-                </div>
-                <nav>
-                    <a href="index.html">Trabajos</a>
-                    <a href="#">Sobre mí</a>
-                    <a href="contact.html">Contacto</a>
-                </nav>
-            </div>
-            <div class="sidebar-footer">
-                <a href="english/about-me.html">EN</a>
+   <aside class="sidebar">
+    <div class="mobile-header">
+        <div class="site-name">
+            <a href="index.html">Lucía Rodríguez</a>
+        </div>
 
-                <div class="sidebar-divider"></div>
-                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
-            </div>
-        </aside>
+        <button class="hamburger" aria-label="Toggle menu">☰</button>
+    </div>
+
+    <nav class="nav-links-desktop">
+        <a href="index.html">Trabajos</a>
+        <a href="#">Sobre mí</a>
+        <a href="contact.html">Contacto</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <a href="english/about-me.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </div>
+</aside>
+<!-- OVERLAY para opacidad -->
+<div class="overlay"></div>
+<!-- MENU MÓVIL COMO OVERLAY FUERA DEL SIDEBAR -->
+<div class="mobile-menu">
+    <nav class="nav-links">
+        <a href="index.html">Trabajos</a>
+        <a href="#">Sobre mí</a>
+        <a href="contact.html">Contacto</a>
+    </nav>
+    <div class="mobile-footer">
+        <a href="english/about-me.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </div>
+</div>
 
         <!-- MAIN -->
         <main class="main">
@@ -843,9 +682,8 @@
                             ¡Hola! Soy Lucía, me gusta transformar ideas en proyectos con identidad e intención.
                         </p>
                         <p>
-                            Me apasiona la multidisciplinariedad y explorar nuevas formas de crear.
-                            Me considero una persona empática y organizada, y me encanta trabajar en equipo y aprender
-                            de mis compañer@s.
+                            Me apasiona la multidisciplinariedad y explorar nuevas formas de crear. Me considero una
+                            persona empática y organizada, y me encanta trabajar en equipo y aprender de mis compañer@s.
                         </p>
                     </div>
                 </div>
@@ -874,9 +712,9 @@
                 <div class="cv-section">
                     <div class="section-label">Habilidades</div>
                     <div class="skills-grid">
-                        <div class="skill-tag">Diseño de Producto</div>
-                        <div class="skill-tag">Diseño y Desarrollo Web</div>
-                        <div class="skill-tag">Fotografía de Producto</div>
+                        <div class="skill-tag">Product Design</div>
+                        <div class="skill-tag">Web Design & Development</div>
+                        <div class="skill-tag">Product Photography</div>
                         <div class="skill-tag">SolidWorks</div>
                         <div class="skill-tag">Rhino</div>
                         <div class="skill-tag">Cinema4D</div>
@@ -924,5 +762,23 @@
 
     </div>
 </body>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const overlay = document.querySelector('.overlay');
 
+function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+
+// Abrir/cerrar menú
+hamburger.addEventListener('click', toggleMenu);
+
+// Cerrar menú al hacer clic en overlay
+overlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+});
+</script>
 </html>

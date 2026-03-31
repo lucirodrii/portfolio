@@ -299,6 +299,15 @@
             animation: giro-suave 3s ease-in-out infinite;
         }
 
+            .menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
         @media (max-width: 768px) {
 
             /* Layout vertical */
@@ -347,6 +356,55 @@
                 font-size: 12pt;
                 margin-bottom: 20px;
             }
+
+             .menu-toggle {
+        display: block;
+        margin-top: -5px;
+    }
+
+    nav {
+        display: none; /* escondemos el nav original en móvil */
+    }
+}
+
+/* Menú lateral */
+.nav-side {
+    position: fixed;
+    top: 0;
+    left: -250px; /* fuera de pantalla */
+    width: 250px;
+    height: 100%;
+    background: #919fb6;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 30px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-side.show {
+    left: 0; /* desliza hacia la pantalla */
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
         }
     </style>
 </head>
@@ -358,11 +416,15 @@
             <a href="index.html">Lucía Rodríguez</a>
         </div>
 
-        <nav>
+         <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+
+        <nav class="nav-side">
             <a id="langButton" href="../index.html">ES</a>
             <a href="about-me.html">About me</a>
             <a href="contact.html">Contact</a>
         </nav>
+                    <div class="overlay"></div>
+
     </header>
     <div class="page">
 

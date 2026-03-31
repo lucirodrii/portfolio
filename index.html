@@ -299,6 +299,10 @@
             animation: giro-suave 3s ease-in-out infinite;
         }
 
+        .menu-toggle {
+    display: none; /* Oculto por defecto en desktop */
+}
+
         @media (max-width: 768px) {
 
             /* Layout vertical */
@@ -347,6 +351,53 @@
                 font-size: 12pt;
                 margin-bottom: 20px;
             }
+
+            .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-side {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #919fb6;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 30px;
+    transition: left 0.3s ease;
+    z-index: 1001;
+}
+
+.nav-side.show {
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+nav { display: none; } /* ocultamos nav original en móvil */
         }
     </style>
 </head>
@@ -357,7 +408,14 @@
         <div class="site-name">
             <a href="index.html">Lucía Rodríguez</a>
         </div>
+<button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
 
+<nav class="nav-side">
+    <a id="langButtonSide" href="english/index.html">EN</a>
+    <a href="about-me.html">Sobre mí</a>
+    <a href="contact.html">Contacto</a>
+</nav>
+<div class="overlay"></div>
         <nav>
             <a id="langButton" href="english/index.html">EN</a>
 
@@ -487,6 +545,27 @@
         });
     });
 
+    const menuToggle = document.querySelector('.menu-toggle');
+const navSide = document.querySelector('.nav-side');
+const overlay = document.querySelector('.overlay');
+
+menuToggle.addEventListener('click', () => {
+    navSide.classList.toggle('show');
+    overlay.classList.toggle('show');
+});
+
+overlay.addEventListener('click', () => {
+    navSide.classList.remove('show');
+    overlay.classList.remove('show');
+});
+
+// Cerrar menú al click en enlace
+navSide.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navSide.classList.remove('show');
+        overlay.classList.remove('show');
+    });
+});
 
 </script>
 
