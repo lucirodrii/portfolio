@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiss All The Time, Disco Ocasionally, Harry Styles - La Cara B Records</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-05RC31QZWF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-05RC31QZWF');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="icon" href="IMG/pngwing.com.png" type="image/png">
+
+</head>
+
+<body class="bg-[#EAE8DC] min-h-screen flex flex-col"ç>
+
+  <header class="fixed top-0 w-full z-50 h-40 px-8 transition-colors duration-600 bg-[rgba(80,124,200,0)]" id="header">
+
+    <div class="h-full flex items-center justify-between">
+
+      <div class="flex items-center gap-20">
+        <a href="index.html">
+          <img id="logo" src="IMG/pngwing.com.png" alt="La Cara B" class="h-28 transition-transform duration-600">
+        </a>
+
+        <nav class="hidden md:flex gap-32 text-black text-2xl">
+          <a href="#" class="hover:underline">VINILOS</a>
+          <a href="#" class="hover:underline">DISCOS</a>
+          <a href="#" class="hover:underline">MERCH</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-24">
+        <input type="text" placeholder="Buscar" class="w-64 bg-transparent border-b-2 border-black text-black text-2xl
+               placeholder-black focus:outline-none">
+
+        <button id="carritoBtn" class="text-black hover:text-gray-700">
+          <img src="IMG/carrito-de-compras(1).png" alt="Carrito de Compras" class="h-10">
+        </button>
+        </div>
+
+        <div id="carritoPopup" class="hidden fixed top-0 right-0 h-full w-[600px] flex items-start p-4">
+          <div class="relative w-full max-w-none border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
+            aria-modal="true" role="dialog" tabindex="-1">
+
+            <button id="cerrarCarrito" class="absolute end-4 top-4 text-gray-600 transition hover:scale-110">
+              <span class="sr-only">Close cart</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+
+            <div class="mt-4 space-y-6">
+              <ul id="carritoItems" class="space-y-4">
+                <li class="flex items-center gap-4">
+                  <img src="IMG/VINYL-tomato.webp" alt="" class="w-36 h-36 rounded-sm object-cover">
+                  <div>
+                    <h3 class="text-xl text-gray-900">Kiss All The Time, Disco Occasionally</h3>
+                    <div class="mt-0.5 space-y-px text-[18px] text-gray-600">
+                      <div>
+                        <span class="inline">Harry Styles</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-1 items-center justify-end gap-2">
+                    <form><input type="number" min="1" value="1"
+                        class="h-8 w-12 rounded-sm border-gray-200 bg-gray-50 text-center text-x1 text-gray-600"></form>
+                    <button class="text-gray-600 transition hover:text-red-600">
+                      <span class="sr-only">Remove item</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9M18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79">
+                        </path>
+                      </svg>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="space-y-4 text-center">
+                <a href="#"
+                  class="block rounded-sm bg-black px-5 py-3 text-x1 text-gray-100 transition hover:bg-gray-600">
+                  Comprar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </header>
+
+
+  <main class="pt-56 max-w-8xl mx-10 flex-1">
+    <div id="productoTitulo" class="self-start text-7xl font-normal mb-6"></div>
+    <div id="productoPrecio" class="text-3xl"></div>
+    <div id="productoArtista" class="text-2xl italic mt-4"></div>
+    <div class="h-[1px] w-full bg-black mt-2 mb-6"></div>
+    <div class="flex flex-col md:flex-row gap-16">
+      <div class="md:w-1/2 -mt-16 relative flex justify-center">
+        <img id="productoImagen" src="IMG/VINYL-tomato.webp" alt="Vinilo Tomate" class="w-4/5 mx-auto h-auto">
+      </div>
+      <div class="md:w-1/2">
+        <p class="text-xl mt-14 mb-6 font-semibold">Descripción</p>
+        <p id="productoDescripcion" class="text-xl mb-6">
+        </p>
+        <button
+          class="focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 bg-black text-white px-6 py-3 text-lg font-medium hover:bg-[#507CC8] transition-colors">
+          Añadir al Carrito
+        </button>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="py-4">
+    <div class=" mx-10 mb-20 px-6 flex justify-between items-end">
+
+      <ul class="space-y-2 text-xl">
+        <li><a href="#" class="hover:underline">Sobre Nosotros</a></li>
+        <li><a href="#" class="hover:underline">Pedidos y Envíos</a></li>
+        <li><a href="#" id="openLegal" class="hover:underline">Aviso Legal y Términos de Uso</a></li>
+      </ul>
+
+      <div class="flex flex-col md:flex-row items-center md:w-1/2 gap-4">
+        <input type="email" placeholder="Suscríbete a la Newsletter"
+          class="w-full bg-transparent border-b-2 border-black text-black text-2xl placeholder-black focus:outline-none py-2">
+        <button class="ml-4 bg-black text-[#EAE8DC] px-4 py-2 text-lg font-medium hover:bg-gray-800 transition-colors">
+          Enviar
+        </button>
+      </div>
+    </div>
+
+
+    <p class="text-center text-sm text-gray-500 py-4">Copyright © 2025 <a href="https://lacaraBRecords.com">Lucía
+        Rodríguez Cuenca</a>. All
+      rights reserved.</p>
+  </footer>
+
+  <!-- MODAL AVISO LEGAL -->
+  <div id="legalModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+
+    <div class="relative bg-[#EAE8DC] max-w-2xl w-full mx-4 p-8 rounded-sm shadow-xl">
+
+      <button class="absolute top-4 right-4 text-2xl font-light hover:scale-110 transition close">
+        &times;
+      </button>
+
+      <h2 class="text-3xl mb-4 font-medium">Aviso Legal y Términos de Uso</h2>
+
+      <p class="text-lg mb-4">
+        <strong>Titular:</strong> Lucía Rodríguez<br>
+        <strong>Domicilio:</strong> Valencia, España<br>
+        <strong>Correo:</strong> luciarodriguezcuenca12@gmail.com
+      </p>
+
+      <p class="mb-6">
+        La Cara B es un proyecto académico que simula un comercio online. Este sitio web tiene
+        carácter demostrativo y no persigue fines comerciales.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Propiedad Intelectual</h3>
+      <p class="mb-4">
+        Todos los contenidos del sitio web se utilizan con fines educativos.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Condiciones de uso</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Uso con fines lícitos y educativos</li>
+        <li>Posibles enlaces externos sin responsabilidad</li>
+        <li>Uso de formularios implica aceptación de la política de privacidad</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const legalModal = document.getElementById("legalModal");
+    const openLegal = document.getElementById("openLegal");
+    const closeBtns = document.querySelectorAll(".close");
+
+    openLegal.addEventListener("click", e => {
+      e.preventDefault();
+      legalModal.classList.remove("hidden");
+    });
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        legalModal.classList.add("hidden");
+      });
+    });
+
+    legalModal.addEventListener("click", e => {
+      if (e.target === legalModal) {
+        legalModal.classList.add("hidden");
+      }
+    });
+  </script>
+
+  <script>
+    const header = document.getElementById('header');
+    const logo = document.getElementById('logo');
+    const carritoBtn = document.getElementById('carritoBtn');
+    const carritoPopup = document.getElementById('carritoPopup');
+    const cerrarCarrito = document.getElementById('cerrarCarrito');
+
+    // "Base de datos" de vinilos
+  const vinilos = {
+    tomato: {
+      titulo: "Kiss All The Time, Disco Occasionally",
+      artista: "Harry Styles",
+      precio: "35,90 €",
+      imagen: "IMG/VINYL-tomato.webp",
+      descripcion: `Edición LP rojo. 
+
+      "Kiss All The Time. Disco, Occasionally" es el cuarto álbum de estudio del 
+      ganador del GRAMMY Harry Styles. Producido ejecutivamente por Kid Harpoon, 
+      el álbum contiene 12 canciones y saldrá el próximo 6 de marzo. 
+      
+      Vinilo rojo de 180 gramos con carpeta desplegable (gatefold) y funda interior holográfica impresa. Incluye un libreto de 12 páginas con las letras de las canciones y fotografías.`
+    },
+
+    blue: {
+      titulo: "Twenty Twenty",
+      artista: "Djo",
+      precio: "29,99 €",
+      imagen: "IMG/djo-twenty-twenty-black-single-vinyl_5000x_2f4ee976-f1f1-4d94-a93c-2b0b945762de.png",
+      descripcion: `"Joe Keery construyó un carnaval. La resonancia de cada riff o ritmo no es nueva, sino que se rediseñó y remodeló hasta alcanzar la belleza que es hoy. La cara de lo psicológico o lo alternativo se refleja a través de su propio diseño y revela a una persona que no debe ser subestimada", dijo Rodeo Mag. A pesar de que el álbum fue lanzado bajo el radar y sin un sello, los fanáticos encontraron el camino hacia él, y Twenty Twenty ha visto más de 40 
+      millones de reproducciones hasta la fecha.`
+    },
+
+    oasis: {
+      titulo: "Definetely Maybe",
+      artista: "Oasis",
+      precio: "24,99 €",
+      imagen: "IMG/oasis_png.webp",
+      descripcion: "Para celebrar el 30th aniversario del debut de Oasis, 'Definitive Maybe', se ponen en el mercado 3 formatos del álbum. Un doble CD, con los 11 temas originales del disco y otro con 16 canciones del disco en diferentes versiones."
+    },
+
+     olivia: {
+      titulo: "The Art of Loving",
+      artista: "Olivia Dean",
+      precio: "22,99 €",
+      imagen: "IMG/Olivia-Dean-the-art-of-loving-vinilo.webp",
+      descripcion: `"The Art Of Loving" es el esperado segundo álbum de la artista nominada a varios premios Brit y al Mercury Prize que llegará el 26 de septiembre a través de Capitol Records.
+
+Disponible en formatos CD y LP, el álbum es una profunda inmersión, tierna e intencionada, de las múltiples dimensiones del amor: romántico, platónico, personal y demás. Incluye el single "Nice To Each Other"."`
+    },
+
+     crux: {
+      titulo: "The Crux - Deluxe Edition",
+      artista: "Djo",
+      precio: "24,99 €",
+      imagen: "IMG/DJO050013_Djo_The_Crux_Deluxe_12_Inch_Black_Vinyl_1_1600x.png",
+      descripcion: "Djo, el proyecto musical de Joe Keery, artista total famoso por su trabajo actoral en series como Stranger Things o Fargo, regresa con su tercer álbum de estudio, 'The Crux', un trabajo profundamente reflexivo y sónicamente aventurero."
+    },
+
+     tomatoCD: {
+      titulo: "Kiss All The Time, Disco Occasionally",
+      artista: "Harry Styles",
+      precio: "22,99 €",
+      imagen: "IMG/0199584177328.png",
+      descripcion: `Edición LP rojo. 
+
+      "Kiss All The Time. Disco, Occasionally" es el cuarto álbum de estudio del 
+      ganador del GRAMMY Harry Styles. Producido ejecutivamente por Kid Harpoon, 
+      el álbum contiene 12 canciones y saldrá el próximo 6 de marzo. 
+      
+      Vinilo rojo de 180 gramos con carpeta desplegable (gatefold) y funda interior holográfica impresa. Incluye un libreto de 12 páginas con las letras de las canciones y fotografías.`
+    },
+
+     mac: {
+      titulo: "Rumours",
+      artista: "Fleetwood Mac",
+      precio: "24,99 €",
+      imagen: "IMG/Fleetwood-Mac-e1627555844651.png",
+      descripcion: "Vinilo del disco Rumours, de Fleetwood Mac."
+    },
+
+      lux: {
+      titulo: "Lux",
+      artista: "Rosalía",
+      precio: "16,99 €",
+      imagen: "IMG/LUX-CD-1.webp",
+      descripcion: "El CD LUX contiene tres canciones adicionales que son exclusivas del formato físico. LUX es el cuarto álbum de estudio de la cantante, productora, compositora y ganadora de varios GRAMMY, ROSALÍA. Se trata de su lanzamiento más innovador y global hasta la fecha. LUX es una proeza de visión y maestría. El álbum se ha grabado junto a la Orquesta Sinfónica de Londres e incluye voces de artistas como Björk, Carminho, Estrella Morente, Silvia Pérez Cruz y los coros de la Escolanía de Montserrat y de L'Orfeó Català. ROSALÍA explora temas de la mística femenina, la transformación y la espiritualidad trazando el arco entre la ilusión y la pérdida, la fe y la individualidad."
+    }
+  };
+
+    const params = new URLSearchParams(window.location.search);
+    const viniloID = params.get('vinilo') || 'tomato'; 
+    const producto = vinilos[viniloID] || vinilos['tomato']; 
+
+  document.getElementById('productoTitulo').innerText = producto.titulo;
+  document.getElementById('productoPrecio').innerText = producto.precio;
+  document.getElementById('productoArtista').innerText = producto.artista;
+  document.getElementById('productoImagen').src = producto.imagen;
+  document.getElementById('productoDescripcion').innerText = producto.descripcion;
+
+
+    productoTitulo.innerText = producto.titulo;
+    productoPrecio.innerText = producto.precio;
+    productoArtista.innerText = producto.artista;
+    productoImagen.src = producto.imagen;
+    productoImagen.alt = producto.titulo;
+    productoDescripcion.innerText = producto.descripcion;
+
+
+    carritoBtn.addEventListener('click', () => {
+      carritoPopup.classList.remove('hidden');
+    });
+
+    cerrarCarrito.addEventListener('click', () => {
+      carritoPopup.classList.add('hidden');
+    });
+
+    carritoPopup.addEventListener('click', (e) => {
+      if (e.target === carritoPopup) {
+        carritoPopup.classList.add('hidden');
+      }
+    });
+
+
+    window.addEventListener('load', () => {
+      header.style.backgroundColor = `rgba(80, 124, 200, 0)`; 
+    });
+
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      const opacity = Math.min(scrollY / 300, 1);
+      header.style.backgroundColor = `rgba(80, 124, 200, ${opacity})`;
+
+      const rotation = Math.min(scrollY / 500 * 360, 360);
+      logo.style.transform = `rotate(${rotation}deg)`;
+    });
+  </script>
+
+</body>
+
+</html>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV · Lucía Rodríguez</title>
-    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <title>Sobre mí · Lucía Rodríguez</title>
+    <link rel="icon" href="../images/1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -706,67 +706,102 @@
         }
 
         .hero-intro {
-    font-size: 18pt !important; /* Ajusta a tu gusto */
-    line-height: 1.2; /* Para mantener buena legibilidad */
-    font-weight: 600; /* Opcional: un poco más destacada */
-}
+            font-size: 18pt !important;
+            /* Ajusta a tu gusto */
+            line-height: 1.2;
+            /* Para mantener buena legibilidad */
+            font-weight: 600;
+            /* Opcional: un poco más destacada */
+        }
 
-@media (max-width: 768px) {
+        @media (max-width: 768px) {
 
-    .page {
-        flex-direction: column;
-        height: auto;
-        overflow: visible;
-    }
+            .page {
+                flex-direction: column;
+                height: auto;
+                overflow: visible;
+            }
 
-    .sidebar {
-        width: 100%;
-        height: auto;
-        padding: 20px;
-    }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 20px;
+            }
 
-    nav {
-        flex-direction: row;
-        gap: 20px;
-        margin-top: 10px;
-    }
+            nav {
+                flex-direction: row;
+                gap: 20px;
+                margin-top: 10px;
+            }
 
-    .main {
-        height: auto;
-    }
+            .main {
+                height: auto;
+            }
 
-    .hero {
-        padding: 40px 20px;
-        min-height: auto;
-    }
+            .hero {
+                padding: 40px 20px;
+                min-height: auto;
+            }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
 
-    .about-image img {
-        width: 100%;
-        height: 280px;
-    }
+            .about-image img {
+                width: 100%;
+                height: 280px;
+            }
 
-    .about-text {
-        max-width: 100%;
-    }
+            .about-text {
+                max-width: 100%;
+            }
 
-    .content {
-        padding: 60px 20px;
-    }
+            .content {
+                padding: 60px 20px;
+            }
 
-    .cv-row {
-        grid-template-columns: 1fr;
-        gap: 4px;
-    }
+            .cv-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
 
-    .skills-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Pega todo abajo */
+            position: relative;
+            gap: 6px;
+        }
+
+        .sidebar-footer a {
+            text-decoration: none;
+            color: var(--text-color);
+
+            font-family: var(--font)
+        }
+
+        .sidebar-divider {
+            width: 155px;
+            height: 0.5pt;
+            background: #111;
+        }
+
+
+        .sidebar-footer .copyright {
+            font-family: var(--font);
+            font-size: 8.9pt;
+            color: #111;
+            line-height: 1.6;
+            text-align: left;
+            /* asegura que quede a la izquierda */
+        }
     </style>
 </head>
 
@@ -780,12 +815,14 @@
                     <a href="index.html">Lucía Rodríguez</a>
                 </div>
                 <nav>
-                    <a href="index.html">Work</a>
-                    <a href="#">About me</a>
-                    <a href="contacto.html">Contact</a>
+                    <a href="index.html">Trabajos</a>
+                    <a href="#">Sobre mí</a>
+                    <a href="contact.html">Contacto</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
+                <a href="english/about-me.html">EN</a>
+
                 <div class="sidebar-divider"></div>
                 <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
             </div>
@@ -806,8 +843,9 @@
                             ¡Hola! Soy Lucía, me gusta transformar ideas en proyectos con identidad e intención.
                         </p>
                         <p>
-                            Me apasiona la multidisciplinariedad y explorar nuevas formas de crear. 
-                            Me considero una persona empática y organizada, y me encanta trabajar en equipo y aprender de mis compañer@s. 
+                            Me apasiona la multidisciplinariedad y explorar nuevas formas de crear.
+                            Me considero una persona empática y organizada, y me encanta trabajar en equipo y aprender
+                            de mis compañer@s.
                         </p>
                     </div>
                 </div>

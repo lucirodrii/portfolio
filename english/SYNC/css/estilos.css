@@ -1,0 +1,502 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* POPUP NEWSLETTER */
+.popup {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #F0E37C;
+  padding: 40px 50px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  font-family: 'Roboto Mono', monospace;
+  color: #121212;
+  padding-top: 28px;
+}
+
+.popup-content h1 {
+  margin-bottom: 20px; 
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #121212;
+}
+
+/* BOTONES */
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #121212;
+  border-radius: 8px;
+  background: transparent;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+}
+
+button {
+  margin-top: 25px;
+  background-color: #121212;
+  color: #F0E37C;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  color: #121212;
+  transform: translateY(-2px);
+}
+
+/* ESTRUCTURA GENERAL */
+main {
+  background-color: #121212;
+}
+
+section {
+  height: 85vh;
+}
+
+/* HEADER */
+header div {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tickets-button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: underline;
+  color: #F0E37C;
+}
+
+/* SECCIÓN HOME Y ABOUT */
+
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+.venue {
+  position: absolute;
+  z-index: 2;
+  bottom: 60px;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: #F0E37C;
+}
+
+
+.fecha {
+  position: absolute;
+  z-index: 2;
+  bottom: 115px;
+  right: 60px;
+  color: white;
+  font-family: 'Roboto';
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fecha .line {
+  flex: 1;
+  height: 1.5px;
+  background-color: white;
+  opacity: 100%;
+  width: 150px;
+}
+
+.contentAbout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 4rem;
+}
+
+.contentAbout h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: clamp(3rem, 4vw, 5rem);
+  color: #fff;
+}
+
+.contentAbout p {
+  font-family: 'Space Grotesk';
+  color: #F0E37C;
+  margin-top: 1rem;
+  font-size: 20px;
+}
+
+#program {
+  height: auto;
+  min-height: 85vh;
+}
+
+.contentProgram {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.contentProgram h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 3vw, 5rem);
+  color: #F0E37C;
+  text-decoration: underline;
+}
+
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: #F0E37C;
+  font-family: sans-serif;
+}
+
+.schedule td {
+  border: 1px solid #F0E37C;
+  padding: clamp(2rem, 3vw, 4rem);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.active {
+  background-color: black;
+}
+
+.day {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: bold;
+  color: #F0E37C;
+  text-decoration: underline;
+}
+
+.poster {
+  background-size: cover;
+  background-position: center;
+}
+
+.atro {
+  background-image: url("../images/PELIS/Atropia.jpg");
+}
+
+.baltimorons {
+  background-image: url("../images/PELIS/Baltimorons.jpg");
+}
+
+.photo1 {
+  background-image: url("../images/2/5.jpg");
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+}
+
+.speech {
+  background-image: url("../images/speech.png");
+}
+
+.camera {
+  background-image: url("../images/camara.png");
+}
+
+.eye {
+  background-image: url("../images/eye.png")
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: clamp(1rem, 3vw, 2rem);
+  letter-spacing: 0.3rem;
+  font-weight: bold;
+  color: #F0E37C;
+}
+
+#venue {
+  height: auto;
+  min-height: 85vh;
+}
+
+.contentVenue {
+  padding: 4rem;
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  text-wrap: pretty;
+}
+
+.contentVenue h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 3vw, 5rem);
+  color: #F0E37C;
+  text-decoration: underline;
+}
+
+.leftContentVenue {
+  flex: 0.6;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.descriptionVenue {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionVenue h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  color: #F0E37C;
+}
+
+.aboutVenue {
+  flex: 0.5;
+}
+
+.addressVenue {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: last baseline;
+  gap: 1rem;
+}
+
+.caption {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #F0E37C;
+}
+
+.exteriorViewVenue {
+  width: 75%;
+  display: flex;
+  align-items: end;
+  gap: 2rem;
+}
+
+.rightContentVenue {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.directionsVenue h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  color: #F0E37C;
+  margin-bottom: 0.1rem;
+  margin: 0;
+}
+
+.directionsVenue p {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(0.9rem, 1vw, 1.2rem);
+  color: white;
+}
+
+.locationVenue {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #F0E37C;
+}
+
+.locationVenue iframe {
+  filter: grayscale(100%);
+}
+
+.directionsVenue {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+h3 {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: white;
+}
+
+.highlight-SYNC {
+  color: #F0E37C;
+}
+
+/* IMÁGENES */
+.imagenHome {
+  width: 100%;
+  height: 100%;
+  border-bottom: #F0E37C 1px solid;
+}
+
+.imgArenaVenue {
+  display: block;
+  width: 190px;
+  height: auto;
+}
+
+.imgArenaVenueExterior {
+  width: 240px;
+  height: auto;
+}
+
+.imgPeli1 {
+  width: 30%;
+}
+
+.imgLocationVenue {
+  width: 300px;
+  height: auto;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #F0E37C;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+footer a {
+  color: #121212;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-links {
+  display: flex;
+  gap: 44px;
+  padding-top: 35px;
+  color: #121212;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-right {
+  display: flex;
+  gap: 44px;
+}
+
+.redes {
+  width: 30px;
+  height: 30px;
+}
+
+/* MODAL NEWSLETTER */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #F0E37C;
+  color: #121212;
+  padding: 40px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 700px;
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+}
+
+.modal-content h2{
+  color: #121212;
+  margin-top: 0;
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+.modal-content h3 {
+  color: #121212;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #121212;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: white;
+}

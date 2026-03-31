@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LQSQ · Lucía Rodríguez</title>
-    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <title>Prototipo CNC · Lucía Rodríguez</title>
+    <link rel="icon" href="../images/1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -85,20 +85,26 @@
         .sidebar-footer {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 6px;
+        }
+
+        .sidebar-footer a {
+            text-decoration: none;
+            color: var(--text-color);
+
+            font-family: var(--font)
         }
 
         .sidebar-divider {
-            width: 32px;
-            height: 1px;
+            width: 155px;
+            height: 0.5px;
             background: #111;
         }
 
         .copyright {
             font-family: var(--font);
-            font-size: 8pt;
-            font-style: italic;
-            color: #444;
+            font-size: 8.9pt;
+            color: #111;
             line-height: 1.6;
         }
 
@@ -151,7 +157,7 @@
             letter-spacing: 0.12em;
         }
 
-       
+
 
         /* ── INFO PANEL (título + descripción) ── */
         .slide-info {
@@ -230,7 +236,7 @@
             z-index: 10;
             font-family: var(--font);
             font-size: 8pt;
-            color: rgba(4,4,4);
+            color: rgba(4, 4, 4);
             letter-spacing: 0.12em;
         }
 
@@ -262,80 +268,85 @@
             pointer-events: none;
         }
 
-           /* DESCRIPCIÓN DEL PROYECTO */
+        /* DESCRIPCIÓN DEL PROYECTO */
 
-.project-longtext{
-    position: absolute;
-    top: 100vh;
-    left: var(--sidebar-width);
-    right: 0;
-    background: #fff;
+        .project-longtext {
+            position: absolute;
+            top: 100vh;
+            left: var(--sidebar-width);
+            right: 0;
+            background: #fff;
 
-    /* MISMO SISTEMA QUE SLIDE */
-    padding-left: 48px;
-    padding-right: 120px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
+            /* MISMO SISTEMA QUE SLIDE */
+            padding-left: 48px;
+            padding-right: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
 
-.longtext-inner{
-    max-width: 720px;
-    margin-left: 0;
-}
+        .longtext-inner {
+            max-width: 720px;
+            margin-left: 0;
+        }
 
-.longtext-title{
-    font-family: var(--font);
-    font-size: 16pt;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
+        .longtext-title {
+            font-family: var(--font);
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
 
-.longtext-text p{
-    font-family: var(--font);
-    font-size: 10pt;
-    line-height: 1.8;
-    margin-bottom: 18px;
-}
+        .longtext-text p {
+            font-family: var(--font);
+            font-size: 10pt;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
 
-/* Slide con varias imágenes */
-.slide.multi {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        /* Slide con varias imágenes */
+        .slide.multi {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Grid de 3 imágenes */
-.multi-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 0.5fr);
-    gap: 10px;
-    width: 80%;
-    height: 26%;
-}
+        /* Grid de 3 imágenes */
+        .multi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 0.5fr);
+            gap: 10px;
+            width: 80%;
+            height: 26%;
+        }
 
-/* Imágenes dentro del grid */
-.multi-grid img {
-    width: 100%;
-    height: 65%;
-    object-fit: cover; /* o contain si no quieres recorte */
-}
+        /* Imágenes dentro del grid */
+        .multi-grid img {
+            width: 100%;
+            height: 65%;
+            object-fit: cover;
+            /* o contain si no quieres recorte */
+        }
 
-@media (max-width: 768px) {
-    .page {
-        flex-direction: column;
-    }
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-    .main {
-        margin-left: 0;
-    }
-    .carousel-wrap {
-        height: 60vh; /* más manejable en móvil */
-    }
-}
+        @media (max-width: 768px) {
+            .page {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .carousel-wrap {
+                height: 60vh;
+                /* más manejable en móvil */
+            }
+        }
     </style>
 </head>
 
@@ -349,12 +360,14 @@
                     <a href="index.html">Lucía Rodríguez</a>
                 </div>
                 <nav>
-                <a href="index.html">Work</a>
-                <a href="about-me.html">About Me</a>
-                <a href="contact.html">Contact</a>
+                    <a href="index.html">Trabajos</a>
+                    <a href="about-me.html">Sobre Mí</a>
+                    <a href="contact.html">Contacto</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
+                <a href="english/cnc.html">EN</a>
+
                 <div class="sidebar-divider"></div>
                 <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
             </div>
@@ -370,38 +383,40 @@
                 <!-- Slide 1 -->
 
                 <div class="slide multi">
-    <div class="multi-grid">
-        <img src="images/3.1.jpeg" alt="">
-        <img src="images/7.jpeg" alt="">
-    </div>
-</div>
+                    <div class="multi-grid">
+                        <img src="images/3.1.jpeg" alt="">
+                        <img src="images/7.jpeg" alt="">
+                    </div>
+                </div>
 
 
-                    <div class="slide">
+                <div class="slide">
                     <img src="images/22.png" alt="">
                     <div class="slide-info">
-                       
+
                     </div>
                 </div>
 
-                   <div class="slide">
+                <div class="slide">
                     <img src="images/24.png" alt="">
                     <div class="slide-info">
-                       
+
                     </div>
                 </div>
 
 
-            
+
 
             </div>
 
-              <!-- BOTÓN PARA BAJAR -->
-    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-            Ver proyecto ↓
-        </button>
-    </div>
+            <!-- BOTÓN PARA BAJAR -->
+            <div class="overlay-button"
+                style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+                <button onclick="bajar()"
+                    style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+                    Ver proyecto ↓
+                </button>
+            </div>
 
             <!-- Flechas -->
             <button class="arrow arrow-prev" id="prev">&#8592;</button>
@@ -411,104 +426,104 @@
             <div class="counter" id="counter">1 / 3</div>
 
         </div>
-    <!-- DESCRIPCIÓN EXTENDIDA -->
-<section class="project-longtext" id="longtext">
-    <div class="longtext-inner">
+        <!-- DESCRIPCIÓN EXTENDIDA -->
+        <section class="project-longtext" id="longtext">
+            <div class="longtext-inner">
 
-        <div class="longtext-title">
-            Lienzo CNC · Producto 
-        </div>
-    
+                <div class="longtext-title">
+                    Lienzo CNC · Producto
+                </div>
 
-        <div class="longtext-text">
-            <p>
-            Prototipo de taburete o mesita auxiliar fabricado mediante CNC, concebido 
-            como un lienzo en blanco para ser bordado e intervenido libremente por el usuario.
-            </p>
 
-            <p>
-            Se desarrolló el modelo CAD del taburete utilizando Rhinoceros y SolidWorks, 
- complementado con maquetas en cartón y contrachapado realizadas 
- mediante corte láser, con el fin de validar su viabilidad funcional.
+                <div class="longtext-text">
+                    <p>
+                        Prototipo de taburete o mesita auxiliar fabricado mediante CNC, concebido
+                        como un lienzo en blanco para ser bordado e intervenido libremente por el usuario.
+                    </p>
 
-            </p>
+                    <p>
+                        Se desarrolló el modelo CAD del taburete utilizando Rhinoceros y SolidWorks,
+                        complementado con maquetas en cartón y contrachapado realizadas
+                        mediante corte láser, con el fin de validar su viabilidad funcional.
 
-            <p>
-            Equipo: Lucía Rodríguez, Inés Pérez, Camila Pacheco, Gosia Buchman.
-            </p>
-        </div>
+                    </p>
 
-    </div>
-</section>
+                    <p>
+                        Equipo: Lucía Rodríguez, Inés Pérez, Camila Pacheco, Gosia Buchman.
+                    </p>
+                </div>
+
+            </div>
+        </section>
     </div>
 
     <script>
- const slides = document.querySelectorAll('.slide');
-    const slidesTrack = document.getElementById('slides');
-    const counter = document.getElementById('counter');
-    let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slidesTrack = document.getElementById('slides');
+        const counter = document.getElementById('counter');
+        let current = 0;
 
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        slidesTrack.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = `${current + 1} / ${slides.length}`;
-    }
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            slidesTrack.style.transform = `translateX(-${current * 100}%)`;
+            counter.textContent = `${current + 1} / ${slides.length}`;
+        }
 
-    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-    // Teclado
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') goTo(current - 1);
-        if (e.key === 'ArrowRight') goTo(current + 1);
-    });
-
-    // Swipe táctil
-    let startX = 0;
-    const wrap = document.getElementById('carousel');
-    wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    wrap.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    });
-
-    // scroll hacia la descripción
-window.addEventListener('wheel', e => {
-    if (e.deltaY > 0 && window.scrollY === 0) {
-        window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
+        // Teclado
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
         });
-    }
-});
 
-// scroll hacia abajo y hacia arriba entre secciones
-window.addEventListener('wheel', e => {
-
-    if (e.deltaY > 0 && window.scrollY === 0) {
-        window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
+        // Swipe táctil
+        let startX = 0;
+        const wrap = document.getElementById('carousel');
+        wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        wrap.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
         });
-    }
 
-    if (e.deltaY < 0 && window.scrollY > 0) {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        // scroll hacia la descripción
+        window.addEventListener('wheel', e => {
+            if (e.deltaY > 0 && window.scrollY === 0) {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
         });
-    }
 
-});
+        // scroll hacia abajo y hacia arriba entre secciones
+        window.addEventListener('wheel', e => {
 
-function bajar() {
-    const longtext = document.getElementById('longtext');
-    if (longtext) {
-        longtext.scrollIntoView({ behavior: 'smooth' });
-    }
-}
+            if (e.deltaY > 0 && window.scrollY === 0) {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
+
+            if (e.deltaY < 0 && window.scrollY > 0) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+        });
+
+        function bajar() {
+            const longtext = document.getElementById('longtext');
+            if (longtext) {
+                longtext.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 

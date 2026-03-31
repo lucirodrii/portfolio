@@ -1,0 +1,128 @@
+/* ===== Estilos generales ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-color: #121212;
+}
+
+main {
+  background-color: #121212;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5%;
+}
+
+/* ===== Header ===== */
+header div {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tickets-button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-decoration: underline;
+  color: #F0E37C;
+}
+
+/* ===== Footer ===== */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+}
+
+.footer-links a {
+  margin-right: 15px;
+  color: #F0E37C;
+  text-decoration: none;
+}
+
+.footer-right .redes {
+  width: 30px;
+  margin-left: 10px;
+}
+
+/* ===== Popup newsletter ===== */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #F0E37C;
+  padding: 40px 50px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  font-family: 'Roboto Mono', monospace;
+  color: #121212;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #121212;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #121212;
+  border-radius: 8px;
+  background: transparent;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+}
+
+button {
+  margin-top: 25px;
+  background-color: #121212;
+  color: #F0E37C;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  color: #121212;
+  transform: translateY(-2px);
+}

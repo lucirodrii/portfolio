@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LQSQ · Lucía Rodríguez</title>
-    <link rel="icon" href="web/images/favicon.png" type="image/png">
+    <title>Calma · Lucía Rodríguez</title>
+    <link rel="icon" href="../images/1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
-       html, body {
-    min-height: 100%;
-    background: #fff;
-    color: #111;
-    overflow-x: hidden;
-}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
- .content {
+        :root {
+            --sidebar-width: 220px;
+            --font: 'Courier Prime', monospace;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            background: #fff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        .content {
             padding: 80px;
         }
- @media (max-width: 768px) {
-            .page { flex-direction: column; }
 
-            .sidebar { width: 100%; height: auto; }
+        @media (max-width: 768px) {
+            .page {
+                flex-direction: column;
+            }
 
-            .about-grid { grid-template-columns: 1fr; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
 
-            .about-image img { height: 300px; }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
         }
 
-        .page { display: flex;
- }
+        .page {
+            display: flex;
+        }
 
-.main {
-    flex: 1;
-    margin-left: var(--sidebar-width);
-}
+        .main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+        }
 
-/* LIMITAR ANCHO DEL CONTENIDO */
-.carousel-wrap,
-.project-longtext {
-    max-width: 1300px;
-    margin: auto;
-    
-}
+        /* LIMITAR ANCHO DEL CONTENIDO */
+        .carousel-wrap,
+        .project-longtext {
+            max-width: 1300px;
+            margin: auto;
+
+        }
 
 
         /* ── SIDEBAR ── */
@@ -60,47 +85,101 @@
             position: fixed;
             z-index: 10;
         }
-        .site-name a { font-family: var(--font); font-size: 18pt; font-weight: 700; display: block; color: #111; text-decoration: none; margin-bottom: 40px; }
-        .site-name a:hover { opacity: 0.45; }
-        nav { display: flex; flex-direction: column; gap: 10px; }
-        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
-        nav a:hover { opacity: 0.45; }
-        .sidebar-footer { display: flex; flex-direction: column; gap: 16px; }
-        .sidebar-divider { width: 32px; height: 1px; background: #111; }
-        .copyright { font-family: var(--font); font-size: 8pt; font-style: italic; color: #444; line-height: 1.6; }
 
-       .carousel-wrap {
-    overflow: hidden; /* importante para que las imágenes no se salgan del carrusel */
-    height: 100vh;
-    position: relative;
-}
+        .site-name a {
+            font-family: var(--font);
+            font-size: 18pt;
+            font-weight: 700;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
 
-.slides {
-    display: flex;
-    height: 100%;
-    transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
-    will-change: transform;
-}
+        .site-name a:hover {
+            opacity: 0.45;
+        }
 
-.slide {
-    flex: 0 0 100%;
-    height: 100%;
-    position: relative;
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    display: flex;
-    justify-content: center; /* centra horizontal */
-    align-items: center;     /* centra vertical */
-}
+        nav a {
+            font-family: var(--font);
+            font-size: 15pt;
+            color: #111;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
 
-.slide img {
-    width: 70%;
-    height: 100%;
-    object-fit: cover; /* mantiene la proporción sin deformar */
-    display: block;
-}
+        nav a:hover {
+            opacity: 0.45;
+        }
+
+        .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sidebar-footer a {
+            text-decoration: none;
+            color: var(--text-color);
+
+            font-family: var(--font)
+        }
+
+        .sidebar-divider {
+            width: 155px;
+            height: 0.5px;
+            background: #111;
+        }
+
+        .copyright {
+            font-family: var(--font);
+            font-size: 8.9pt;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        .carousel-wrap {
+            overflow: hidden;
+            /* importante para que las imágenes no se salgan del carrusel */
+            height: 100vh;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            /* centra horizontal */
+            align-items: center;
+            /* centra vertical */
+        }
+
+        .slide img {
+            width: 70%;
+            height: 100%;
+            object-fit: cover;
+            /* mantiene la proporción sin deformar */
+            display: block;
+        }
 
 
-      
+
 
         /* ── INFO PANEL (título + descripción) ── */
         .slide-info {
@@ -133,7 +212,7 @@
             font-family: var(--font);
             font-size: 9pt;
             font-style: italic;
-            color: rgba(255,255,255,0.72);
+            color: rgba(255, 255, 255, 0.72);
             line-height: 1.7;
             max-width: 420px;
         }
@@ -157,9 +236,19 @@
             font-family: var(--font);
             font-size: 16px;
         }
-        .arrow:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.9); }
-        .arrow-prev { left: 80px; }
-        .arrow-next { right: 80px; }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .arrow-prev {
+            left: 80px;
+        }
+
+        .arrow-next {
+            right: 80px;
+        }
 
         /* ── CONTADOR ── */
         .counter {
@@ -169,7 +258,7 @@
             z-index: 10;
             font-family: var(--font);
             font-size: 8pt;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             letter-spacing: 0.12em;
         }
 
@@ -184,7 +273,7 @@
             font-weight: 700;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
         }
 
         /* Keyboard hint */
@@ -195,7 +284,7 @@
             transform: translateX(-50%);
             font-family: var(--font);
             font-size: 7pt;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
             letter-spacing: 0.14em;
             z-index: 10;
             pointer-events: none;
@@ -203,192 +292,204 @@
 
         /* DESCRIPCIÓN DEL PROYECTO */
 
-.project-longtext {
-    position: relative;
-    margin-left: 60px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background: #fff;
-}
+        .project-longtext {
+            position: relative;
+            margin-left: 60px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            background: #fff;
+        }
 
-.longtext-inner{
-    max-width: 720px;
-    margin-left: 0;
-}
+        .longtext-inner {
+            max-width: 720px;
+            margin-left: 0;
+        }
 
-.longtext-title{
-    font-family: var(--font);
-    font-size: 16pt;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
+        .longtext-title {
+            font-family: var(--font);
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
 
-.longtext-text p{
-    font-family: var(--font);
-    font-size: 10pt;
-    line-height: 1.8;
-    margin-bottom: 18px;
-}
+        .longtext-text p {
+            font-family: var(--font);
+            font-size: 10pt;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
 
-@media (max-width: 768px) {
-    .page {
-        flex-direction: column;
-    }
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-    .main {
-        margin-left: 0;
-    }
-    .carousel-wrap {
-        height: 60vh; /* más manejable en móvil */
-    }
-}
+        @media (max-width: 768px) {
+            .page {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .carousel-wrap {
+                height: 60vh;
+                /* más manejable en móvil */
+            }
+        }
     </style>
 </head>
+
 <body>
-<div class="page">
+    <div class="page">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-top">
-            <div class="site-name">
-                <a href="index.html">Lucía Rodríguez</a>
-            </div>
-            <nav>
-                <a href="index.html">Work</a>
-                <a href="about-me.html">About me</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-        <div class="sidebar-footer">
-            <div class="sidebar-divider"></div>
-            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
-        </div>
-    </aside>
-
-    <main class="main">
-    <!-- CAROUSEL -->
-    <div class="carousel-wrap" id="carousel">
-
-        <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
-
-        <div class="slides" id="slides">
-
-    
-
-
-            <!-- Slide 3 -->
-            <div class="slide">
-                <img src="images/3.3.png" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="site-name">
+                    <a href="index.html">Lucía Rodríguez</a>
                 </div>
+                <nav>
+                    <a href="index.html">Trabajos</a>
+                    <a href="about-me.html">Sobre mí</a>
+                    <a href="contact.html">Contacto</a>
+                </nav>
             </div>
+            <div class="sidebar-footer">
+                <a href="english/calma.html">EN</a>
+
+                <div class="sidebar-divider"></div>
+                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+            </div>
+        </aside>
+
+        <main class="main">
+            <!-- CAROUSEL -->
+            <div class="carousel-wrap" id="carousel">
+
+                <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
+
+                <div class="slides" id="slides">
 
 
-            <!-- Slide 5 -->
-              <div class="slide">
-                 <img src="images/4354.png" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
+
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="images/3.3.png" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
+
+                    <!-- Slide 5 -->
+                    <div class="slide">
+                        <img src="images/4354.png" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
+
                 </div>
+
+                <!-- BOTÓN PARA BAJAR -->
+                <div class="overlay-button"
+                    style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+                    <button onclick="bajar()"
+                        style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+                        Ver proyecto ↓
+                    </button>
+                </div>
+
+                <!-- Flechas -->
+                <button class="arrow arrow-prev" id="prev">&#8592;</button>
+                <button class="arrow arrow-next" id="next">&#8594;</button>
+
+                <!-- Contador -->
+                <div class="counter" id="counter">1 / 2</div>
+
+                <!--<div class="key-hint">← → para navegar</div>-->
             </div>
 
+            <!-- DESCRIPCIÓN EXTENDIDA -->
+            <section class="project-longtext" id="longtext">
+                <div class="longtext-inner">
 
-        </div>
-        
-        <!-- BOTÓN PARA BAJAR -->
-    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-            Ver proyecto ↓
-        </button>
-    </div>
+                    <div class="longtext-title">
+                        Calma · Producto
+                    </div>
 
-        <!-- Flechas -->
-        <button class="arrow arrow-prev" id="prev">&#8592;</button>
-        <button class="arrow arrow-next" id="next">&#8594;</button>
 
-        <!-- Contador -->
-        <div class="counter" id="counter">1 / 2</div>
+                    <div class="longtext-text">
+                        <p>
+                            Con estética sencilla y cálida, líneas limpias y materiales naturales, este mueble de baño
+                            invita a la relajación y el bienestar.
 
-        <!--<div class="key-hint">← → para navegar</div>-->
-    </div>
+                            Sus detalles, como los tiradores circulares integrados, reflejan una filosofía donde menos
+                            es más.
 
-    <!-- DESCRIPCIÓN EXTENDIDA -->
-<section class="project-longtext" id="longtext">
-    <div class="longtext-inner">
+                        </p>
+                        <p>Proyecto desarrollado en la asignatura de Estudio de Diseño, en colaboración con Royo Group.
+                        </p>
 
-        <div class="longtext-title">
-            Calma · Producto 
-        </div>
-    
 
-        <div class="longtext-text">
-            <p>
-                Con estética sencilla y cálida, líneas limpias y materiales naturales, este mueble de baño invita a la relajación y el bienestar.
 
-Sus detalles, como los tiradores circulares integrados, reflejan una filosofía donde menos es más.
 
-            </p>
-            <p>Proyecto desarrollado en la asignatura de Estudio de Diseño, en colaboración con Royo Group.
-</p>
 
-           
-           
+                    </div>
 
-        
-        </div>
+                </div>
+            </section>
+        </main>
 
     </div>
-</section>
-</main>
 
-</div>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const slidesTrack = document.getElementById('slides');
+        const counter = document.getElementById('counter');
+        let current = 0;
 
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const slidesTrack = document.getElementById('slides');
-    const counter = document.getElementById('counter');
-    let current = 0;
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            slidesTrack.style.transform = `translateX(-${current * 100}%)`;
+            counter.textContent = `${current + 1} / ${slides.length}`;
+        }
 
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        slidesTrack.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = `${current + 1} / ${slides.length}`;
-    }
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+        // Teclado
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
 
-    // Teclado
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') goTo(current - 1);
-        if (e.key === 'ArrowRight') goTo(current + 1);
-    });
-
-    // Swipe táctil
-    let startX = 0;
-    const wrap = document.getElementById('carousel');
-    wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    wrap.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    });
+        // Swipe táctil
+        let startX = 0;
+        const wrap = document.getElementById('carousel');
+        wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        wrap.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+        });
 
 
-function bajar() {
-    const longtext = document.getElementById('longtext');
-    if (longtext) {
-        longtext.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-</script>
+        function bajar() {
+            const longtext = document.getElementById('longtext');
+            if (longtext) {
+                longtext.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
+
 </html>

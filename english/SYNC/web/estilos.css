@@ -1,0 +1,379 @@
+/* POPUP NEWSLETTER */
+.popup {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #F0E37C;
+  padding: 40px 50px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  font-family: 'Roboto Mono', monospace;
+  color: #121212;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #121212;
+}
+
+/* BOTONES */
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #121212;
+  border-radius: 8px;
+  background: transparent;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #121212;
+  outline: none;
+}
+
+button {
+  margin-top: 25px;
+  background-color: #121212;
+  color: #F0E37C;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  color: #121212;
+  transform: translateY(-2px);
+}
+
+/* ESTRUCTURA GENERAL */
+main {
+  background-color: #121212;
+}
+
+section {
+  height: 85vh;
+}
+
+/* HEADER */
+header div {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tickets-button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: underline;
+  color: #F0E37C;
+}
+
+/* SECCIÓN HOME Y ABOUT */
+.overlay {
+  position: absolute;
+  z-index: 1;
+}
+
+.venue {
+  position: absolute;
+  z-index: 2;
+  bottom: 70px;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: #F0E37C;
+}
+
+.venue span:first-child {
+  margin-bottom: -4px;
+}
+
+.fecha {
+  position: absolute;
+  z-index: 2;
+  bottom: 140px;
+  right: 60px;
+  color: white;
+  font-family: 'Roboto';
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fecha .line {
+  flex: 1;
+  height: 1.5px;
+  background-color: white;
+  opacity: 100%;
+  width: 150px;
+}
+
+#about {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  gap: 4rem;
+}
+
+#about picture {
+  position: relative;
+  flex: 0.6;
+}
+
+.contentAbout {
+
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 0.4;
+}
+
+.contentAbout h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #F0E37C;
+  margin-block: 0;
+}
+
+.contentAbout p {
+  text-wrap: pretty;
+}
+
+
+.contentProgram {
+  padding: 4rem;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contentProgram h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #F0E37C;
+  margin-block: 0;
+}
+
+.contentProgram p {
+  width: 30rem;
+  text-wrap: pretty;
+}
+
+#venue {
+  display: flex;
+  padding: 4rem;
+  gap: 4rem;
+}
+
+.contentVenue {
+  flex: 0.4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contentVenue h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #F0E37C;
+  margin-block: 0;
+}
+
+.contentVenue p {
+  width: 30rem;
+  text-wrap: pretty;
+}
+
+.contentImageVenue {
+  flex: 0.6;
+  display: flex;
+  align-items: start;
+  height: 100%;
+  gap: 4rem;
+}
+
+.contentImageVenue picture {
+  position: relative;
+}
+
+.contentImageVenue p {
+  text-wrap: pretty;
+}
+
+/* TEXTOS GENERALES */
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: white;
+}
+
+/* IMÁGENES */
+.imagenHome {
+  width: 100%;
+  height: 100%;
+
+  border-bottom: #F0E37C 1px solid;
+}
+
+.imagen1 {
+  height: 85vh;
+  padding: 0;
+  margin: 0;
+}
+
+.imgAbout {
+  width: 100%;
+}
+
+.iconAbout {
+  position: absolute;
+  right: 40px;
+}
+
+.iconAbout2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.imgPeli1 {
+  width: 30%;
+}
+
+.imgVenue {
+  width: 300px;
+  height: 100%;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  background-color: #F0E37C;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: normal;
+  font-size: 14px;
+  height: 60px;
+}
+
+footer a {
+  color: #121212;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-links {
+  display: flex;
+  gap: 44px;
+  padding-top: 16px;
+}
+
+.footer-links a {
+  color: #121212;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-right {
+  display: flex;
+  gap: 44px;
+}
+
+.redes {
+  width: 30px;
+  height: 30px;
+}
+
+/* MODAL NEWSLETTER */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #F0E37C;
+  color: #121212;
+  padding: 40px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 700px;
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+}
+
+.modal-content h2,
+.modal-content h3 {
+  color: #121212;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #121212;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: white;
+}

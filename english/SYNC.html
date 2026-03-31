@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNC · Lucía Rodríguez</title>
+    <link rel="icon" href="../images/1.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sidebar-width: 220px;
+            --font: 'Courier Prime', monospace;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: #fff;
+            color: #111;
+        }
+
+     .page {
+    display: flex;
+    min-height: 100vh;
+}
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            height: 100vh;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+
+        .site-name a {
+            font-family: var(--font);
+            font-size: 18pt;
+            font-weight: 700;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .site-name a:hover {
+            color: #8a0d01;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        nav a {
+            font-family: var(--font);
+            font-size: 15pt;
+            color: #111;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            color: #bddbfa;
+    
+        }
+
+        .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+         .sidebar-footer a {
+    text-decoration: none;
+        color: var(--text-color);
+
+    font-family: var(--font);
+    
+}
+
+        .sidebar-divider {
+            width: 158px;
+            height: 0.5px;
+            background: #111;
+        }
+
+        .copyright {
+            font-family: var(--font);
+            font-size: 8.9pt;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        
+
+        /* ── CAROUSEL AREA ── */
+        .carousel-wrap {
+            flex: 1;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: #111;
+        }
+
+        /* Slides */
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+        }
+
+        /* Placeholder cuando no hay imagen */
+        .slide-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #1c1c1c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-size: 8pt;
+            font-style: italic;
+            color: #444;
+            letter-spacing: 0.12em;
+        }
+
+        /* Overlay oscuro suave para que el texto se lea */
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.18) 0%,
+                    transparent 35%,
+                    transparent 60%,
+                    rgba(0, 0, 0, 0.55) 100%);
+            pointer-events: none;
+        }
+
+        /* ── INFO PANEL (título + descripción) ── */
+        .slide-info {
+            position: absolute;
+            bottom: 48px;
+            left: 48px;
+            right: 120px;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+        }
+
+        .slide.active .slide-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-book-title {
+            font-family: var(--font);
+            font-size: 20pt;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.06em;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .slide-desc {
+            font-family: var(--font);
+            font-size: 9pt;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.7;
+            max-width: 420px;
+        }
+
+        /* ── FLECHAS ── */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            font-family: var(--font);
+            font-size: 16px;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .arrow-prev {
+            left: 20px;
+        }
+
+        .arrow-next {
+            right: 20px;
+        }
+
+        /* ── CONTADOR ── */
+        .counter {
+            position: absolute;
+            bottom: 48px;
+            right: 48px;
+            z-index: 10;
+            font-family: var(--font);
+            font-size: 8pt;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.12em;
+        }
+
+        /* ── TÍTULO DEL LIBRO arriba ── */
+        .book-label {
+            position: absolute;
+            top: 32px;
+            left: 48px;
+            z-index: 10;
+            font-family: var(--font);
+            font-size: 10pt;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* Keyboard hint */
+        .key-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font);
+            font-size: 7pt;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.14em;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* DESCRIPCIÓN DEL PROYECTO */
+
+        .project-longtext {
+            position: absolute;
+            top: 100vh;
+            left: var(--sidebar-width);
+            right: 0;
+            background: #fff;
+
+            /* MISMO SISTEMA QUE SLIDE */
+            padding-left: 48px;
+            padding-right: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .longtext-inner {
+            max-width: 720px;
+            margin-left: 0;
+        }
+
+
+        .longtext-title {
+            font-family: var(--font);
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .longtext-text p {
+            font-family: var(--font);
+            font-size: 10pt;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+       @media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-wrap {
+        height: calc(100vh - 80px); /* altura completa menos padding si quieres */
+    }
+
+    .slide {
+        height: 100%; /* asegurar que el slide ocupe todo el carousel */
+    }
+
+    .slide iframe {
+        height: 100%; /* iframe ocupa todo el slide */
+    }
+
+    .project-longtext {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="site-name">
+                    <a href="index.html">Lucía Rodríguez</a>
+                </div>
+                <nav>
+                    <a href="index.html">Work</a>
+                    <a href="about-me.html">About me</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+             <a href="../SYNC.html">ES</a>
+                <div class="sidebar-divider"></div>
+                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+            </div>
+        </aside>
+
+        <!-- CAROUSEL -->
+        <div class="carousel-wrap" id="carousel">
+
+            <div class="slides" id="slides">
+
+                <!-- Slide 1 — iframe -->
+                <div class="slide active" style="overflow:hidden; position: relative;">
+    <iframe src="SYNC/index.html" style="width:100%; height:100%; border:none; display:block;"></iframe>
+    
+
+    <!-- BOTÓN PARA BAJAR -->
+    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+            See project ↓
+        </button>
+    </div>
+
+    <div class="slide-info"></div>
+</div>
+                
+            </div>
+
+            <!-- Flechas -->
+
+            <!-- Contador -->
+
+        </div>
+        <!-- DESCRIPCIÓN EXTENDIDA -->
+        <section class="project-longtext" id="longtext">
+            <div class="longtext-inner">
+
+                <div class="longtext-title">
+                    SYNC · Web Design & Development
+                </div>
+
+
+                <div class="longtext-text">
+                    <p>
+                        SYNC is a project for a fictional festival dedicated to independent and experimental cinema. The visual identity combines dynamism and contemporaneity, designed for a young, creative, and curious audience. During the research and design process, references such as the Edinburgh Film Festival and the Tribeca Film Festival were taken into account.
+                    </p>
+
+                    <p>
+                       The goal was to create an attractive and functional static website using only HTML, CSS, and JavaScript. It was developed through the use of modals and hover effects.
+                    </p>
+
+                    <p>
+                        HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma
+
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const slidesTrack = document.getElementById('slides');
+        const counter = document.getElementById('counter');
+        let current = 0;
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            slidesTrack.style.transform = `translateX(-${current * 100}%)`;
+            counter.textContent = `${current + 1} / ${slides.length}`;
+        }
+
+
+        // Teclado
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
+
+        // Swipe táctil
+        let startX = 0;
+        const wrap = document.getElementById('carousel');
+        wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        wrap.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+        });
+function bajar() {
+    const longtext = document.getElementById('longtext');
+    if (longtext) {
+        longtext.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+    </script>
+</body>
+
+</html>
