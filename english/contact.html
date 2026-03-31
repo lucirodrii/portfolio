@@ -172,52 +172,76 @@
             background: #111;
         }
 
+@media (min-width: 769px) {
+    footer.sidebar-footer {
+        display: none; /* oculto en escritorio */
+    }
+}
 
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .page {
-                flex-direction: column;
-            }
-
-            .main {
-                padding: 60px 30px;
-            }
-        }
 
         @media (max-width: 768px) {
 
-            .page {
-                flex-direction: column;
-            }
+     
+     .page {
+        flex-direction: column; /* apila sidebar y main */
+    }
 
-            .sidebar {
-                width: 100%;
-                padding: 20px;
-            }
+     .sidebar {
+        width: 100%;
+        padding: 20px;
+        height: auto;
+        justify-content: flex-start;
+    }
+    
+    nav {
+        margin-top: -15px; /* reduce el espacio sobre los enlaces */
+    }
 
-            .main {
-                padding: 60px 20px;
-            }
+    .main {
+        width: 100%;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
 
-            .contact-title {
-                position: static;
-                font-size: 42pt;
-                text-align: left;
-                margin-bottom: 20px;
-            }
+    .contact-title {
+        position: static !important;
+        font-size: 32pt;
+        margin-bottom: 20px;
+        text-align: left !important;
+    }
 
-            .contact-text {
-                position: static;
-                font-size: 10pt;
-                margin-bottom: 10px;
-            }
+    .contact-text,
+    .email {
+        position: static !important;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        font-size: 11pt;
+    }
 
-            .email {
-                position: static;
-                font-size: 11pt;
-            }
-        }
+       .sidebar-footer {
+        order: 1; /* para que se muestre después del main */
+        width: 100%;
+        margin-top: 20px;
+        align-items: flex-start;
+    }
+
+        footer.sidebar-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+
+      
+}
+
     </style>
 </head>
 
@@ -229,21 +253,16 @@
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="site-name">
-                    <a href="index.html">Lucía Rodríguez</a>
+                    <a href="/english/index.html">Lucía Rodríguez</a>
                 </div>
 
                 <nav>
-                    <a href="index.html">Work</a>
-                    <a href="about-me.html">About me</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="/english/index.html">Work</a>
+                    <a href="/english/about-me.html">About Me</a>
+                    <a href="/english/contact.html">Contact</a>
                 </nav>
             </div>
 
-            <div class="sidebar-footer">
-                <a href="../contact.html">ES</a>
-                <div class="sidebar-divider"></div>
-                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
-            </div>
         </aside>
 
         <!-- MAIN -->
@@ -258,6 +277,14 @@
 
 
         </main>
+
+
+    <!-- FOOTER (solo en móvil) -->
+    <footer class="sidebar-footer">
+        <a href="../contact.html">ES</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </footer>
 
     </div>
 

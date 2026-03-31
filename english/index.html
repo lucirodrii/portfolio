@@ -299,14 +299,9 @@
             animation: giro-suave 3s ease-in-out infinite;
         }
 
-            .menu-toggle {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
+        .menu-toggle {
+    display: none; /* Oculto por defecto en desktop */
 }
-
 
         @media (max-width: 768px) {
 
@@ -357,21 +352,18 @@
                 margin-bottom: 20px;
             }
 
-             .menu-toggle {
-        display: block;
-        margin-top: -5px;
-    }
-
-    nav {
-        display: none; /* escondemos el nav original en móvil */
-    }
+            .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-/* Menú lateral */
 .nav-side {
     position: fixed;
     top: 0;
-    left: -250px; /* fuera de pantalla */
+    left: -250px;
     width: 250px;
     height: 100%;
     background: #919fb6;
@@ -379,16 +371,14 @@
     flex-direction: column;
     gap: 20px;
     padding: 40px 30px;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
     transition: left 0.3s ease;
     z-index: 1001;
 }
 
 .nav-side.show {
-    left: 0; /* desliza hacia la pantalla */
+    left: 0;
 }
 
-/* Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -405,6 +395,9 @@
 .overlay.show {
     opacity: 1;
     pointer-events: auto;
+}
+
+nav { display: none; } /* ocultamos nav original en móvil */
         }
     </style>
 </head>
@@ -415,16 +408,20 @@
         <div class="site-name">
             <a href="index.html">Lucía Rodríguez</a>
         </div>
+<button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
 
-         <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
-
-        <nav class="nav-side">
+<nav class="nav-side">
+    <a id="langButtonSide" href="../index.html">ES</a>
+    <a href="/english/about-me.html">About me</a>
+    <a href="/english/contact.html">Contact</a>
+</nav>
+<div class="overlay"></div>
+        <nav>
             <a id="langButton" href="../index.html">ES</a>
-            <a href="about-me.html">About me</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-                    <div class="overlay"></div>
 
+            <a href="/english/about-me.html">About me</a>
+            <a href="/english/contact.html">Contact</a>
+        </nav>
     </header>
     <div class="page">
 
@@ -465,7 +462,7 @@
                     <a href="cnc.html">
                         <img src="images/3.1.jpeg" alt="" class="scroll-reveal" data-category="producto">
                     </a>
-                    <p class="caption">CNC Prototype</p>
+                    <p class="caption">Prototipo CNC</p>
                 </div>
 
                 <div>
@@ -479,7 +476,7 @@
                     <a href="calma.html">
                         <img src="images/5.5.png" alt="" class="scroll-reveal" data-category="producto">
                     </a>
-                    <p class="caption">Calma Collection EASD x Royo</p>
+                    <p class="caption">Colección Calma EASD x Royo</p>
                 </div>
 
                 <div>
@@ -547,6 +544,29 @@
             });
         });
     });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+const navSide = document.querySelector('.nav-side');
+const overlay = document.querySelector('.overlay');
+
+menuToggle.addEventListener('click', () => {
+    navSide.classList.toggle('show');
+    overlay.classList.toggle('show');
+});
+
+overlay.addEventListener('click', () => {
+    navSide.classList.remove('show');
+    overlay.classList.remove('show');
+});
+
+// Cerrar menú al click en enlace
+navSide.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navSide.classList.remove('show');
+        overlay.classList.remove('show');
+    });
+});
+
 </script>
 
 </html>
