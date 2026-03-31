@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>About me ∙ Lucía Rodríguez</title>
+    <title>Sobre mí ∙ Lucía Rodríguez</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="web/images/favicon.png" type="image/png">
@@ -34,7 +34,7 @@
 
         .site-name a {
             font-family: var(--font);
-            font-size: 20pt;
+            font-size: 16pt;
             font-weight: 200;
             margin-bottom: 40px;
             display: block;
@@ -198,7 +198,7 @@
         .sidebar {
             width: 300px;
             height: 100vh;
-            padding: 36px 28px;
+            padding: 40px 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -441,6 +441,15 @@
             .content {
                 padding: 60px 20px;
             }
+
+            .scroll-indicator {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18pt;
+    animation: bounce 1.5s infinite;
+}
 
             .cv-row {
                 grid-template-columns: 1fr;
