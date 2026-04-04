@@ -17,14 +17,7 @@
             overflow: hidden;
         }
 
-        .sidebar {
-            width: 400px;
-            height: 100vh;
-            padding: 36px 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+      
 
         .hamburger {
             display: none;
@@ -34,7 +27,7 @@
             font-family: var(--font);
             font-size: 16pt;
             font-weight: 200;
-            margin-bottom: 40px;
+            margin-bottom: 0px;
             display: block;
             color: #111;
             text-decoration: none;
@@ -48,7 +41,7 @@
             font-family: var(--font);
             font-size: 20pt;
             font-weight: 200;
-            margin-bottom: 40px;
+            margin-bottom: 0px;
         }
 
         nav {
@@ -380,6 +373,43 @@
 
         @media (max-width: 768px) {
 
+
+            .overlay-img {
+                width: 80px !important;
+                height: auto !important;
+                top: -15px;
+                right: 80px;
+            }
+
+
+            .content {
+                padding: 60px 20px;
+            }
+
+            .scroll-indicator {
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 18pt;
+                animation: bounce 1.5s infinite;
+            }
+
+            .cv-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mobile-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
             .page {
                 flex-direction: column;
                 height: auto;
@@ -416,7 +446,7 @@
                 gap: 30px;
             }
 
-            .about-image img {
+            .about-image img .main-image {
                 width: 100%;
                 height: 280px;
             }
@@ -425,33 +455,6 @@
                 max-width: 100%;
             }
 
-            .content {
-                padding: 60px 20px;
-            }
-
-            .scroll-indicator {
-                position: absolute;
-                bottom: -5px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 18pt;
-                animation: bounce 1.5s infinite;
-            }
-
-            .cv-row {
-                grid-template-columns: 1fr;
-                gap: 4px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .mobile-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
 
 
             /* Ocultar nav-links inicialmente */
@@ -480,11 +483,7 @@
                 cursor: pointer;
             }
 
-            .mobile-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+          
 
             .hamburger {
                 display: block;
@@ -508,6 +507,8 @@
                 transition: left 0.4s ease;
                 z-index: 1000;
             }
+
+
 
             .mobile-menu {
                 display: flex;
@@ -556,12 +557,7 @@
                 display: none;
             }
 
-
-        }
-
-
-
-        /* MOBILE MENU */
+             /* MOBILE MENU */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -580,6 +576,17 @@
         .mobile-menu.active {
             left: 0;
         }
+
+        .site-name {
+            padding: 0px;
+            margin-bottom: 0px;
+        }
+
+        }
+
+
+
+       
 
         /* OVERLAY */
         .overlay {
@@ -651,21 +658,25 @@
         }
 
         .about-link {
-    margin-top: 10px;       /* espacio debajo de la foto */
-    text-align: left;       /* alineado a la izquierda */
-}
+            margin-top: 10px;
+            /* espacio debajo de la foto */
+            text-align: left;
+            /* alineado a la izquierda */
+        }
 
-.about-link a {
-    font-family: var(--font);
-    font-size: 10pt;
-    color: #e97d25;         /* naranja, igual que hover de tu sidebar */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+        .about-link a {
+            font-family: var(--font);
+            font-size: 10pt;
+            color: #e97d25;
+            /* naranja, igual que hover de tu sidebar */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-.about-link a:hover {
-    color: #8b9ab2;         /* un poco más oscuro al pasar el cursor */
-}
+        .about-link a:hover {
+            color: #8b9ab2;
+            /* un poco más oscuro al pasar el cursor */
+        }
     </style>
 </head>
 
@@ -716,14 +727,14 @@
             <section class="hero">
                 <div class="about-grid">
                     <div class="about-image">
-    <img src="images/lucia1.jpg" alt="Lucía" class="main-img">
-    <img src="images/1.png" class="overlay-img" alt="">
-    
-    <!-- Enlace debajo de la foto -->
- <!--   <div class="about-link">
+                        <img src="images/lucia1.jpg" alt="Lucía" class="main-img">
+                        <img src="images/1.png" class="overlay-img" alt="">
+
+                        <!-- Enlace debajo de la foto -->
+                        <!--   <div class="about-link">
         <a href="my-desktop.html">¿Quieres conocerme más? Visita mi escritorio :)</a>
     </div>-->
-</div>
+                    </div>
                     <div class="about-text">
                         <p class="hero-intro">
                             ¡Hola! Soy Lucía, me gusta transformar ideas en proyectos con identidad e intención.
