@@ -481,7 +481,7 @@
 
      .site-name {
         position: fixed;
-        top: 16px;  /* visible en la parte superior */
+        top: -430px;  /* visible en la parte superior */
         left: 16px; /* margen desde la izquierda */
         z-index: 30;
         display: flex;
@@ -505,6 +505,10 @@
         background: none;
         border: none;
         cursor: pointer;
+           color: #111; /* fuerza color negro */
+            /* QUITAR ESTILOS NATIVOS */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* quita azul al tocar */
     }
 
     /* Sidebar móvil */
