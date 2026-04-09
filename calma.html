@@ -290,6 +290,9 @@
             pointer-events: none;
         }
 
+        .mobile-menu {
+            display: none;
+        }
         /* DESCRIPCIÓN DEL PROYECTO */
 
         .project-longtext {
@@ -298,6 +301,10 @@
             padding-top: 80px;
             padding-bottom: 80px;
             background: #fff;
+        }
+
+        .hamburger {
+            display: none;
         }
 
         .longtext-inner {
@@ -319,26 +326,164 @@
             margin-bottom: 18px;
         }
 
-        @media (max-width: 768px) {
-            .page {
-                flex-direction: column;
-            }
+          @media (max-width: 768px) {
 
-            .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-            }
+    .page { flex-direction: column; }
 
-            .main {
-                margin-left: 0;
-            }
+    .sidebar { width: 100%; height: auto; position: relative; }
 
-            .carousel-wrap {
-                height: 60vh;
-                /* más manejable en móvil */
-            }
-        }
+   .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* fuerza que footer quede abajo */
+    height: 100vh;
+}
+
+.sidebar-footer {
+        display: none;
+    }
+
+    /* Footer móvil ya está visible dentro del menú */
+    .mobile-footer {
+        display: flex;
+    }
+
+     .overlay-button {
+        display: none;
+    }
+    
+    .main { margin-left: 0; }
+
+    .about-grid { grid-template-columns: 1fr; }
+
+    .about-image img { height: 300px; }
+
+       .mobile-header {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+   .mobile-header .site-name {
+    display: flex;
+    align-items: center;
+    height: 100%; /* opcional */
+}
+
+.mobile-header .site-name a {
+    font-size: 18pt;
+    line-height: 1; /* o igual al font-size */
+    margin: 0;
+}
+
+    .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;      /* alinea con el texto */
+        padding: 0;
+    }
+
+    .hamburger {
+    display: block;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 1001; /* encima del menú */
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #111;
+    left: 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.arrow-next {
+    right: 20px;
+}
+
+.arrow-prev {
+    left: 20px;
+}
+
+/* Las tres líneas */
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+/* Animación al abrir menú */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+}
+    .carousel-wrap {
+        height: 40vh; /* altura móvil */
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Ocultar menú normal en móvil */
+    .sidebar nav { display: none; }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .project-longtext {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .mobile-header .hamburger {
+    display: block !important;
+}
+
+    .sidebar nav { display: none; }
+
+
+    .mobile-menu.active { left: 0; }
+}
+
+/* Al final de tu CSS */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;
+        padding: 0;
+    }
+}
+        
     </style>
 </head>
 
@@ -348,9 +493,14 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-top">
+                <div class="mobile-header">
+
                 <div class="site-name">
                     <a href="index.html">Lucía Rodríguez</a>
                 </div>
+                    <button class="hamburger">☰</button>
+                </div>
+
                 <nav>
                     <a href="index.html">Trabajos</a>
                     <a href="about-me.html">Sobre mí</a>
@@ -364,6 +514,19 @@
                 <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
             </div>
         </aside>
+
+        <div class="mobile-menu">
+    <nav>
+        <a href="index.html">Trabajos</a>
+        <a href="about-me.html">Sobre mí</a>
+        <a href="contact.html">Contacto</a>
+    </nav>
+    <div class="mobile-footer">
+        <a href="english/calma.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+    </div>
+</div>
 
         <main class="main">
             <!-- CAROUSEL -->
@@ -500,6 +663,19 @@
                 longtext.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
     </script>
 </body>
 

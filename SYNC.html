@@ -33,7 +33,7 @@
 
         .page {
             display: flex;
-            min-height: 100vh;
+            min-height: 50vh;
         }
 
         /* ── SIDEBAR ── */
@@ -283,14 +283,13 @@
         /* DESCRIPCIÓN DEL PROYECTO */
 
         .project-longtext {
-            position: absolute;
-            top: 100vh;
+            position: relative;
             left: var(--sidebar-width);
             right: 0;
             background: #fff;
 
             /* MISMO SISTEMA QUE SLIDE */
-            padding-left: 48px;
+            padding-left: 0px;
             padding-right: 120px;
             padding-top: 80px;
             padding-bottom: 80px;
@@ -316,27 +315,114 @@
             margin-bottom: 18px;
         }
 
+    
+/* ---- ESTILOS GENERALES ---- */
+.slide img {
+    display: block;
+    user-select: none;
+}
+
+/* Iframe para escritorio */
+.iframe-desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Placeholder para móvil, inicialmente oculto */
+.iframe-placeholder {
+    display: none;
+}
+
+/* Overlay botón */
+.overlay-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.hamburger {
+    display: none; /* solo móvil */
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 20;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: #fff;
+    z-index: 20;
+    padding: 36px 20px;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+
+
+
         @media (max-width: 768px) {
-            .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-            }
 
-            .carousel-wrap {
-                height: calc(100vh - 80px);
-                /* altura completa menos padding si quieres */
-            }
+     .site-name {
+        display: inline-block;
+        font-size: 18pt;
+        font-weight: 700;
+        margin-left: 16px;
+        color: #111;
+    }
 
-            .slide {
-                height: 100%;
-                /* asegurar que el slide ocupe todo el carousel */
-            }
+    .hamburger {
+        display: block;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 30;
+    }
 
-            .slide iframe {
-                height: 100%;
-                /* iframe ocupa todo el slide */
-            }
+.overlay-button {
+    display: none;
+}
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* fuera de pantalla */
+        width: 70%; /* ocupa parte de la pantalla */
+        height: 100%;
+        background: #fff;
+        padding: 36px 20px;
+        transition: left 0.3s ease;
+        z-index: 15;
+    }
+
+    .sidebar.open {
+        left: 0; /* mostrar sidebar */
+    }
+
+    /* Para que el contenido detrás no se mueva */
+    body.sidebar-open {
+        overflow: hidden;
+    }
 
             .project-longtext {
                 position: relative;
@@ -345,96 +431,279 @@
                 right: 0;
                 padding-left: 20px;
                 padding-right: 20px;
+                padding-top: 0px;
+                padding-bottom: 0px;
             }
-        }
+
+             .iframe-desktop {
+        display: none; /* Ocultar iframe en móvil */
+    }
+
+    .iframe-placeholder {
+        display: flex; /* Mostrar placeholder */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 300px;
+        background: white;
+        color: white;
+        font-family: 'Courier Prime', monospace;
+        text-align: center;
+    }
+
+     .slide::after {
+        background: none; /* quitar gradiente en móvil */
+    }
+
+    .iframe-placeholder img {
+        width: 400px;
+        height: auto;
+        margin-bottom: 10px;
+        background-color: white;
+    }
+
+    .carousel-wrap {
+        top: 100px;
+        height: 30vh; 
+        background-color: #ffffff;
+    }
+
+    .slides {
+        flex-direction: column; /* Apila slides si hay más de uno */
+        height: auto;
+    }
+
+    .slide {
+        height: auto;
+        min-height: 100px;
+    }
+
+      .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;
+        padding: 0;
+    }
+
+       .mobile-header .hamburger {
+    display: block !important;
+}
+
+
+   .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* fuerza que footer quede abajo */
+    height: 100vh;
+}
+
+
+    /* Footer móvil ya está visible dentro del menú */
+    .mobile-footer {
+        display: flex;
+    }
+
+     .overlay-button {
+        display: none;
+    }
+    
+
+
+
+       .mobile-header {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+   .mobile-header .site-name {
+    display: flex;
+    align-items: center;
+    height: 100%; /* opcional */
+}
+
+.mobile-header .site-name a {
+    font-size: 18pt;
+    line-height: 1; /* o igual al font-size */
+    margin: 0;
+}
+      .hamburger {
+        position: fixed;
+        top: 24px;
+        right: -350px;
+        z-index: 30;
+    }
+
+
+    /* Ocultar menú normal en móvil */
+    .sidebar nav { display: none; }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .project-longtext {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .mobile-header .hamburger {
+    display: block !important;
+}
+
+    .mobile-menu.active { left: 0; }
+
+    .site-name {
+        position: fixed;
+        top: -430px;
+        left: 5px; /* deja espacio para el botón ☰ */
+        z-index: 30;
+    }
+
+    .site-name a {
+        margin: 0; /* quitar el margin-bottom que lo descoloca */
+    }
+
+}
     </style>
 </head>
 
 <body>
     <div class="page">
-
+<!-- Botón hamburguesa solo en móvil -->
+        <!-- SIDEBAR -->
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="site-name">
-                    <a href="index.html">Lucía Rodríguez</a>
-                </div>
-                <nav>
-                    <a href="index.html">Trabajos</a>
-                    <a href="about-me.html">Sobre mí</a>
-                    <a href="contact.html">Contacto</a>
-                </nav>
-            </div>
-            <div class="sidebar-footer">
-                <a href="english/SYNC.html">EN</a>
 
-                <div class="sidebar-divider"></div>
-                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ.</p>
+    <div class="sidebar-top">
+        <!-- HEADER MÓVIL -->
+        <div class="mobile-header">
+            <div class="site-name">
+                <a href="index.html">Lucía Rodríguez</a>
             </div>
-        </aside>
+            <button class="hamburger">☰</button>
+        </div>
+
+        <!-- MENÚ DESKTOP -->
+        <nav>
+            <a href="index.html">Trabajos</a>
+            <a href="about-me.html">Sobre mí</a>
+            <a href="contact.html">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="sidebar-footer">
+        <a href="english/SYNC.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </div>
+
+</aside>
+
+        <div class="mobile-menu">
+            <nav>
+                <a href="index.html">Trabajos</a>
+                <a href="about-me.html">Sobre mí</a>
+                <a href="contact.html">Contacto</a>
+            </nav>
+
+            
+
+            <div class="mobile-footer">
+                <a href="english/SYNC.html">EN</a>
+                <div class="sidebar-divider"></div>
+                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+            </div>
+        </div>
 
         <!-- CAROUSEL -->
         <div class="carousel-wrap" id="carousel">
 
             <div class="slides" id="slides">
 
-                <!-- Slide 1 — iframe -->
-                <div class="slide active" style="overflow:hidden; position: relative;">
-                    <iframe src="SYNC/index.html" style="width:100%; height:100%; border:none; display:block;"></iframe>
+                <!-- Slide 1 — iframe / placeholder -->
+                <div class="slide active" style="position: relative;">
 
+                    <!-- Iframe solo para escritorio -->
+                    <iframe class="iframe-desktop" src="SYNC/index.html"></iframe>
 
-                    <!-- BOTÓN PARA BAJAR -->
-                    <div class="overlay-button"
-                        style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-                        <button onclick="bajar()"
-                            style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-                            Ver proyecto ↓
-                        </button>
+                    <!-- Placeholder solo para móvil -->
+                    <div class="iframe-placeholder">
+                        <img src="images/3.2.png">
                     </div>
 
-                    <div class="slide-info"></div>
+                    <!-- Botón para bajar -->
+                    <div class="overlay-button">
+                        <button onclick="bajar()">Ver proyecto ↓</button>
+                    </div>
+
                 </div>
 
+                <!-- BOTÓN PARA BAJAR -->
+                <div class="overlay-button"
+                    style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+                    <button onclick="bajar()"
+                        style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+                        Ver proyecto ↓
+                    </button>
+                </div>
+
+                <div class="slide-info"></div>
+            </div>
+        </div>
+
+        <!-- Flechas -->
+
+        <!-- Contador -->
+
+    </div>
+    <!-- DESCRIPCIÓN EXTENDIDA -->
+    <section class="project-longtext" id="longtext">
+        <div class="longtext-inner">
+
+            <div class="longtext-title">
+                SYNC · Diseño y Desarrollo Web
             </div>
 
-            <!-- Flechas -->
 
-            <!-- Contador -->
+            <div class="longtext-text">
+                <p>
+                    SYNC es un proyecto para un festival ficticio dedicado al cine independiente y experimental. La
+                    identidad visual combina dinamismo y
+                    contemporaneidad,
+                    diseñada para un público joven, creativo y curioso. Durante el proceso de investigación y diseño
+                    se tuvieron en cuenta antecedentes como el
+                    Edinburgh Film Festival o Tribeca Film Festival.
+                </p>
+
+                <p>
+                    El objetivo era crear una página web estática atractiva y funcional usando únicamente HTML, CSS
+                    Y JavaScript. Se llevó a cabo mediante el uso de modales
+                    y hover effects.
+                </p>
+
+                <p>
+                    HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma
+
+                </p>
+            </div>
 
         </div>
-        <!-- DESCRIPCIÓN EXTENDIDA -->
-        <section class="project-longtext" id="longtext">
-            <div class="longtext-inner">
-
-                <div class="longtext-title">
-                    SYNC · Diseño y Desarrollo Web
-                </div>
-
-
-                <div class="longtext-text">
-                    <p>
-                        SYNC es un proyecto para un festival ficticio dedicado al cine independiente y experimental. La
-                        identidad visual combina dinamismo y
-                        contemporaneidad,
-                        diseñada para un público joven, creativo y curioso. Durante el proceso de investigación y diseño
-                        se tuvieron en cuenta antecedentes como el
-                        Edinburgh Film Festival o Tribeca Film Festival.
-                    </p>
-
-                    <p>
-                        El objetivo era crear una página web estática atractiva y funcional usando únicamente HTML, CSS
-                        Y JavaScript. Se llevó a cabo mediante el uso de modales
-                        y hover effects.
-                    </p>
-
-                    <p>
-                        HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma
-
-                    </p>
-                </div>
-
-            </div>
-        </section>
+    </section>
     </div>
 
     <script>
@@ -472,6 +741,19 @@
                 longtext.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+           const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
 
     </script>
 </body>

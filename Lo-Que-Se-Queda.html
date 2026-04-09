@@ -1,50 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lo Que Se Queda · Lucía Rodríguez</title>
     <link rel="icon" href="../images/1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --sidebar-width: 220px; --font: 'Courier Prime', monospace; }
-       html, body {
-    min-height: 100%;
-    background: #fff;
-    color: #111;
-    overflow-x: hidden;
-}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
- .content {
+        :root {
+            --sidebar-width: 220px;
+            --font: 'Courier Prime', monospace;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            background: #fff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        .content {
             padding: 80px;
         }
- @media (max-width: 768px) {
-            .page { flex-direction: column; }
 
-            .sidebar { width: 100%; height: auto; }
-
-            .about-grid { grid-template-columns: 1fr; }
-
-            .about-image img { height: 300px; }
+        .page {
+            display: flex;
         }
 
-        .page { display: flex;
- }
+        .main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+        }
 
-.main {
-    flex: 1;
-    margin-left: var(--sidebar-width);
-}
+        /* LIMITAR ANCHO DEL CONTENIDO */
+        .project-longtext {
+            max-width: 1300px;
+            margin: auto;
 
-/* LIMITAR ANCHO DEL CONTENIDO */
-.carousel-wrap,
-.project-longtext {
-    max-width: 1300px;
-    margin: auto;
-    
-}
+        }
+
+        .carousel-wrap {
+            width: 100%;
+            height: 100vh;
+            /* altura fija para desktop */
+            max-width: 1300px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* ── SIDEBAR ── */
         .sidebar {
             width: var(--sidebar-width);
@@ -58,45 +97,70 @@
             position: fixed;
             z-index: 10;
         }
-        .site-name a { font-family: var(--font); font-size: 18pt; font-weight: 700; display: block; color: #111; text-decoration: none; margin-bottom: 40px; }
-        .site-name a:hover { opacity: 0.45; }
-        nav { display: flex; flex-direction: column; gap: 10px; }
-        nav a { font-family: var(--font); font-size: 15pt; color: #111; text-decoration: none; transition: opacity 0.2s; }
-        nav a:hover { opacity: 0.45; }
-        .sidebar-footer { display: flex; flex-direction: column; gap: 6px; }
+
+        .site-name a {
+            font-family: var(--font);
+            font-size: 18pt;
+            font-weight: 700;
+            display: block;
+            color: #111;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+
+        .site-name a:hover {
+            opacity: 0.45;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        nav a {
+            font-family: var(--font);
+            font-size: 15pt;
+            color: #111;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.45;
+        }
+
+        .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .sidebar-footer a {
-    text-decoration: none;
-        color: var(--text-color);
+            text-decoration: none;
+            color: var(--text-color);
 
-    font-family: var(--font)
-}
-        .sidebar-divider { width: 155px; height: 0.5px; background: #111; }
-        .copyright { font-family: var(--font); font-size: 8.9pt; color: #111; line-height: 1.6; }
+            font-family: var(--font)
+        }
 
-       .carousel-wrap {
-    overflow: hidden; /* importante para que las imágenes no se salgan del carrusel */
-    height: 100vh;
-    position: relative;
-}
+        .sidebar-divider {
+            width: 155px;
+            height: 0.5px;
+            background: #111;
+        }
 
-.slides {
+        .copyright {
+            font-family: var(--font);
+            font-size: 8.9pt;
+            color: #111;
+            line-height: 1.6;
+        }
+
+.mobile-header {
     display: flex;
-    height: 100%;
-    transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
-    will-change: transform;
-}
-
-.slide {
-    flex: 0 0 100%; /* asegura que cada slide ocupe el 100% del contenedor */
-    height: 100%;
-    position: relative;
-}
-
-.slide img {
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* mantiene la proporción sin deformar */
-    display: block;
 }
 
         /* Placeholder cuando no hay imagen */
@@ -119,13 +183,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,0.18) 0%,
-                transparent 35%,
-                transparent 60%,
-                rgba(0,0,0,0.55) 100%
-            );
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.18) 0%,
+                    transparent 35%,
+                    transparent 60%,
+                    rgba(0, 0, 0, 0.55) 100%);
             pointer-events: none;
         }
 
@@ -160,7 +222,7 @@
             font-family: var(--font);
             font-size: 9pt;
             font-style: italic;
-            color: rgba(255,255,255,0.72);
+            color: rgba(255, 255, 255, 0.72);
             line-height: 1.7;
             max-width: 420px;
         }
@@ -172,7 +234,7 @@
             transform: translateY(-50%);
             z-index: 10;
             background: none;
-            border: 1px solid rgba(255,255,255,0.45);
+            border: 1px solid rgba(255, 255, 255, 0.45);
             color: #fff;
             width: 44px;
             height: 44px;
@@ -184,9 +246,19 @@
             font-family: var(--font);
             font-size: 16px;
         }
-        .arrow:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.9); }
-        .arrow-prev { left: 20px; }
-        .arrow-next { right: 20px; }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .arrow-prev {
+            left: 20px;
+        }
+
+        .arrow-next {
+            right: 20px;
+        }
 
         /* ── CONTADOR ── */
         .counter {
@@ -196,7 +268,7 @@
             z-index: 10;
             font-family: var(--font);
             font-size: 8pt;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             letter-spacing: 0.12em;
         }
 
@@ -211,7 +283,7 @@
             font-weight: 700;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255, 255, 255, 0.55);
         }
 
         /* Keyboard hint */
@@ -222,7 +294,7 @@
             transform: translateX(-50%);
             font-family: var(--font);
             font-size: 7pt;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255, 255, 255, 0.25);
             letter-spacing: 0.14em;
             z-index: 10;
             pointer-events: none;
@@ -230,218 +302,415 @@
 
         /* DESCRIPCIÓN DEL PROYECTO */
 
-.project-longtext {
-    position: relative;
-    margin-left: 60px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background: #fff;
+        .project-longtext {
+            position: relative;
+            padding-top: 60px;
+            padding-bottom: 80px;
+            background: #fff;
+        }
+
+        .longtext-inner {
+            max-width: 720px;
+            margin-left: 0;
+        }
+
+        .longtext-title {
+            font-family: var(--font);
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .longtext-text p {
+            font-family: var(--font);
+            font-size: 10pt;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+
+
+        /* HAMBURGUESA */
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* MENU MÓVIL */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100vh;
+            background: #fff;
+            padding: 80px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+    padding-bottom: 0px;
 }
 
-.longtext-inner{
-    max-width: 720px;
-    margin-left: 0;
-}
-
-.longtext-title{
+.scroll-to-project {
+    position: absolute;
+    bottom: 20px;       /* distancia desde el borde inferior del carrusel */
+    left: 50%;      
+    justify-self: center;     /* centro horizontal */
+    transform: translateX(-50%);
     font-family: var(--font);
-    font-size: 16pt;
-    font-weight: 700;
-    margin-bottom: 30px;
+    font-size: 14pt;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    cursor: pointer;
+    z-index: 15;         /* encima de todo el carrusel */
+    transition: background 0.3s, opacity 0.2s;
 }
 
-.longtext-text p{
-    font-family: var(--font);
-    font-size: 10pt;
-    line-height: 1.8;
-    margin-bottom: 18px;
+.scroll-to-project:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 
-@media (max-width: 768px) {
-    .page {
-        flex-direction: column;
+/* FOOTER móvil: solo dentro del menú */
+.mobile-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 30px;
+}
+
+        @media (max-width: 768px) {
+
+    .page { flex-direction: column; }
+
+    .sidebar { width: 100%; height: auto; position: relative; }
+
+   .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* fuerza que footer quede abajo */
+    height: 100vh;
+}
+
+.sidebar-footer {
+        display: none;
     }
-    .sidebar {
-        position: relative;
+
+    /* Footer móvil ya está visible dentro del menú */
+    .mobile-footer {
+        display: flex;
+    }
+
+     .scroll-to-project {
+        display: none;
+    }
+    
+    .main { margin-left: 0; }
+
+    .about-grid { grid-template-columns: 1fr; }
+
+    .about-image img { height: 300px; }
+
+       .mobile-header {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        height: auto;
     }
-    .main {
-        margin-left: 0;
+
+   .mobile-header .site-name {
+    display: flex;
+    align-items: center;
+    height: 100%; /* opcional */
+}
+
+.mobile-header .site-name a {
+    font-size: 18pt;
+    line-height: 1; /* o igual al font-size */
+    margin: 0;
+}
+
+    .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;      /* alinea con el texto */
+        padding: 0;
     }
     .carousel-wrap {
-        height: 60vh; /* más manejable en móvil */
+        height: 30vh; /* altura móvil */
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Ocultar menú normal en móvil */
+    .sidebar nav { display: none; }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .project-longtext {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .mobile-header .hamburger {
+    display: block !important;
+}
+
+    .mobile-menu.active { left: 0; }
+}
+
+/* Al final de tu CSS */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;
+        padding: 0;
     }
 }
+
     </style>
 </head>
-<body>
-<div class="page">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-top">
+<body>
+    <div class="page">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+    <div class="sidebar-top">
+        <!-- HEADER MÓVIL -->
+        <div class="mobile-header">
             <div class="site-name">
                 <a href="index.html">Lucía Rodríguez</a>
             </div>
+            <button class="hamburger">☰</button>
+        </div>
+
+        <!-- MENÚ DESKTOP -->
+        <nav>
+            <a href="index.html">Trabajos</a>
+            <a href="about-me.html">Sobre mí</a>
+            <a href="contact.html">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="sidebar-footer">
+        <a href="english/about-me.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </div>
+
+</aside>
+
+        <div class="mobile-menu">
             <nav>
                 <a href="index.html">Trabajos</a>
                 <a href="about-me.html">Sobre mí</a>
                 <a href="contact.html">Contacto</a>
             </nav>
+
+            
+
+            <div class="mobile-footer">
+                <a href="english/Lo-Que-Se-Queda.html">EN</a>
+                <div class="sidebar-divider"></div>
+                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+            </div>
         </div>
-        <div class="sidebar-footer">
-                            <a href="english/Lo-Que-Se-Queda.html">EN</a>
 
-            <div class="sidebar-divider"></div>
-            <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
-        </div>
-    </aside>
+        <main class="main">
+            <!-- CAROUSEL -->
+            <div class="carousel-wrap" id="carousel">
 
-    <main class="main">
-    <!-- CAROUSEL -->
-    <div class="carousel-wrap" id="carousel">
+                <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
+                     <!-- Dentro de <aside class="sidebar">, después del nav -->
+<button class="scroll-to-project" onclick="bajar()">Ir al proyecto ↓</button>
 
-        <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
+                <div class="slides" id="slides">
 
-        <div class="slides" id="slides">
-
-            <!-- Slide 1 -->
-            <div class="slide active">
-                <img src="images/11.jpg" alt="">
-                <div class="slide-info">
-                    <!--<div class="slide-book-title">Lo que se queda en casa · Fotografía Analógica</div>
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="images/11.jpg" alt="">
+                        <div class="slide-info">
+                            <!--<div class="slide-book-title">Lo que se queda en casa · Fotografía Analógica</div>
                     <div class="slide-desc">Descripción del fotolibro. Unas líneas sobre el proyecto, de qué trata, qué lo inspiró o qué quieres que el espectador sienta.</div>-->
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="images/9.jpg" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="images/14.jpg" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
+
+                    <!-- Slide 5 -->
+                    <div class="slide">
+                        <img src="images/15.jpg" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/16.jpg" alt="">
+                        <div class="slide-info">
+                            <div class="slide-book-title"></div>
+                            <div class="slide-desc"></div>
+                        </div>
+                    </div>
+
                 </div>
+
+
+                <!-- Flechas -->
+                <button class="arrow arrow-prev" id="prev">&#8592;</button>
+                <button class="arrow arrow-next" id="next">&#8594;</button>
+
+                <!-- Contador -->
+                <div class="counter" id="counter">1 / 5</div>
+
+                <!--<div class="key-hint">← → para navegar</div>-->
             </div>
 
-            <!-- Slide 2 -->
-            <div class="slide">
-                <img src="images/9.jpg" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
+            <!-- DESCRIPCIÓN EXTENDIDA -->
+            <section class="project-longtext" id="longtext">
+                <div class="longtext-inner">
+
+                    <div class="longtext-title">
+                        Lo que se queda en casa · Fotografía
+                    </div>
+
+
+                    <div class="longtext-text">
+                        <p>
+                            "Lo que se queda en casa" es un proyecto de fotografía analógica que explora
+                            la intimidad del espacio doméstico y las huellas emocionales que permanecen
+                            en los lugares que habitamos y que se van diluyendo con el tiempo.
+                        </p>
+
+                        <p>
+                            A través de imágenes de objetos, espacios y escenas, lo doméstico funciona como archivo
+                            emocional.
+                        </p>
+
+                        <p>
+                            El proyecto busca construir una
+                            atmósfera: la sensación de hogar, de pausa y de tiempo suspendido dentro
+                            de los espacios donde transcurre la vida cotidiana.
+                        </p>
+                    </div>
+
                 </div>
-            </div>
+            </section>
+        </main>
 
-            <!-- Slide 3 -->
-            <div class="slide">
-                <img src="images/14.jpg" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
-                </div>
-            </div>
-
-
-            <!-- Slide 5 -->
-              <div class="slide">
-                 <img src="images/15.jpg" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
-                </div>
-            </div>
-
-             <div class="slide">
-                 <img src="images/16.jpg" alt="">
-                <div class="slide-info">
-                    <div class="slide-book-title"></div>
-                    <div class="slide-desc"></div>
-                </div>
-            </div>
-
-        </div>
-        
-        <!-- BOTÓN PARA BAJAR -->
-    <div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-        <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-            Ver proyecto ↓
-        </button>
     </div>
 
-        <!-- Flechas -->
-        <button class="arrow arrow-prev" id="prev">&#8592;</button>
-        <button class="arrow arrow-next" id="next">&#8594;</button>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const slidesTrack = document.getElementById('slides');
+        const counter = document.getElementById('counter');
+        let current = 0;
 
-        <!-- Contador -->
-        <div class="counter" id="counter">1 / 5</div>
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            slidesTrack.style.transform = `translateX(-${current * 100}%)`;
+            counter.textContent = `${current + 1} / ${slides.length}`;
+        }
 
-        <!--<div class="key-hint">← → para navegar</div>-->
-    </div>
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-    <!-- DESCRIPCIÓN EXTENDIDA -->
-<section class="project-longtext" id="longtext">
-    <div class="longtext-inner">
+        // Teclado
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
 
-        <div class="longtext-title">
-            Lo que se queda en casa · Fotografía 
-        </div>
-    
-
-        <div class="longtext-text">
-            <p>
-            "Lo que se queda en casa" es un proyecto de fotografía analógica que explora 
-            la intimidad del espacio doméstico y las huellas emocionales que permanecen 
-            en los lugares que habitamos y que se van diluyendo con el tiempo.
-            </p>
-
-            <p>
-            A través de imágenes de objetos, espacios y escenas, lo doméstico funciona como archivo emocional. 
-            </p>
-
-            <p>
-            El proyecto busca construir una 
-            atmósfera: la sensación de hogar, de pausa y de tiempo suspendido dentro 
-            de los espacios donde transcurre la vida cotidiana.
-            </p>
-        </div>
-
-    </div>
-</section>
-</main>
-
-</div>
-
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const slidesTrack = document.getElementById('slides');
-    const counter = document.getElementById('counter');
-    let current = 0;
-
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        slidesTrack.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = `${current + 1} / ${slides.length}`;
-    }
-
-    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
-
-    // Teclado
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') goTo(current - 1);
-        if (e.key === 'ArrowRight') goTo(current + 1);
-    });
-
-    // Swipe táctil
-    let startX = 0;
-    const wrap = document.getElementById('carousel');
-    wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    wrap.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    });
+        // Swipe táctil
+        let startX = 0;
+        const wrap = document.getElementById('carousel');
+        wrap.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        wrap.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+        });
 
 
-function bajar() {
-    const longtext = document.getElementById('longtext');
-    if (longtext) {
-        longtext.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-</script>
+        function bajar() {
+            const longtext = document.getElementById('longtext');
+            if (longtext) {
+                longtext.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+    </script>
 </body>
+
 </html>
