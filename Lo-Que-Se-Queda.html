@@ -456,6 +456,8 @@
     margin: 0;
 }
 
+
+
     .hamburger {
         display: block !important;
         font-size: 26px;
@@ -595,7 +597,11 @@
 
                 <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
                      <!-- Dentro de <aside class="sidebar">, después del nav -->
-<button class="scroll-to-project" onclick="bajar()">Ir al proyecto ↓</button>
+<div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+    <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+        Ver proyecto ↓
+    </button>
+</div>
 
                 <div class="slides" id="slides">
 
