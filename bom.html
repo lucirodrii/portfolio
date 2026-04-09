@@ -399,7 +399,7 @@
 
     .page { flex-direction: column; }
 
-    .sidebar { width: 100%; height: auto; position: relative; }
+    .sidebar { width: 100%; height: auto; position: relative; padding: 20px 20px; }
 
    .mobile-menu {
     display: flex;
@@ -407,6 +407,13 @@
     justify-content: space-between; /* fuerza que footer quede abajo */
     height: 100vh;
 }
+
+
+ .mobile-menu nav a {
+        font-size: 20pt;
+        line-height: 1.4;
+        letter-spacing: 0.04em;
+    }
 
 .sidebar-footer {
         display: none;
@@ -451,9 +458,14 @@
         font-size: 26px;
         line-height: 1;      /* alinea con el texto */
         padding: 0;
+        transform: translateY(-2px);
+        color: #111; /* fuerza color negro */
+            /* QUITAR ESTILOS NATIVOS */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* quita azul al tocar */
     }
     .carousel-wrap {
-        height: 30vh; /* altura móvil */
+        height: 35vh; /* altura móvil */
     }
 
     .slide img {
@@ -480,6 +492,10 @@
         z-index: 1000;
     }
 
+       .mobile-menu nav {
+        margin-top: -20px;
+    }
+
     .project-longtext {
         padding-left: 20px;
         padding-right: 20px;
@@ -490,6 +506,22 @@
 }
 
     .mobile-menu.active { left: 0; }
+}
+
+.mobile-footer a {
+    text-decoration: none;
+    color: #111;
+    font-family: var(--font);
+}
+
+.mobile-footer a:visited,
+.mobile-footer a:active {
+    color: #111;
+}
+
+.counter {
+    top: 290px;
+    right: 20px;
 }
 
 /* Al final de tu CSS */
