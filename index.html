@@ -352,30 +352,6 @@
                 margin-bottom: 20px;
             }
 
-            .menu-toggle {
-    display: block;
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: black;
-}
-
-.nav-side {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background: #919fb6;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 40px 30px;
-    transition: left 0.3s ease;
-    z-index: 1001;
-}
-
 .nav-side.show {
     left: 0;
 }
@@ -398,6 +374,51 @@
     pointer-events: auto;
 }
 
+    .menu-toggle {
+        display: block;
+        font-size: 32px; /* más grande */
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: black;
+        margin-top: -5px;
+    }
+
+    .nav-side {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background: #abbfd3;
+        display: flex;
+        flex-direction: column;
+        padding: 40px 30px;
+        transition: left 0.3s ease;
+        z-index: 1001;
+    }
+
+.menu-links a {
+    display: block;
+    font-size: 20pt;
+    margin-bottom: 10px; /* espacio entre enlaces */
+}
+
+.menu-lang a {
+    font-size: 14pt;
+    margin-top: 650px;
+}
+
+    .nav-side a {
+        font-size: 20pt; /* texto más grande en el menú */
+        color: black;
+        text-decoration: none;
+    }
+
+    .nav-side a:hover {
+        color: #111;
+    }
+
 nav { display: none; } /* ocultamos nav original en móvil */
         }
 
@@ -414,9 +435,13 @@ nav { display: none; } /* ocultamos nav original en móvil */
 <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
 
 <nav class="nav-side">
-    <a id="langButtonSide" href="english/index.html">EN</a>
+  <div class="menu-links">
     <a href="about-me.html">Sobre mí</a>
     <a href="contact.html">Contacto</a>
+  </div>
+  <div class="menu-lang">
+    <a href="english/index.html">EN</a>
+  </div>
 </nav>
 <div class="overlay"></div>
         <nav>
@@ -424,6 +449,9 @@ nav { display: none; } /* ocultamos nav original en móvil */
 
             <a href="about-me.html">Sobre mí</a>
             <a href="contact.html">Contacto</a>
+            <div class="menu-lang">
+                <a id="langButtonSide" href="english/index.html">EN</a>
+            </div>
         </nav>
     </header>
     <div class="page">
