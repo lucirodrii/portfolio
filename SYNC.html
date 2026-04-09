@@ -48,6 +48,7 @@
             flex-shrink: 0;
             position: relative;
             z-index: 10;
+            
         }
 
 
@@ -403,22 +404,6 @@
     display: none;
 }
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -100%; /* fuera de pantalla */
-        width: 70%; /* ocupa parte de la pantalla */
-        height: 100%;
-        background: #fff;
-        padding: 36px 20px;
-        transition: left 0.3s ease;
-        z-index: 15;
-    }
-
-    .sidebar.open {
-        left: 0; /* mostrar sidebar */
-    }
-
     /* Para que el contenido detrás no se mueva */
     body.sidebar-open {
         overflow: hidden;
@@ -510,22 +495,72 @@
     -webkit-tap-highlight-color: transparent; /* quita azul al tocar */
     }
 
-    /* Sidebar móvil */
-    .sidebar {
+    .mobile-menu nav a {
+    font-family: var(--font);
+    font-size: 24pt; /* igual tamaño que desktop */
+    color: #111;
+    text-decoration: none;
+}
+
+
+        .sidebar {
         left: -100%;
         width: 70%;
         height: 100%;
         position: fixed;
         top: 0;
-        background: #fff;
+        background-color: #bddbfa; /* fondo sidebar móvil */
         padding: 36px 20px;
         transition: left 0.3s ease;
-        z-index: 25;
+        z-index: 1000;
     }
 
     .sidebar.open {
         left: 0;
     }
+
+     .sidebar-top .site-name a {
+        font-size: 20pt;
+    }
+
+    .sidebar-top nav a {
+        font-size: 18pt;
+    }
+
+
+    /* FOOTER DEL SIDEBAR */
+.mobile-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* alinea todo a la izquierda */
+    gap: 6px; /* espacio entre EN y linea, y linea y copyright */
+}
+
+.mobile-footer a {
+    font-family: var(--font);
+    font-size: 12pt; /* tamaño EN */
+    color: #111;
+    text-decoration: none;
+    margin-bottom: 4px; /* espacio entre EN y línea */
+}
+
+.mobile-divider {
+    width: 100%; /* línea completa del sidebar */
+    height: 1px;
+    background: #111;
+    margin: 2px 0; /* pequeño espacio arriba y abajo */
+}
+
+.mobile-footer p {
+    font-family: var(--font);
+    font-size: 12pt; /* mismo tamaño que EN */
+    color: #111;
+    margin-top: 4px; /* espacio entre línea y copyright */
+}
+
+.mobile-footer .copyright {
+    font-size: 9pt;
+}
 
     body.sidebar-open {
         overflow: hidden;
@@ -552,13 +587,16 @@
     flex-direction: column;
     justify-content: space-between; /* fuerza que footer quede abajo */
     height: 100vh;
+    background-color: #bddbfa;
 }
 
 
     /* Footer móvil ya está visible dentro del menú */
     .mobile-footer {
         display: flex;
+        margin-top: 400px;
     }
+
 
      .overlay-button {
         display: none;
@@ -602,7 +640,7 @@
         left: -100%;
         width: 70%;
         height: 100vh;
-        background: #fff;
+        background: #abbfd3;
         padding: 80px 30px;
         display: flex;
         flex-direction: column;
