@@ -479,6 +479,59 @@
         min-height: 100px;
     }
 
+     .site-name {
+        position: fixed;
+        top: 16px;  /* visible en la parte superior */
+        left: 16px; /* margen desde la izquierda */
+        z-index: 30;
+        display: flex;
+        align-items: center;
+    }
+
+    .site-name a {
+        margin: 0;
+        font-size: 18pt;
+        line-height: 1;
+        color: #111;
+    }
+
+    .hamburger {
+        position: fixed;
+        top: 16px;
+        right: 16px; /* lado derecho */
+        z-index: 35;
+        display: block !important;
+        font-size: 26px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Sidebar móvil */
+    .sidebar {
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        background: #fff;
+        padding: 36px 20px;
+        transition: left 0.3s ease;
+        z-index: 25;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    .mobile-menu {
+        display: none; /* opcional, puedes usar solo sidebar */
+    }
+
       .hamburger {
         display: block !important;
         font-size: 26px;
@@ -566,12 +619,6 @@
 
     .mobile-menu.active { left: 0; }
 
-    .site-name {
-        position: fixed;
-        top: -430px;
-        left: 5px; /* deja espacio para el botón ☰ */
-        z-index: 30;
-    }
 
     .site-name a {
         margin: 0; /* quitar el margin-bottom que lo descoloca */
