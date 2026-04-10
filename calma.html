@@ -97,7 +97,7 @@
         }
 
         .site-name a:hover {
-            opacity: 0.45;
+            color: #abbfd3;
         }
 
         nav {
@@ -114,21 +114,17 @@
             transition: opacity 0.2s;
         }
 
-        nav a:hover {
-            opacity: 0.45;
-        }
 
         .sidebar-footer {
             display: flex;
             flex-direction: column;
-            gap: 6px;
         }
 
         .sidebar-footer a {
             text-decoration: none;
             color: var(--text-color);
+            font-family: var(--font);
 
-            font-family: var(--font)
         }
 
         .sidebar-divider {
@@ -141,7 +137,7 @@
             font-family: var(--font);
             font-size: 8.9pt;
             color: #111;
-            line-height: 1.6;
+            line-height: 1.2;
         }
 
         .carousel-wrap {
@@ -224,7 +220,7 @@
             transform: translateY(-50%);
             z-index: 10;
             background: none;
-            border: 1px solid black;
+            border: none;
             color: black;
             width: 44px;
             height: 44px;
@@ -243,11 +239,11 @@
         }
 
         .arrow-prev {
-            left: 140px;
+            left: 180px;
         }
 
         .arrow-next {
-            right: 140px;
+            right: 180px;
         }
 
         /* ── CONTADOR ── */

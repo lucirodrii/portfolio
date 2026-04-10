@@ -32,8 +32,9 @@
         }
 
         .page {
-            display: flex;
-            min-height: 50vh;
+           display: flex;
+    min-height: 100vh;
+    width: 100%;
         }
 
         /* ── SIDEBAR ── */
@@ -63,7 +64,7 @@
         }
 
         .site-name a:hover {
-            color: #8a0d01;
+            color: #abbfd3;
         }
 
         nav {
@@ -80,10 +81,6 @@
             transition: opacity 0.2s;
         }
 
-        nav a:hover {
-            color: #bddbfa;
-
-        }
 
         .sidebar-footer {
             display: flex;
@@ -113,22 +110,21 @@
 
 
 
-        /* ── CAROUSEL AREA ── */
-        .carousel-wrap {
-            flex: 1;
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: #111;
-        }
+    .carousel-wrap {
+    flex: 1;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    min-width: 0; /* CLAVE en flexbox */
+}
 
         /* Slides */
         .slides {
             display: flex;
             height: 100%;
-            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
-            will-change: transform;
-        }
+    width: 100%;
+}
+    
 
         .slide {
             min-width: 100%;
@@ -734,14 +730,7 @@
                         <img src="images/3.2.png">
                     </div>
 
-                    <!-- Botón para bajar -->
-                    <div class="overlay-button">
-                        <button onclick="bajar()">Ver proyecto ↓</button>
-                    </div>
-
-                </div>
-
-                <!-- BOTÓN PARA BAJAR -->
+                 <!-- BOTÓN PARA BAJAR -->
                 <div class="overlay-button"
                     style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
                     <button onclick="bajar()"
@@ -749,6 +738,10 @@
                         Ver proyecto ↓
                     </button>
                 </div>
+
+                </div>
+
+           
 
                 <div class="slide-info"></div>
             </div>
@@ -808,6 +801,16 @@
             counter.textContent = `${current + 1} / ${slides.length}`;
         }
 
+function bajar() {
+    const el = document.getElementById('longtext');
+
+    const top = el.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+        top: top,
+        behavior: 'smooth'
+    });
+}
 
         // Teclado
         document.addEventListener('keydown', e => {
@@ -823,12 +826,7 @@
             const diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
         });
-        function bajar() {
-            const longtext = document.getElementById('longtext');
-            if (longtext) {
-                longtext.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+     
 
            const hamburger = document.querySelector('.hamburger');
         const menu = document.querySelector('.mobile-menu');
