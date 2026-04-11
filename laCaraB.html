@@ -21,6 +21,7 @@
         :root {
             --sidebar-width: 220px;
             --font: 'Courier Prime', monospace;
+
         }
 
         html,
@@ -28,14 +29,12 @@
             height: 100%;
             background: #fff;
             color: #111;
-
-            scroll-behavior: smooth;
-
         }
 
         .page {
-            display: flex;
-            height: 100vh;
+           display: flex;
+    min-height: 100vh;
+    width: 100%;
         }
 
         /* ── SIDEBAR ── */
@@ -50,7 +49,9 @@
             flex-shrink: 0;
             position: relative;
             z-index: 10;
+            
         }
+
 
         .site-name a {
             font-family: var(--font);
@@ -108,22 +109,22 @@
         }
 
 
-        /* ── CAROUSEL AREA ── */
-        .carousel-wrap {
-            flex: 1;
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: #111;
-        }
+
+    .carousel-wrap {
+    flex: 1;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    min-width: 0; /* CLAVE en flexbox */
+}
 
         /* Slides */
         .slides {
             display: flex;
             height: 100%;
-            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
-            will-change: transform;
-        }
+    width: 100%;
+}
+    
 
         .slide {
             min-width: 100%;
@@ -279,8 +280,7 @@
         /* DESCRIPCIÓN DEL PROYECTO */
 
         .project-longtext {
-            position: absolute;
-            top: 100vh;
+            position: relative;
             left: var(--sidebar-width);
             right: 0;
             background: #fff;
@@ -297,6 +297,7 @@
             margin-left: 0;
         }
 
+
         .longtext-title {
             font-family: var(--font);
             font-size: 16pt;
@@ -310,85 +311,469 @@
             line-height: 1.8;
             margin-bottom: 18px;
         }
+
+    
+/* ---- ESTILOS GENERALES ---- */
+.slide img {
+    display: block;
+    user-select: none;
+}
+
+/* Iframe para escritorio */
+.iframe-desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Placeholder para móvil, inicialmente oculto */
+.iframe-placeholder {
+    display: none;
+}
+
+/* Overlay botón */
+.overlay-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.hamburger {
+    display: none; /* solo móvil */
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 20;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: #fff;
+    z-index: 20;
+    padding: 36px 20px;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+
+
+
+        @media (max-width: 768px) {
+
+     .site-name {
+        display: inline-block;
+        font-size: 18pt;
+        font-weight: 700;
+        margin-left: 16px;
+        color: #111;
+    }
+
+    .hamburger {
+        display: block;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 30;
+    }
+
+.overlay-button {
+    display: none;
+}
+
+    /* Para que el contenido detrás no se mueva */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+            .project-longtext {
+                position: relative;
+                top: 20px;
+                left: 0;
+                right: 0;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+
+             .iframe-desktop {
+        display: none; /* Ocultar iframe en móvil */
+    }
+
+    .iframe-placeholder {
+        display: flex; /* Mostrar placeholder */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 300px;
+        background: white;
+        color: white;
+        font-family: 'Courier Prime', monospace;
+        text-align: center;
+    }
+
+     .slide::after {
+        background: none; /* quitar gradiente en móvil */
+    }
+
+    .iframe-placeholder img {
+        width: 400px;
+        height: auto;
+        margin-bottom: 20px;
+        background-color: white;
+    }
+
+    .carousel-wrap {
+        top: 100px;
+        height: 40vh; 
+        background-color: #ffffff;
+    }
+
+    .slides {
+        flex-direction: column; /* Apila slides si hay más de uno */
+        height: auto;
+    }
+
+    .slide {
+        height: auto;
+        min-height: 100px;
+    }
+
+     .site-name {
+        position: fixed;
+        top: -296px;  /* visible en la parte superior */
+        left: 16px; /* margen desde la izquierda */
+        z-index: 30;
+        display: flex;
+        align-items: center;
+    }
+
+    .site-name a {
+        margin: 0;
+        font-size: 18pt;
+        line-height: 1;
+        color: #111;
+    }
+
+    .hamburger {
+        position: fixed;
+        top: 16px;
+        z-index: 35;
+        display: block !important;
+        font-size: 26px;
+        background: none;
+        border: none;
+        cursor: pointer;
+           color: #111; /* fuerza color negro */
+            /* QUITAR ESTILOS NATIVOS */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* quita azul al tocar */
+    }
+
+    .mobile-menu nav a {
+    font-family: var(--font);
+    font-size: 20pt; /* igual tamaño que desktop */
+    color: #111;
+    text-decoration: none;
+}
+
+
+        .sidebar {
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        background-color: #bddbfa; /* fondo sidebar móvil */
+        padding: 36px 20px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+     .sidebar-top .site-name a {
+        font-size: 20pt;
+    }
+
+    .sidebar-top nav a {
+        font-size: 18pt;
+    }
+
+
+    /* FOOTER DEL SIDEBAR */
+.mobile-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* alinea todo a la izquierda */
+    gap: 6px; /* espacio entre EN y linea, y linea y copyright */
+}
+
+.mobile-footer a {
+    font-family: var(--font);
+    font-size: 12pt; /* tamaño EN */
+    color: #111;
+    text-decoration: none;
+    margin-bottom: 4px; /* espacio entre EN y línea */
+}
+
+.mobile-divider {
+    width: 100%; /* línea completa del sidebar */
+    height: 1px;
+    background: #111;
+    margin: 2px 0; /* pequeño espacio arriba y abajo */
+}
+
+.mobile-footer p {
+    font-family: var(--font);
+    font-size: 12pt; /* mismo tamaño que EN */
+    color: #111;
+    margin-top: 4px; /* espacio entre línea y copyright */
+}
+
+.mobile-footer .copyright {
+    font-size: 9pt;
+}
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    .mobile-menu {
+        display: none; /* opcional, puedes usar solo sidebar */
+    }
+
+      .hamburger {
+        display: block !important;
+        font-size: 26px;
+        line-height: 1;
+        padding: 0;
+    }
+
+       .mobile-header .hamburger {
+    display: block !important;
+}
+
+
+   .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* fuerza que footer quede abajo */
+    height: 100vh;
+    background-color: #bddbfa;
+}
+
+
+    /* Footer móvil ya está visible dentro del menú */
+    .mobile-footer {
+        display: flex;
+        margin-top: 390px;
+    }
+
+
+     .overlay-button {
+        display: none;
+    }
+    
+
+
+
+       .mobile-header {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+   .mobile-header .site-name {
+    display: flex;
+    align-items: center;
+    height: 100%; /* opcional */
+}
+
+.mobile-header .site-name a {
+    font-size: 18pt;
+    line-height: 1; /* o igual al font-size */
+    margin: 0;
+}
+      .hamburger {
+        position: fixed;
+        top: 24px;
+        right: -300px;
+        z-index: 30;
+    }
+
+
+    /* Ocultar menú normal en móvil */
+    .sidebar nav { display: none; }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #abbfd3;
+        padding: 80px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .project-longtext {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .mobile-header .hamburger {
+    display: block !important;
+}
+
+    .mobile-menu.active { left: 0; }
+
+
+    .site-name a {
+        margin: 0; /* quitar el margin-bottom que lo descoloca */
+    }
+
+}
     </style>
 </head>
 
 <body>
     <div class="page">
-
+<!-- Botón hamburguesa solo en móvil -->
+        <!-- SIDEBAR -->
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="site-name">
-                    <a href="index.html">Lucía Rodríguez</a>
-                </div>
-                <nav>
-                    <a href="index.html">Trabajos</a>
-                    <a href="about-me.html">Sobre mí</a>
-                    <a href="contact.html">Contacto</a>
-                </nav>
+
+    <div class="sidebar-top">
+        <!-- HEADER MÓVIL -->
+        <div class="mobile-header">
+            <div class="site-name">
+                <a href="index.html">Lucía Rodríguez</a>
             </div>
-            <div class="sidebar-footer">
+            <button class="hamburger">☰</button>
+        </div>
+
+        <!-- MENÚ DESKTOP -->
+        <nav>
+            <a href="index.html">Trabajos</a>
+            <a href="about-me.html">Sobre mí</a>
+            <a href="contact.html">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="sidebar-footer">
+        <a href="english/laCaraB.html">EN</a>
+        <div class="sidebar-divider"></div>
+        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+    </div>
+
+</aside>
+
+        <div class="mobile-menu">
+            <nav>
+                <a href="index.html">Trabajos</a>
+                <a href="about-me.html">Sobre mí</a>
+                <a href="contact.html">Contacto</a>
+            </nav>
+
+            
+
+            <div class="mobile-footer">
                 <a href="english/laCaraB.html">EN</a>
                 <div class="sidebar-divider"></div>
                 <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
             </div>
-        </aside>
+        </div>
 
         <!-- CAROUSEL -->
         <div class="carousel-wrap" id="carousel">
 
             <div class="slides" id="slides">
 
-                <!-- Slide 1 — iframe -->
-                <div class="slide active" style="overflow:hidden;">
-                    <iframe src="LaCaraB/index.html"
-                        style="width:100%; height:100%; border:none; display:block;"></iframe>
-                    <!-- BOTÓN PARA BAJAR -->
-                    <div class="overlay-button"
-                        style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-                        <button onclick="bajar()"
-                            style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-                            Ver proyecto ↓
-                        </button>
-                    </div>
-                    <div class="slide-info">
+                <!-- Slide 1 — iframe / placeholder -->
+                <div class="slide active" style="position: relative;">
 
+                    <!-- Iframe solo para escritorio -->
+                    <iframe class="iframe-desktop" src="LaCaraB/index.html"></iframe>
+
+                    <!-- Placeholder solo para móvil -->
+                    <div class="iframe-placeholder">
+                        <img src="images/7.png">
                     </div>
+
+                 <!-- BOTÓN PARA BAJAR -->
+                <div class="overlay-button"
+                    style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+                    <button onclick="bajar()"
+                        style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+                        Ver proyecto ↓
+                    </button>
                 </div>
+
+                </div>
+
+           
+
+                <div class="slide-info"></div>
+            </div>
+        </div>
+
+        <!-- Flechas -->
+
+        <!-- Contador -->
+
+    </div>
+    <!-- DESCRIPCIÓN EXTENDIDA -->
+    <section class="project-longtext" id="longtext">
+        <div class="longtext-inner">
+
+            <div class="longtext-title">
+                La Cara B · Diseño y Desarrollo Web
             </div>
 
-            <!-- Flechas -->
 
+            <div class="longtext-text">
+                <p>
+                    La Cara B es una web ficticia dedicada a la venta de vinilos, discos y merchandising de música. La identidad visual apuesta por la simplicidad, el equilibrio y una estética contemporánea, pensada para un público joven y creativo, pero también atractiva al público general.
+                </p>
 
-            <!-- Contador -->
+                <p>
+                    HTML · CSS · JavaScript · Google API · Google Analytics · Git · Figma
+
+                </p>
+            </div>
 
         </div>
-        <!-- DESCRIPCIÓN EXTENDIDA -->
-        <section class="project-longtext" id="longtext">
-            <div class="longtext-inner">
-
-                <div class="longtext-title">
-                    La Cara B · Diseño y Desarrollo Web
-                </div>
-
-
-                <div class="longtext-text">
-                    <p>
-                        La Cara B es una web ficticia dedicada a la venta de vinilos, discos y merchandising
-                        de música. La identidad visual apuesta por la simplicidad, el equilibrio y una estética
-                        contemporánea, pensada para un público joven y creativo, pero también atractiva al público
-                        general.
-                    </p>
-
-                    <p>
-                        HTML · Tailwind · JavaScript · Google Analytics · Git · Figma
-                    </p>
-
-                </div>
-
-            </div>
-        </section>
+    </section>
     </div>
 
     <script>
@@ -405,8 +790,16 @@
             counter.textContent = `${current + 1} / ${slides.length}`;
         }
 
-        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
-        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+function bajar() {
+    const el = document.getElementById('longtext');
+
+    const top = el.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+        top: top,
+        behavior: 'smooth'
+    });
+}
 
         // Teclado
         document.addEventListener('keydown', e => {
@@ -422,34 +815,20 @@
             const diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
         });
+     
 
+           const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.mobile-menu');
 
-
-        // scroll hacia abajo y hacia arriba entre secciones
-        window.addEventListener('wheel', e => {
-
-            if (e.deltaY > 0 && window.scrollY === 0) {
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
-            }
-
-            if (e.deltaY < 0 && window.scrollY > 0) {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
         });
 
-        function bajar() {
-            const longtext = document.getElementById('longtext');
-            if (longtext) {
-                longtext.scrollIntoView({ behavior: 'smooth' });
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
             }
-        }
+        });
 
     </script>
 </body>
