@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lo Que Se Queda · Lucía Rodríguez</title>
+    <title>Rediseño Luxo Jr · Lucía Rodríguez</title>
     <link rel="icon" href="../images/1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
@@ -150,12 +150,12 @@
             line-height: 1.6;
         }
 
-.mobile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
         /* Placeholder cuando no hay imagen */
         .slide-placeholder {
@@ -177,11 +177,6 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.18) 0%,
-                    transparent 35%,
-                    transparent 60%,
-                    rgba(0, 0, 0, 0.55) 100%);
             pointer-events: none;
         }
 
@@ -354,189 +349,216 @@
         }
 
 
-.sidebar-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: auto;
-    padding-bottom: 0px;
-}
+        .sidebar-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: auto;
+            padding-bottom: 0px;
+        }
 
-.scroll-to-project {
-    position: absolute;
-    bottom: 20px;       /* distancia desde el borde inferior del carrusel */
-    left: 50%;      
-    justify-self: center;     /* centro horizontal */
-    transform: translateX(-50%);
-    font-family: var(--font);
-    font-size: 14pt;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid #fff;
-    color: #fff;
-    padding: 8px 16px;
-    cursor: pointer;
-    z-index: 15;         /* encima de todo el carrusel */
-    transition: background 0.3s, opacity 0.2s;
-}
+        .scroll-to-project {
+            position: absolute;
+            bottom: 20px;
+            /* distancia desde el borde inferior del carrusel */
+            left: 50%;
+            justify-self: center;
+            /* centro horizontal */
+            transform: translateX(-50%);
+            font-family: var(--font);
+            font-size: 14pt;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 8px 16px;
+            cursor: pointer;
+            z-index: 15;
+            /* encima de todo el carrusel */
+            transition: background 0.3s, opacity 0.2s;
+        }
 
-.scroll-to-project:hover {
-    background: rgba(255, 255, 255, 0.35);
-}
+        .scroll-to-project:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
 
-/* FOOTER móvil: solo dentro del menú */
-.mobile-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-bottom: 30px;
-}
+        /* FOOTER móvil: solo dentro del menú */
+        .mobile-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-bottom: 30px;
+        }
 
         @media (max-width: 768px) {
 
-    .page { flex-direction: column; }
+            .page {
+                flex-direction: column;
+            }
 
-    .sidebar { width: 100%; height: auto; position: relative; 
-        padding: 20px 20px; /* o incluso 10px */
-    }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px 20px;
+                /* o incluso 10px */
+            }
 
-   .mobile-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* fuerza que footer quede abajo */
-    height: 100vh;
-}
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                /* fuerza que footer quede abajo */
+                height: 100vh;
+            }
 
- .mobile-menu nav a {
-        font-size: 20pt;
-        line-height: 1.4;
-        letter-spacing: 0.04em;
-    }
+            .mobile-menu nav a {
+                font-size: 20pt;
+                line-height: 1.4;
+                letter-spacing: 0.04em;
+            }
 
-.sidebar-footer {
-        display: none;
-    }
+            .sidebar-footer {
+                display: none;
+            }
 
-    /* Footer móvil ya está visible dentro del menú */
-    .mobile-footer {
-        display: flex;
-    }
+            /* Footer móvil ya está visible dentro del menú */
+            .mobile-footer {
+                display: flex;
+            }
 
-     .scroll-to-project {
-        display: none;
-    }
-    
-    .main { margin-left: 0; }
+            .scroll-to-project {
+                display: none;
+            }
 
-    .about-grid { grid-template-columns: 1fr; }
+            .main {
+                margin-left: 0;
+            }
 
-    .about-image img { height: 300px; }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
 
-       .mobile-header {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
+            .about-image img {
+                height: 300px;
+            }
 
-   .mobile-header .site-name {
-    display: flex;
-    align-items: center;
-    height: 100%; /* opcional */
-}
+            .mobile-header {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
 
-.mobile-header .site-name a {
-    font-size: 18pt;
-    line-height: 1; /* o igual al font-size */
-    margin: 0;
-}
+            .mobile-header .site-name {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                /* opcional */
+            }
+
+            .mobile-header .site-name a {
+                font-size: 18pt;
+                line-height: 1;
+                /* o igual al font-size */
+                margin: 0;
+            }
 
 
 
-    .hamburger {
-        display: block !important;
-        font-size: 26px;
-        line-height: 1;      /* alinea con el texto */
-        padding: 0;
-        transform: translateY(-2px);
-         color: #111; /* fuerza color negro */
+            .hamburger {
+                display: block !important;
+                font-size: 26px;
+                line-height: 1;
+                /* alinea con el texto */
+                padding: 0;
+                transform: translateY(-2px);
+                color: #111;
+                /* fuerza color negro */
 
-    /* QUITAR ESTILOS NATIVOS */
-    outline: none;
-    -webkit-tap-highlight-color: transparent; /* quita azul al tocar */
-    }
-    .carousel-wrap {
-        height: 35vh; /* altura móvil */
-    }
+                /* QUITAR ESTILOS NATIVOS */
+                outline: none;
+                -webkit-tap-highlight-color: transparent;
+                /* quita azul al tocar */
+            }
 
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+            .carousel-wrap {
+                height: 35vh;
+                /* altura móvil */
+            }
 
-    /* Ocultar menú normal en móvil */
-    .sidebar nav { display: none; }
+            .slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 70%;
-        height: 100vh;
-        background: #abbfd3;
-        padding: 80px 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: left 0.3s ease;
-        z-index: 1000;
-    }
+            /* Ocultar menú normal en móvil */
+            .sidebar nav {
+                display: none;
+            }
 
-     .mobile-menu nav {
-        margin-top: -20px;
-    }
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #abbfd3;
+                padding: 80px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
 
-    .project-longtext {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+            .mobile-menu nav {
+                margin-top: -20px;
+            }
 
-    .mobile-header .hamburger {
-    display: block !important;
-}
+            .project-longtext {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
 
-.overlay-button{
-    display: none;
-}
-.mobile-footer a {
-    text-decoration: none;
-    color: #111;
-    font-family: var(--font);
-}
+            .mobile-header .hamburger {
+                display: block !important;
+            }
 
-.mobile-footer a:visited,
-.mobile-footer a:active {
-    color: #111;
-}
+            .overlay-button {
+                display: none;
+            }
 
-.counter {
-    top: 290px;
-    right: 20px;
-}
+            .mobile-footer a {
+                text-decoration: none;
+                color: #111;
+                font-family: var(--font);
+            }
 
-    .mobile-menu.active { left: 0; }
-}
+            .mobile-footer a:visited,
+            .mobile-footer a:active {
+                color: #111;
+            }
 
-/* Al final de tu CSS */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block !important;
-        font-size: 26px;
-        line-height: 1;
-        padding: 0;
-    }
-}
+            .counter {
+                top: 290px;
+                right: 20px;
+            }
 
+            .mobile-menu.active {
+                left: 0;
+            }
+        }
+
+        /* Al final de tu CSS */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block !important;
+                font-size: 26px;
+                line-height: 1;
+                padding: 0;
+            }
+        }
     </style>
 </head>
 
@@ -546,31 +568,31 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
 
-    <div class="sidebar-top">
-        <!-- HEADER MÓVIL -->
-        <div class="mobile-header">
-            <div class="site-name">
-                <a href="index.html">Lucía Rodríguez</a>
+            <div class="sidebar-top">
+                <!-- HEADER MÓVIL -->
+                <div class="mobile-header">
+                    <div class="site-name">
+                        <a href="index.html">Lucía Rodríguez</a>
+                    </div>
+                    <button class="hamburger">☰</button>
+                </div>
+
+                <!-- MENÚ DESKTOP -->
+                <nav>
+                    <a href="index.html">Trabajos</a>
+                    <a href="about-me.html">Sobre mí</a>
+                    <a href="contact.html">Contacto</a>
+                </nav>
             </div>
-            <button class="hamburger">☰</button>
-        </div>
 
-        <!-- MENÚ DESKTOP -->
-        <nav>
-            <a href="index.html">Trabajos</a>
-            <a href="about-me.html">Sobre mí</a>
-            <a href="contact.html">Contacto</a>
-        </nav>
-    </div>
+            <!-- FOOTER -->
+            <div class="sidebar-footer">
+                <a href="english/luxo-jr.html">EN</a>
+                <div class="sidebar-divider"></div>
+                <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
+            </div>
 
-    <!-- FOOTER -->
-    <div class="sidebar-footer">
-        <a href="english/about-me.html">EN</a>
-        <div class="sidebar-divider"></div>
-        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
-    </div>
-
-</aside>
+        </aside>
 
         <div class="mobile-menu">
             <nav>
@@ -579,10 +601,10 @@
                 <a href="contact.html">Contacto</a>
             </nav>
 
-            
+
 
             <div class="mobile-footer">
-                <a href="english/Lo-Que-Se-Queda.html">EN</a>
+                <a href="english/luxo-jr.html">EN</a>
                 <div class="sidebar-divider"></div>
                 <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
             </div>
@@ -593,18 +615,20 @@
             <div class="carousel-wrap" id="carousel">
 
                 <!-- <div class="book-label">Lo que se queda en casa — Fotografía Analógica</div> -->
-                     <!-- Dentro de <aside class="sidebar">, después del nav -->
-<div class="overlay-button" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
-    <button onclick="bajar()" style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
-        Ver proyecto ↓
-    </button>
-</div>
+                <!-- Dentro de <aside class="sidebar">, después del nav -->
+                <div class="overlay-button"
+                    style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index:5;">
+                    <button onclick="bajar()"
+                        style="font-family:'Courier Prime', monospace; padding: 10px 20px; font-size: 14pt; cursor:pointer;">
+                        Ver proyecto ↓
+                    </button>
+                </div>
 
                 <div class="slides" id="slides">
 
                     <!-- Slide 1 -->
                     <div class="slide active">
-                        <img src="images/11.jpg" alt="">
+                        <img src="images/56.png" alt="">
                         <div class="slide-info">
                             <!--<div class="slide-book-title">Lo que se queda en casa · Fotografía Analógica</div>
                     <div class="slide-desc">Descripción del fotolibro. Unas líneas sobre el proyecto, de qué trata, qué lo inspiró o qué quieres que el espectador sienta.</div>-->
@@ -613,7 +637,7 @@
 
                     <!-- Slide 2 -->
                     <div class="slide">
-                        <img src="images/9.jpg" alt="">
+                        <img src="images/34543.png" alt="">
                         <div class="slide-info">
                             <div class="slide-book-title"></div>
                             <div class="slide-desc"></div>
@@ -622,7 +646,7 @@
 
                     <!-- Slide 3 -->
                     <div class="slide">
-                        <img src="images/14.jpg" alt="">
+                        <img src="images/w83y.png" alt="">
                         <div class="slide-info">
                             <div class="slide-book-title"></div>
                             <div class="slide-desc"></div>
@@ -632,7 +656,7 @@
 
                     <!-- Slide 5 -->
                     <div class="slide">
-                        <img src="images/15.jpg" alt="">
+                        <img src="images/23.png" alt="">
                         <div class="slide-info">
                             <div class="slide-book-title"></div>
                             <div class="slide-desc"></div>
@@ -640,7 +664,7 @@
                     </div>
 
                     <div class="slide">
-                        <img src="images/16.jpg" alt="">
+                        <img src="images/FLEXO-5.png" alt="" style="height: 820px; width: 1200;">
                         <div class="slide-info">
                             <div class="slide-book-title"></div>
                             <div class="slide-desc"></div>
@@ -665,26 +689,25 @@
                 <div class="longtext-inner">
 
                     <div class="longtext-title">
-                        Lo que se queda en casa · Fotografía
+                        Rediseño Luxo Jr · Producto
                     </div>
 
 
                     <div class="longtext-text">
                         <p>
-                            "Lo que se queda en casa" es un proyecto de fotografía analógica que explora
-                            la intimidad del espacio doméstico y las huellas emocionales que permanecen
-                            en los lugares que habitamos y que se van diluyendo con el tiempo.
+                            El objetivo del rediseño era mantener la esencia del diseño
+                            del Luxo L-1 original, pero reduciendo el ruido y el número de piezas. 
+
                         </p>
 
                         <p>
-                            A través de imágenes de objetos, espacios y escenas, lo doméstico funciona como archivo
-                            emocional.
+                            Se ha mantenido la forma de la
+                            pantalla para que, vista de perfil, siga siendo reconocible, manteniendo su identidad y lenguaje formal.
+                            Al tratarse de un proyecto de oficina técnica, se hizo especial énfasis en el desarrollo de planimetría y procesos de fabricación.
                         </p>
 
                         <p>
-                            El proyecto busca construir una
-                            atmósfera: la sensación de hogar, de pausa y de tiempo suspendido dentro
-                            de los espacios donde transcurre la vida cotidiana.
+                            Proyecto desarrollado en la asignatura de Proyectos de Oficina Técnica.
                         </p>
                     </div>
 
