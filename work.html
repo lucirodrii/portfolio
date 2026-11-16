@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <style>
+      * {
+        box-sizing: border-box;
+        cursor: none;
+      }
+
+      /*
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        overflow-x: hidden;
+      }
+        */
+
+      body {
+        margin: 0;
+        padding: 40px 40px;
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        background-image: radial-gradient(#c9c9c9 0.8px, transparent 0.8px);
+        background-size: 22px 22px;
+        overflow-x: hidden;
+      }
+
+      .titulo-img {
+        display: block;
+        width: auto;
+        height: 40px;
+        object-fit: contain;
+        margin: -25px auto 70px;
+      }
+
+      .menu {
+        position: absolute;
+        top: 25px;
+        right: 40px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 100;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: #222;
+        font-size: 16px;
+        padding: 8px 16px;
+        border-radius: 30px;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+
+      .menu a:hover {
+        background: rgb(34, 35, 36);
+        color: white;
+      }
+
+      .menu a.active {
+        background: black;
+        color: white;
+      }
+
+      .menu img {
+        width: 18px;
+        height: 18px;
+        transition: filter 0.3s;
+      }
+
+      .menu a:hover img {
+        filter: brightness(0) invert(1);
+      }
+
+      /* COLLAGE */
+
+      .contenedor {
+        position: relative;
+        width: 100%;
+        height: 800px;
+        margin-top: 40px;
+      }
+
+      .tarjeta {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+        cursor: none;
+        transition:
+          transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.4s ease;
+        animation: flotar 5s ease-in-out infinite;
+        will-change: transform;
+      }
+
+      .tarjeta:nth-child(2) {
+        animation-delay: -1s;
+      }
+
+      .tarjeta:nth-child(3) {
+        animation-delay: -2s;
+      }
+
+      .tarjeta:nth-child(4) {
+        animation-delay: -3s;
+      }
+
+      .tarjeta:nth-child(5) {
+        animation-delay: -1.5s;
+      }
+
+      .tarjeta:nth-child(6) {
+        animation-delay: -2.5s;
+      }
+
+      @keyframes flotar {
+        0%,
+        100% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 -7px;
+        }
+      }
+
+      .tarjeta img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.6s ease;
+      }
+
+      .tarjeta::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.25);
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+      }
+
+      /* MARCAS DE ENFOQUE */
+
+      .tarjeta {
+        overflow: visible;
+      }
+
+      .tarjeta img {
+        position: relative;
+        z-index: 1;
+        clip-path: inset(0);
+      }
+
+      .tarjeta::before {
+        content: "";
+        position: absolute;
+        inset: -15px;
+        z-index: 5;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        background:
+          linear-gradient(#222, #222) top left,
+          linear-gradient(#222, #222) top left,
+          linear-gradient(#222, #222) top right,
+          linear-gradient(#222, #222) top right,
+          linear-gradient(#222, #222) bottom left,
+          linear-gradient(#222, #222) bottom left,
+          linear-gradient(#222, #222) bottom right,
+          linear-gradient(#222, #222) bottom right;
+
+        background-size:
+          16px 2px,
+          2px 16px,
+          16px 2px,
+          2px 16px,
+          16px 2px,
+          2px 16px,
+          16px 2px,
+          2px 16px;
+
+        background-repeat: no-repeat;
+      }
+
+      .tarjeta:hover::before {
+        opacity: 1;
+      }
+
+      .tarjeta:hover {
+        z-index: 20;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        transform: scale(1.15) rotate(-3deg);
+      }
+
+      .tarjeta:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.08);
+      }
+
+      .tarjeta:hover::after {
+        opacity: 1;
+      }
+
+      .texto-card {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        z-index: 2;
+        color: #222;
+        font-size: 24px;
+        font-weight: bold;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: all 0.3s ease;
+      }
+
+      .tarjeta:hover .texto-card {
+        display: none;
+      }
+
+      /* CURSOR */
+
+      .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        background: black;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.25s,
+          height 0.25s,
+          background 0.25s;
+      }
+
+      .trail {
+        position: fixed;
+        width: 7px;
+        height: 7px;
+        background: #222;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        animation: desaparecer 0.6s ease-out forwards;
+      }
+
+      @keyframes desaparecer {
+        0% {
+          opacity: 0.6;
+          scale: 1;
+        }
+        100% {
+          opacity: 0;
+          scale: 0;
+        }
+      }
+
+      .cursor.activo {
+        width: 65px;
+        height: 65px;
+        background: black;
+      }
+
+      .cursor.footer-hover {
+        background: white;
+      }
+
+      .cursor-text {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background: black;
+        color: white;
+        padding: 9px 13px;
+        border-radius: 30px;
+        font-size: 10px;
+        letter-spacing: 1px;
+        opacity: 0;
+        z-index: 10000;
+        white-space: nowrap;
+        transform: translate(15px, 15px);
+        transition: opacity 0.2s;
+      }
+
+      .cursor-text.visible {
+        opacity: 1;
+      }
+
+      .cursor-text.copiado {
+        opacity: 1;
+      }
+
+      .intro {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .intro > * {
+        margin-left: 0;
+      }
+
+      .titulo-grande {
+        font-size: clamp(45px, 9vw, 130px);
+        font-weight: bold;
+        line-height: 0.9;
+        margin: 0 0 25px 0;
+        padding: 0;
+        text-align: left;
+        letter-spacing: -2px;
+        position: relative;
+        left: 0;
+        transform: none;
+        align-self: flex-start;
+        margin-left: -5px;
+      }
+
+      .descripcion {
+        font-size: 24px;
+        line-height: 1.5;
+        font-weight: normal;
+        color: black;
+        margin: 0 0 18px;
+        max-width: 620px;
+      }
+
+      /* EMAIL */
+
+      .email-copy {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: none;
+        background: transparent;
+        color: #222;
+        padding: 8px 12px;
+        margin-left: -12px;
+        border-radius: 30px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        cursor: none;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+
+      .email-copy:hover {
+        background: black;
+        color: white;
+      }
+
+      .email-copy img {
+        width: 13px;
+        height: 13px;
+        object-fit: contain;
+        transition: filter 0.3s;
+      }
+
+      .email-copy:hover img {
+        filter: brightness(0) invert(1);
+      }
+
+      .copy-feedback {
+        display: none;
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .email-copy.copiado .copy-feedback {
+        display: inline;
+      }
+
+      @media (max-width: 700px) {
+        body {
+          padding: 80px 15px 30px;
+        }
+
+        .contenedor {
+          height: 900px;
+        }
+
+        .tarjeta {
+          width: 105px;
+          height: 105px;
+        }
+
+        .menu {
+          right: 15px;
+          top: 20px;
+        }
+
+        .descripcion {
+          font-size: 14px;
+        }
+        .titulo-grande {
+          letter-spacing: -2px;
+        }
+
+        .fun-link {
+          margin-top: 10px;
+          font-size: 12px;
+          padding: 10px 18px;
+        }
+
+        .fun-preview {
+          transform: translateX(-50%) scale(0.7);
+          transform-origin: bottom center;
+        }
+
+        .fun-wrapper:hover .fun-preview img {
+          opacity: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .tarjeta {
+          animation: none;
+          transition: none;
+        }
+      }
+
+      body {
+        padding-bottom: 0;
+      }
+
+      body {
+        padding-bottom: 0;
+      }
+
+      /* FUN PROJECTS */
+
+      .fun-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: fit-content;
+        margin: 32px auto 0;
+        margin-bottom: 80px;
+        padding: 12px 22px;
+        border: 1px solid #222;
+        border-radius: 40px;
+        color: #222;
+        text-decoration: none;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .fun-link:hover {
+        background: black;
+        color: white;
+        transform: translateY(-4px);
+      }
+
+      .fun-link:hover img {
+        filter: brightness(0) invert(1);
+      }
+
+      .typing-cursor {
+        display: inline-block;
+        font-weight: normal;
+        margin-left: 3px;
+        animation: parpadear 0.7s steps(1) infinite;
+      }
+
+      .cursor-subtitulo {
+        font-size: 18px;
+        margin-left: 2px;
+      }
+
+      @keyframes parpadear {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .footer-links {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        right: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        z-index: 5;
+      }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 11px;
+      }
+
+      .footer-heading {
+        margin-bottom: 7px;
+        color: #ffffff;
+        font-size: 16px;
+      }
+
+      .footer-col a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+
+      .footer-col a:hover {
+        transform: translateX(4px);
+      }
+
+      .footer-bottom {
+        position: absolute;
+        left: 40px;
+        right: 40px;
+        bottom: 20px;
+        z-index: 5;
+        font-size: 14px;
+      }
+
+      footer {
+        position: relative;
+        width: 100vw;
+        height: 280px;
+        margin: 120px 0 -40px;
+        margin-left: calc(50% - 50vw);
+        padding: 0;
+        background: #000000;
+        color: #ffffff;
+        overflow: hidden;
+      }
+
+      /* HOVER ESPECIAL CARD 2 */
+
+      .tarjeta:nth-child(2):hover {
+        transform: scale(1.15) rotate(-3deg);
+        box-shadow: none;
+      }
+
+      .tarjeta:nth-child(2):hover img {
+        transform: scale(1);
+      }
+
+      .tarjeta:nth-child(2)::after {
+        display: none;
+      }
+
+      .tarjeta:nth-child(2) .texto-card {
+        display: none;
+      }
+
+      /* FUN PROJECTS PREVIEW */
+
+      .fun-wrapper {
+        position: relative;
+        width: fit-content;
+        margin: 10px auto 100px;
+        isolation: isolate;
+      }
+
+      .fun-link {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+      }
+
+      .fun-preview {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        width: 380px;
+        height: 190px;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .fun-preview img {
+        position: absolute;
+        width: 85px;
+        height: 85px;
+        object-fit: cover;
+        border-radius: 3px;
+        opacity: 0;
+        transform: translateY(35px) scale(0.7) rotate(0deg);
+        transition:
+          opacity 0.4s ease,
+          transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      /* POSICIÓN DE LAS IMÁGENES */
+
+      .preview-1 {
+        left: 5px;
+        bottom: 0;
+        rotate: -12deg;
+      }
+
+      .preview-2 {
+        left: 85px;
+        bottom: 45px;
+        rotate: 8deg;
+      }
+
+      .preview-3 {
+        left: 165px;
+        bottom: 65px;
+        rotate: -6deg;
+      }
+
+      .preview-4 {
+        left: 245px;
+        bottom: 35px;
+        rotate: 12deg;
+      }
+
+      .preview-5 {
+        left: 300px;
+        bottom: -5px;
+        rotate: -10deg;
+      }
+
+      /* APARICIÓN AL HACER HOVER */
+
+      .fun-wrapper:hover .fun-preview img {
+        opacity: 1;
+      }
+
+      .fun-wrapper:hover .preview-1 {
+        transform: translateY(0) scale(1) rotate(-12deg);
+      }
+
+      .fun-wrapper:hover .preview-2 {
+        transform: translateY(0) scale(1) rotate(8deg);
+      }
+
+      .fun-wrapper:hover .preview-3 {
+        transform: translateY(0) scale(1) rotate(-6deg);
+      }
+
+      .fun-wrapper:hover .preview-4 {
+        transform: translateY(0) scale(1) rotate(12deg);
+      }
+
+      .fun-wrapper:hover .preview-5 {
+        transform: translateY(0) scale(1) rotate(-10deg);
+      }
+
+      .footer-art pre {
+        font-family: monospace;
+        font-size: 7px;
+        line-height: 1;
+        color: #ffffff;
+        white-space: pre;
+        clip-path: inset(0 0 100% 0);
+        animation: crecerPalmera 3s ease-out forwards;
+      }
+
+      .footer-art .blink {
+        animation: randomBlink var(--duration) ease-in-out infinite;
+        animation-delay: var(--delay);
+        animation-play-state: paused;
+      }
+
+      @keyframes crecerPalmera {
+        to {
+          clip-path: inset(0);
+        }
+      }
+
+      @keyframes randomBlink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="menu">
+      <a href="work.html" class="active">Work</a>
+      <a href="about.html">About</a>
+
+      <a href="https://www.instagram.com/luciarodriguezcn/" target="_blank">
+        <img src="img/instagram2.png" alt="Instagram" />
+      </a>
+
+      <a
+        href="www.linkedin.com/in/lucía-rodríguez-cuenca-621636332"
+        target="_blank"
+      >
+        <img src="img/linkedin.png" alt="LinkedIn" />
+      </a>
+    </div>
+
+    <div class="intro">
+      <h2 class="titulo-grande">
+        <span id="texto-escrito"></span
+        ><span class="typing-cursor" id="cursor-titulo">|</span>
+      </h2>
+
+      <p class="descripcion">
+        <span id="texto-subtitulo"></span
+        ><span class="typing-cursor cursor-subtitulo">|</span>
+      </p>
+
+      <button class="email-copy" onclick="copiarEmail()">
+        <span>hola@luciarodriguezcn.com</span>
+        <img src="img/copy.png" alt="Copy email" />
+        <span class="copy-feedback">COPIED!</span>
+      </button>
+    </div>
+
+    <div class="contenedor">
+      <a
+        href=""
+        class="tarjeta proximamente"
+        style="top: 5%; left: 10%; width: 220px; height: 130px"
+      >
+        <img src="img/16.jpg" alt="Lo que se queda" />
+        <span class="texto-card">01_</span>
+      </a>
+
+      <div
+        class="tarjeta proximamente"
+        style="top: 20%; left: 40%"
+        onclick="mostrar(2)"
+      >
+        <img src="img/6.6.png" alt="Proyecto 2" />
+        <span class="texto-card">02_</span>
+      </div>
+
+      <div
+        class="tarjeta proximamente"
+        style="top: 10%; left: 75%"
+        onclick="mostrar(6)"
+      >
+        <img src="img/1.22.jpg" alt="Proyecto 3" />
+        <span class="texto-card">03_</span>
+      </div>
+
+      <div
+        class="tarjeta proximamente"
+        style="top: 55%; left: 20%"
+        onclick="mostrar(4)"
+      >
+        <img src="img/27.png" alt="Proyecto 4" />
+        <span class="texto-card">04_</span>
+      </div>
+
+      <div
+        class="tarjeta proximamente"
+        style="top: 65%; left: 55%; width: 220px; height: 130px"
+        onclick="mostrar(5)"
+      >
+        <img src="img/3.jpeg" alt="Proyecto 5" />
+        <span class="texto-card">05_</span>
+      </div>
+
+      <div
+        class="tarjeta proximamente"
+        style="top: 45%; left: 80%; width: 220px; height: 130px"
+        onclick="mostrar(3)"
+      >
+        <img src="img/3.png" alt="Proyecto 6" />
+        <span class="texto-card">06_</span>
+      </div>
+    </div>
+
+    <div class="fun-wrapper">
+      <div class="fun-preview">
+        <img src="img/1.jpg" class="preview-1" alt="" />
+        <img src="img/6.6.png" class="preview-2" alt="" />
+        <img
+          src="img/Gemini_Generated_Image_6cndgg6cndgg6cnd.jpg"
+          class="preview-3"
+          alt=""
+        />
+        <img src="img/6.png" class="preview-4" alt="" />
+        <img src="img/333.png" class="preview-5" alt="" />
+      </div>
+
+      <a href="fun.html" class="fun-link">
+        <span>fun projects</span>
+        <img
+          src="img/square-arrow-up-right-exit.png"
+          class="link-icon"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="cursor"></div>
+
+    <div class="cursor-text">
+      <span class="cursor-label">VIEW PROJECT</span>
+      <svg
+        class="cursor-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="13"
+        height="13"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+        <path d="m21 3-9 9" />
+        <path d="M15 3h6v6" />
+      </svg>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="footer-heading">EXPLORE</span>
+          <a href="work.html">Work ↗</a>
+          <a href="about.html">About ↗</a>
+          <a href="fun.html">Secret stuff ↗</a>
+        </div>
+
+        <div class="footer-art">
+          <pre>
+         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⣠⢤⡤⡤⠤⣤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢾⣥⢻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⡱⣆⠤⡁⢎⡡⢵⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠆⣾⠸⣿⡎⢿⣿⣶⡀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⡿⢘⣠⠞⡧⣙⠤⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⢸⢿⡇⣿⣿⡘⣿⣿⣿⡀⠀⠀⠀⠀⢠⣼⣿⣿⣿⣿⡿⣃⣿⠣⢤⣤⢛⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⢥⣃⣏⣷⡜⣿⣧⠹⣿⣿⣿⡄⠀⠀⣴⣿⣿⣿⣿⣿⣯⢾⣿⣿⣾⡿⠶⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠵⣣⣟⣼⣷⣻⠸⣿⣦⠹⣿⣿⣿⡄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠭⣘⠻⣿⣧⣿⣾⣧⠘⣿⡿⣹⣽⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⡧⣼⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠤⡤⢤⠶⡤⣆⣤⡀⡄⠀⠀⠀⠈⠐⠃⢈⠻⢿⣿⣿⡇⠘⡍⡷⢘⣿⣌⡄⠀⣼⣿⣿⣿⣿⣿⡗⠺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠰⠀⣀⠦⣑⢦⡙⡲⢍⡶⣋⠶⣡⠞⡝⢯⢷⣞⣶⢠⠀⠀⠀⠠⠀⠙⢿⡝⡄⡇⢱⢸⡏⢸⠆⢸⡟⣿⣿⣿⣿⣿⣟⠥⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠆⠀⠌⡄⡙⡘⠎⢷⡩⢏⠶⣩⠳⣡⠛⢬⢣⡍⠺⢞⢇⣾⠿⠆⠀⢎⡀⡄⠙⢡⣎⠞⡘⢿⡐⢀⡟⣲⢻⣿⣿⣿⣿⣏⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠈⠀⢂⠌⡑⢹⣛⢦⠹⢜⡲⡡⠜⡤⢃⠀⠁⠺⢑⢪⣌⢋⣄⠀⠡⠈⠳⣦⠅⠀⠻⡆⠇⣾⡄⢸⠘⢰⣼⣿⣿⣿⡟⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠠⠂⠍⢢⠘⢎⠵⢢⠔⣉⡘⠔⠫⠜⢦⠠⡄⢌⠂⠳⣎⠷⣄⡀⠀⠀⠙⣆⠐⣿⡆⣿⠀⡧⠰⣟⣿⣻⣿⡟⠑⠀⢀⡀⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡄⠉⠎⡔⢃⠎⡱⠌⣙⠒⡆⣆⠀⠈⠃⠙⠀⠙⢼⣉⠷⢦⡐⠢⡘⢆⠙⢿⣿⠐⣱⠿⣀⣡⡶⠇⠀⢀⡐⣤⣻⣽⣯⣿⣶⣥⡄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⡴⢠⢈⡐⠡⠒⠤⡈⢄⡘⢀⠀⠆⡡⠤⣀⣄⠰⠬⠡⢙⡳⢾⣮⣡⢌⠻⠀⡿⠙⡳⢃⠉⠀⠀⠈⣁⢋⠟⡻⠿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠲⢤⠓⣌⠲⠤⣄⣈⢂⠒⡌⢰⡐⠤⡈⢍⡛⡫⢭⣍⣓⢾⣿⣝⢷⠤⠀⠀⠀⠤⢒⡈⣋⢛⡒⠾⠶⣴⣦⣀⡈⠍⠛⢿⣿⣽⢦⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠚⠥⡳⡄⣙⢪⣝⠺⣧⢟⣷⡾⣧⣱⣦⠚⢀⣉⣓⣊⡙⣻⣆⠒⠄⡀⠈⢆⢳⡸⢯⣿⣿⣷⣶⣬⣙⣛⠻⢦⣤⣌⠛⣯⠓⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣀⠃⠮⢣⡹⢦⣛⠶⠛⠋⠀⢠⣳⡿⠟⠉⡼⢳⢌⡃⠌⠐⠀⠀⠎⠳⡛⠿⠛⡟⠿⠻⠿⢶⣻⠰⢦⡻⣝⢠⠏⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠄⢢⠐⠈⠄⠀⢄⠠⠀⢀⠀⡔⢁⠣⢃⠁⡐⢨⠑⡱⢊⠔⠈⠀⠀⢠⡈⡆⢁⣤⠡⠄⠄⠆⢁⡂⠰⠨⣥⢛⠬⡣⠍⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢂⠔⠈⣠⢮⡑⠊⠁⠈⠀⡠⠂⣸⠁⠨⠑⡂⢌⠀⢄⢣⣿⢨⠀⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠋⠺⠥⠃⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⢡⡞⣨⣾⣿⡗⠈⠁⠄⡡⢐⡁⢀⡏⣘⠀⢰⢁⡂⠀⣺⣼⣵⡎⠡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⢡⡗⣰⣿⣿⣿⣼⣷⡏⣄⠣⢠⠂⢸⣷⣿⡀⣿⡘⢇⢲⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⡟⣰⣿⣿⣿⣿⣿⡿⣟⡽⡂⠧⠀⣾⣿⣿⡟⣿⡇⣾⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡧⢁⣿⡟⣽⣿⣿⣿⡿⣉⡴⠳⠀⠀⣿⣿⣿⣧⢻⣇⢿⢾⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢻⡼⣽⣿⣿⣿⡿⠓⠈⠀⠀⠀⠀⢸⡟⢿⣿⣟⣿⣷⡌⢹⣿⣿⢿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠻⣜⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠘⣿⣼⣿⣿⡿⣽⣷⠀⡟⢿⣽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢣⡝⣿⣷⣿⣿⣧⠙⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠭⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢾⣿⣿⣷⣿⣿⡄⣻⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠌⠛⠿⡏⠙⠁⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  </pre
+          >
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">SAY HELLO</span>
+          <a href="mailto:hola@luciarc.com">Email ↗</a>
+          <a
+            href="www.linkedin.com/in/lucía-rodríguez-cuenca-621636332
+
+"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn ↗</a
+          >
+          <a
+            href="https://www.instagram.com/luciarodriguezcn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram ↗</a
+          >
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Lucía Rodríguez&emsp;© 2026 </span>
+      </div>
+    </footer>
+
+    <script>
+      // EFECTO DE ESCRITURA
+      const texto = "Hi, I'm Lucía.";
+      const subtitulo =
+        "I'm a multidisciplinary designer passionate about product design, communication and digital experiences.";
+
+      const elementoTexto = document.getElementById("texto-escrito");
+      const elementoSubtitulo = document.getElementById("texto-subtitulo");
+
+      let letra = 0;
+      let letraSubtitulo = 0;
+
+      function escribirTexto() {
+        if (letra < texto.length) {
+          elementoTexto.textContent += texto.charAt(letra);
+          letra++;
+          setTimeout(escribirTexto, 120);
+        } else {
+          document.getElementById("cursor-titulo").style.display = "none";
+          escribirSubtitulo();
+        }
+      }
+
+      function escribirSubtitulo() {
+        if (letraSubtitulo < subtitulo.length) {
+          elementoSubtitulo.textContent += subtitulo.charAt(letraSubtitulo);
+          letraSubtitulo++;
+          setTimeout(escribirSubtitulo, 35);
+        }
+      }
+
+      window.addEventListener("load", escribirTexto);
+
+      // ELEMENTOS DEL CURSOR
+      const cursor = document.querySelector(".cursor");
+      const cursorText = document.querySelector(".cursor-text");
+      const cursorLabel = document.querySelector(".cursor-label");
+      const cursorIcon = document.querySelector(".cursor-icon");
+      const tarjetas = document.querySelectorAll(".tarjeta");
+      const footer = document.querySelector("footer");
+
+      // MOVIMIENTO DEL CURSOR Y ESTELA
+      let ultimoTrail = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        cursorText.style.left = e.clientX + "px";
+        cursorText.style.top = e.clientY + "px";
+
+        const ahora = Date.now();
+
+        if (ahora - ultimoTrail >= 25) {
+          ultimoTrail = ahora;
+
+          const punto = document.createElement("div");
+          punto.className = "trail";
+          punto.style.left = e.clientX + "px";
+          punto.style.top = e.clientY + "px";
+
+          if (footer.matches(":hover")) {
+            punto.style.background = "white";
+          }
+
+          document.body.appendChild(punto);
+
+          setTimeout(() => punto.remove(), 600);
+        }
+      });
+
+      // TARJETAS: COMING SOON O VIEW PROJECT
+      tarjetas.forEach((tarjeta) => {
+        tarjeta.addEventListener("mouseenter", () => {
+          cursor.classList.add("activo");
+          cursorText.classList.add("visible");
+
+          if (tarjeta.classList.contains("proximamente")) {
+            cursorLabel.textContent = "COMING SOON";
+            cursorIcon.style.display = "none";
+          } else {
+            cursorLabel.textContent = "VIEW PROJECT";
+            cursorIcon.style.display = "";
+          }
+        });
+
+        tarjeta.addEventListener("mouseleave", () => {
+          cursor.classList.remove("activo");
+          cursorText.classList.remove("visible");
+          cursorLabel.textContent = "VIEW PROJECT";
+          cursorIcon.style.display = "";
+        });
+      });
+
+      // TODOS LOS ENLACES MENOS LOS DE REDES SOCIALES
+      const enlaces = document.querySelectorAll(
+        'a:not([href*="instagram.com"]):not([href*="linkedin.com"]):not(.tarjeta)',
+      );
+
+      enlaces.forEach((enlace) => {
+        enlace.addEventListener("mouseenter", () => {
+          cursor.classList.add("activo");
+          cursorText.classList.add("visible");
+          cursorLabel.textContent = "COMING SOON";
+          cursorIcon.style.display = "none";
+        });
+
+        enlace.addEventListener("mouseleave", () => {
+          cursor.classList.remove("activo");
+          cursorText.classList.remove("visible");
+          cursorLabel.textContent = "VIEW PROJECT";
+          cursorIcon.style.display = "";
+        });
+      });
+
+      // COPIAR EMAIL
+      let timeoutCopiado;
+
+      async function copiarEmail() {
+        const email = "hola@luciarc.com";
+
+        try {
+          await navigator.clipboard.writeText(email);
+
+          clearTimeout(timeoutCopiado);
+
+          cursor.classList.add("activo");
+          cursorText.classList.add("visible", "copiado");
+          cursorLabel.textContent = "COPIED!";
+          cursorIcon.style.display = "none";
+
+          timeoutCopiado = setTimeout(() => {
+            cursorText.classList.remove("copiado");
+            cursorLabel.textContent = "VIEW PROJECT";
+            cursorIcon.style.display = "";
+
+            if (!document.querySelector(".tarjeta:hover")) {
+              cursor.classList.remove("activo");
+              cursorText.classList.remove("visible");
+            }
+          }, 1500);
+        } catch (error) {
+          console.error("No se ha podido copiar el email", error);
+        }
+      }
+
+      // HOVER DEL FOOTER
+      footer.addEventListener("mouseenter", () => {
+        cursor.classList.add("footer-hover");
+      });
+
+      footer.addEventListener("mouseleave", () => {
+        cursor.classList.remove("footer-hover");
+      });
+
+      // ANIMACIÓN DE LA ILUSTRACIÓN DEL FOOTER
+      const dibujo = document.querySelector(".footer-art pre");
+      const textoOriginal = dibujo.textContent;
+
+      dibujo.innerHTML = "";
+
+      [...textoOriginal].forEach((caracter) => {
+        if (caracter.trim() !== "" && Math.random() < 0.12) {
+          const span = document.createElement("span");
+          span.classList.add("blink");
+
+          span.style.setProperty("--duration", `${0.5 + Math.random() * 1.5}s`);
+
+          span.style.setProperty("--delay", `${Math.random() * 2}s`);
+
+          span.textContent = caracter;
+          dibujo.appendChild(span);
+        } else {
+          dibujo.appendChild(document.createTextNode(caracter));
+        }
+      });
+
+      dibujo.addEventListener("animationend", (e) => {
+        if (e.animationName === "crecerPalmera") {
+          dibujo.querySelectorAll(".blink").forEach((elemento) => {
+            elemento.style.animationPlayState = "running";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
