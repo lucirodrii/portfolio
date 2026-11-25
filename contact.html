@@ -1,299 +1,326 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto · Lucía Rodríguez</title>
-    <link rel="icon" href="../images/1.png" type="image/png">
-
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact me</title>
+    <link rel="icon" href="img/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      :root {
+        --page-bg: #ffffff;
+        --ink: #222;
+        --gutter: clamp(10px, 1.5vw, 24px);
+      }
 
-        :root {
-            --font: 'Courier Prime', monospace;
-            --bg-color: #abbfd3; /*bddbfa*/
-            /* azul oscuro */
-            --text-color: black;
-            /* blanco */
-            --link-hover: #e97d25;
-            /* azul claro al hover */
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: var(--font);
-            background: var(--bg-color);
-            color: var(--text-color);
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        /* LAYOUT */
-        .page {
-            display: grid;
-            min-height: 100vh;
-        }
+      body {
+        margin: 0;
+        padding: 38px var(--gutter) 0;
+        overflow-x: hidden;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-size: 15pt;
+      }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 400px;
-            padding: 40px 40px;
-            grid-column: 1;
-            /* espacio interno uniforme */
-        }
+      a {
+        color: inherit;
+      }
 
-        .site-name a {
-            display: block;
-            /* ocupa todo el ancho disponible */
-            font-size: 16pt;
-            text-decoration: none;
-            color: var(--text-color);
-            margin-bottom: 40px;
-            /* separa del nav */
-        }
-
-        .site-name a:hover {
-            color: var(--link-hover);
-        }
-
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        nav a {
-            display: block;
-            /* ocupa todo el ancho del sidebar */
-            font-size: 14pt;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        nav a:hover,
-        .site-name a:hover {
-            color: var(--link-hover);
-        }
-
-        /* MAIN */
-        .main {
-            flex: 1;
-            padding: 0px 40px;
-            position: relative;
-        }
-
-        /* TEXTO */
-        .contact-block {
-            max-width: 520px;
-        }
-
-        .contact-title {
-            font-size: 82pt;
-            text-align: right;
-            position: absolute;
-            bottom: 10px;
-            /* distancia desde abajo */
-            right: 40px;
-            /* distancia desde la derecha */
-        }
-
-        .contact-content {
-            margin-top: -80px;
-        }
-
-        .contact-text {
-            font-size: 14pt;
-            color: var(--text-color);
-        }
-
-        /* EMAIL */
-        .email a {
-            font-size: 12pt;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: color 0.3s;
-            text-align: left;
-        }
-
-        .email a:hover {
-            color: var(--link-hover);
-        }
-
-        .sidebar {
-            width: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            /* empuja el footer abajo */
-            padding: 40px;
-            height: 100vh;
-            /* ocupa toda la altura */
-        }
-
-        .sidebar-footer {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            /* alineado a la izquierda */
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .sidebar-footer .copyright {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            /* alineado a la izquierda */
-            gap: 8px;
-            font-size: 8.9pt;
-        }
-
-        .sidebar-footer a {
-            color: black;
-            /* negro */
-            text-decoration: none;
-            /* sin subrayado */
-            font-family: var(--font);
-        }
-
-        .sidebar-footer a:hover {
-            color: var(--link-hover);
-            /* color al pasar el mouse */
-        }
-
-        .sidebar-divider {
-            width: 156px;
-            height: 1px;
-            background: #111;
-        }
-
-@media (min-width: 769px) {
-    footer.sidebar-footer {
-        display: none; /* oculto en escritorio */
-    }
-}
-
-
-        @media (max-width: 768px) {
-
-     
-     .page {
-        flex-direction: column; /* apila sidebar y main */
-    }
-
-     .sidebar {
-        width: 100%;
-        padding: 20px;
+      a:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 4px;
+      }
+      /* HEADER */
+      .logo {
+        position: fixed;
+        top: 24px;
+        left: var(--gutter);
+        z-index: 100;
+        display: block;
+        width: 200px;
         height: auto;
-        justify-content: flex-start;
-    }
-    
-    nav {
-        margin-top: -15px; /* reduce el espacio sobre los enlaces */
-    }
+      }
 
-    .main {
+      .logo img {
+        display: block;
         width: 100%;
-        padding: 40px 20px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .menu {
+        position: fixed;
+        top: 25px;
+        right: var(--gutter);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 100;
+      }
+
+      .menu a:nth-child(4) {
+        margin-left: 25px;
+      }
+
+      .menu a {
+        position: relative;
+        text-decoration: none;
+        color: #222;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 8px 10px;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .menu a:nth-child(5) {
+        margin-left: 12px;
+      }
+
+      .menu a:has(img) {
+        padding: 8px 0;
+      }
+
+      .menu img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .menu.sobre-imagen a {
+        color: white;
+      }
+
+      .menu.sobre-imagen .menu-line {
+        background: white;
+      }
+
+      .menu.sobre-imagen img,
+      .logo.sobre-imagen img {
+        filter: brightness(0) invert(1);
+      }
+
+      /* MÓVIL */
+      @media (max-width: 600px) {
+        .logo {
+          width: 90px;
+          top: 26px;
+        }
+
+        .menu {
+          top: 20px;
+          right: 18px;
+        }
+      }
+
+      /* FOTO CENTRAL */
+      .foto-central {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 85vh;
+        padding: 100px 20px 60px;
+      }
+
+      .foto-con-texto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+      }
+
+      .foto-con-texto img {
+        display: block;
+        width: 240px;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+
+      .foto-texto {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: "Poppins", sans-serif;
+        line-height: 1.8;
+      }
+
+      /* ENLACES DEL TEXTO */
+      .foto-texto a {
+        color: black;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.25s ease;
+      }
+
+      /* FOOTER */
+      footer {
+        position: relative;
+        width: 100vw;
+        min-height: 280px;
+        margin-left: calc(50% - 50vw);
+        overflow: hidden;
+        background: black;
+        color: white;
+      }
+
+      .footer-links {
+        position: absolute;
+        top: 38px;
+        left: clamp(30px, 3vw, 110px);
+        right: clamp(30px, 3vw, 110px);
+        z-index: 5;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .footer-col {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        text-align: left;
-    }
+        gap: 11px;
+      }
 
-    .contact-title {
-        position: static !important;
-        font-size: 32pt;
-        margin-bottom: 20px;
-        text-align: left !important;
-    }
+      .footer-heading {
+        margin-bottom: 7px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+      }
 
-    .contact-text,
-    .email {
-        position: static !important;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 10px;
-        font-size: 11pt;
-    }
+      .footer-col a {
+        color: white;
+        font-size: 15px;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+      }
 
-    .email a {
-    position: static !important;
-    right: auto;
-    bottom: auto;
-    display: block;
-}
+      .footer-col a:hover {
+        color: #396ebe;
+      }
 
-       .sidebar-footer {
-        order: 1; /* para que se muestre después del main */
-        width: 100%;
-        margin-top: 20px;
-        align-items: flex-start;
-    }
-
-        footer.sidebar-footer {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-    }
-
-      
-}
-
+      .footer-bottom {
+        position: absolute;
+        left: clamp(30px, 3vw, 110px);
+        bottom: 18px;
+        font-size: 14px;
+      }
     </style>
-</head>
+  </head>
+  <body>
+    <a href="work.html" class="logo">
+      <img src="img/lucíarodríguez.png" alt="Logo de Lucía Rodríguez" />
+    </a>
 
-<body>
+    <!-- MENU -->
+    <div class="menu">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
 
-    <div class="page">
+      <a
+        href="https://www.instagram.com/luciarodriguezcn/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="img/instagram2.png" alt="Instagram" />
+      </a>
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="sidebar-top">
-                <div class="site-name">
-                    <a href="index.html">Lucía Rodríguez</a>
-                </div>
-
-                <nav>
-                    <a href="index.html">Trabajos</a>
-                    <a href="about-me.html">Sobre mí</a>
-                    <a href="contact.html">Contacto</a>
-                </nav>
-            </div>
-
-        </aside>
-
-        <!-- MAIN -->
-        <main class="main">
-
-    <div class="contact-content">
-  <div class="contact-block">
-                <div class="contact-title">Hey!<br>let's talk</div>
-            </div>
-            <div class="contact-text">CONTACTO</div>
-            <div class="email"><a href="mailto:luciarodriguezcn.com">luciarodriguezcn.com</a></div>
-      
-</div>
-        </main>
-
-
-    <!-- FOOTER (solo en móvil) -->
-    <footer class="sidebar-footer">
-        <a href="english/contact.html">EN</a>
-        <div class="sidebar-divider"></div>
-        <p class="copyright">© 2026 LUCÍA RODRÍGUEZ</p>
-    </footer>
-
+      <a
+        href="https://www.linkedin.com/in/lucia-rodriguez-cuenca-621636332/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="img/linkedin.png" alt="LinkedIn" />
+      </a>
     </div>
 
-</body>
+    <!-- FOTO CENTRAL -->
 
+    <main class="foto-central">
+      <div class="foto-con-texto">
+        <img src="img/icon.png" alt="Fotografía de Lucía" />
+
+        <p class="foto-texto">
+          Whether you want to work together or just say hi, feel free to reach
+          out at
+          <a href="mailto:luciarodriguezcn@gmail.com">
+            luciarodriguezcn@gmail.com </a
+          >, or find me on
+          <a
+            href="https://www.instagram.com/luciarodriguezcn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram</a
+          >
+          or
+          <a
+            href="https://www.linkedin.com/in/lucia-rodriguez-cuenca-621636332/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >.
+          <br />
+          <br />
+          Hope you have a lovely day!
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="footer-heading">EXPLORE</span>
+          <a href="work.html">Work ↗</a>
+          <a href="about.html">About ↗</a>
+          <a href="contact.html">Contact ↗</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">SAY HELLO</span>
+          <a href="mailto:luciarodriguezcn.com">Email ↗</a>
+          <a
+            href="https://www.linkedin.com/in/lucia-rodriguez-cuenca-621636332/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn ↗</a
+          >
+          <a
+            href="https://www.instagram.com/luciarodriguezcn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram ↗</a
+          >
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Lucía Rodríguez ©</span>
+      </div>
+    </footer>
+
+    <script></script>
+  </body>
 </html>
