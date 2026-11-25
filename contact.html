@@ -227,13 +227,113 @@
         bottom: 18px;
         font-size: 14px;
       }
+
+      /* BOTÓN HAMBURGUESA: OCULTO EN ESCRITORIO */
+      .menu-toggle {
+        display: none;
+      }
+
+      /* MENÚ DESPLEGABLE EN MÓVIL */
+      @media (max-width: 600px) {
+        .logo {
+          width: 90px;
+          top: 26px;
+          z-index: 110;
+        }
+
+        .menu-toggle {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 6px;
+          top: 22px;
+          right: 18px;
+          width: 38px;
+          height: 38px;
+          padding: 7px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          z-index: 120;
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: #222;
+          transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+        }
+
+        /* Animación a una X */
+        .menu-toggle.open span:first-child {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.open span:last-child {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Panel desplegable */
+        .menu {
+          display: none;
+          position: fixed;
+          top: 70px;
+          right: 0px;
+          left: 0px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 22px;
+          background: white;
+          z-index: 105;
+        }
+
+        .menu.open {
+          display: flex;
+        }
+
+        .menu a {
+          padding: 8px 0;
+          font-size: 16px;
+          color: #222;
+        }
+
+        .menu a:nth-child(4),
+        .menu a:nth-child(5) {
+          margin-left: 0;
+        }
+
+        .menu a:has(img) {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 0;
+        }
+
+        .menu img {
+          width: 20px;
+          height: 20px;
+        }
+      }
     </style>
   </head>
   <body>
     <a href="index.html" class="logo">
       <img src="images/lucíarodríguez.png" alt="Logo de Lucía Rodríguez" />
     </a>
-
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <!-- MENU -->
     <div class="menu">
       <a href="index.html">Work</a>
@@ -321,6 +421,30 @@
       </div>
     </footer>
 
-    <script></script>
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("open");
+
+        menuToggle.classList.toggle("open", isOpen);
+        menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Cerrar menú" : "Abrir menú",
+        );
+      });
+
+      // Cerrar el menú al seleccionar un enlace
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("open");
+          menuToggle.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Abrir menú");
+        });
+      });
+    </script>
   </body>
 </html>
