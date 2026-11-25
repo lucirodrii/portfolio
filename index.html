@@ -1,514 +1,410 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Work</title>
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <link rel="icon" href="images/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
+      :root {
+        --page-bg: #ffffff;
+        --ink: #222;
+        --gutter: clamp(10px, 1.5vw, 24px);
+      }
+
       * {
         box-sizing: border-box;
-        cursor: none;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 38px var(--gutter) 0;
+        overflow-x: hidden;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-size: 15pt;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 4px;
+      }
+
+      /* MENU */
       /*
-      body {
-        margin: 0;
-        padding: 40px 20px;
-        font-family: Arial, sans-serif;
-        background: #f2f2f2;
-        overflow-x: hidden;
-      }
-        */
+                  .menu {
+                    position: absolute;
+                    top: 24px;
+                    right: var(--gutter);
+                    z-index: 20;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                  }
 
-      body {
-        margin: 0;
-        padding: 40px 40px;
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-        background-image: radial-gradient(#c9c9c9 0.8px, transparent 0.8px);
-        background-size: 22px 22px;
-        overflow-x: hidden;
-      }
+                  .menu > a {
+                    display: grid;
+                    width: 28px;
+                    height: 36px;
+                    place-items: center;
+                  }
 
-      .titulo-img {
-        display: block;
-        width: auto;
-        height: 40px;
-        object-fit: contain;
-        margin: -25px auto 70px;
-      }
+                  .menu > a images {
+                    width: 18px;
+                    height: 18px;
+                  }
 
+                  .menu-pages {
+                    position: relative;
+                    display: flex;
+                    width: 152px;
+                    height: 36px;
+                    overflow: hidden;
+                    border: 1px solid var(--ink);
+                    border-radius: 30px;
+                  }
+
+                  .menu-pages a {
+                    position: relative;
+                    z-index: 2;
+                    display: flex;
+                    width: 76px;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--ink);
+                    font-size: 15px;
+                    text-decoration: none;
+                  }
+
+                  .menu-pages a.active {
+                    color: white;
+                  }
+
+                  .menu-slider {
+                    position: absolute;
+                    inset: 0 auto 0 0;
+                    z-index: 1;
+                    width: 76px;
+                    border-radius: 30px;
+                    background: black;
+                    transition: transform 0.3s ease;
+                  }
+
+                  .menu-pages.about-active .menu-slider {
+                    transform: translateX(100%);
+                  }
+                  */
+
+      /* MENU */
       .menu {
-        position: absolute;
+        position: fixed;
         top: 25px;
-        right: 40px;
+        right: var(--gutter);
         display: flex;
         align-items: center;
         gap: 10px;
         z-index: 100;
       }
 
+      .menu a:nth-child(4) {
+        margin-left: 25px;
+      }
+
+      /* Espacio entre los dos iconos */
+      .menu a:has(img) {
+        padding: 8px 5px;
+      }
+
       .menu a {
+        position: relative;
         text-decoration: none;
         color: #222;
         font-size: 16px;
-        padding: 8px 16px;
-        border-radius: 30px;
-        transition:
-          background 0.3s,
-          color 0.3s;
+        font-weight: 500;
+        padding: 8px 10px;
+        border-radius: 0;
+        background: transparent;
       }
 
-      .menu a:hover {
-        background: rgb(34, 35, 36);
-        color: white;
+      .menu a:nth-child(5) {
+        margin-left: 12px;
       }
 
-      .menu a.active {
-        background: black;
-        color: white;
+      /* Iconos */
+      .menu a:has(img) {
+        padding: 8px 0px;
       }
 
       .menu img {
         width: 18px;
         height: 18px;
-        transition: filter 0.3s;
       }
 
-      .menu a:hover img {
-        filter: brightness(0) invert(1);
-      }
-
-      /* COLLAGE */
-
+      /* PROJECT GRID */
+      /* PROJECT GRID */
       .contenedor {
-        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: dense;
+        grid-auto-rows: 240px;
+        gap: 16px;
         width: 100%;
-        height: 800px;
-        margin-top: 40px;
+        margin: 42px auto 120px;
       }
 
       .tarjeta {
-        position: absolute;
-        width: 140px;
-        height: 140px;
-        overflow: hidden;
-        cursor: none;
-        transition:
-          transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-          box-shadow 0.4s ease;
-        animation: flotar 5s ease-in-out infinite;
-        will-change: transform;
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+
+      /* Tamaños de las tarjetas */
+      .tarjeta:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 2;
       }
 
       .tarjeta:nth-child(2) {
-        animation-delay: -1s;
+        grid-column: span 1;
+        grid-row: span 3;
       }
 
       .tarjeta:nth-child(3) {
-        animation-delay: -2s;
+        grid-column: span 1;
+        grid-row: span 2;
       }
 
       .tarjeta:nth-child(4) {
-        animation-delay: -3s;
+        grid-column: span 1;
+        grid-row: span 2;
       }
 
       .tarjeta:nth-child(5) {
-        animation-delay: -1.5s;
+        grid-column: span 1;
+        grid-row: span 2;
       }
 
       .tarjeta:nth-child(6) {
-        animation-delay: -2.5s;
+        grid-column: span 1;
+        grid-row: span 2;
       }
 
-      @keyframes flotar {
-        0%,
-        100% {
-          translate: 0 0;
-        }
-        50% {
-          translate: 0 -7px;
-        }
+      /* IMÁGENES CON HOVER */
+      .imagen-card {
+        position: relative;
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        aspect-ratio: auto;
+        overflow: hidden;
       }
 
-      .tarjeta img {
-        display: block;
+      .imagen-card img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
-        transition: transform 0.6s ease;
+        transition: opacity 0.4s ease;
       }
 
-      .tarjeta::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.25);
+      .imagen-card .imagen-hover {
         opacity: 0;
-        transition: opacity 0.4s;
-        pointer-events: none;
       }
 
-      /* MARCAS DE ENFOQUE */
-
-      .tarjeta {
-        overflow: visible;
-      }
-
-      .tarjeta img {
-        position: relative;
-        z-index: 1;
-        clip-path: inset(0);
-      }
-
-      .tarjeta::before {
-        content: "";
-        position: absolute;
-        inset: -15px;
-        z-index: 5;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-
-        background:
-          linear-gradient(#222, #222) top left,
-          linear-gradient(#222, #222) top left,
-          linear-gradient(#222, #222) top right,
-          linear-gradient(#222, #222) top right,
-          linear-gradient(#222, #222) bottom left,
-          linear-gradient(#222, #222) bottom left,
-          linear-gradient(#222, #222) bottom right,
-          linear-gradient(#222, #222) bottom right;
-
-        background-size:
-          16px 2px,
-          2px 16px,
-          16px 2px,
-          2px 16px,
-          16px 2px,
-          2px 16px,
-          16px 2px,
-          2px 16px;
-
-        background-repeat: no-repeat;
-      }
-
-      .tarjeta:hover::before {
+      .tarjeta:hover .imagen-card .imagen-hover {
         opacity: 1;
       }
 
-      .tarjeta:hover {
-        z-index: 20;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-        transform: scale(1.15) rotate(-3deg);
+      .tarjeta:hover .imagen-card img:first-child {
+        opacity: 0;
       }
 
-      .tarjeta:hover img {
-        filter: grayscale(0%);
-        transform: scale(1.08);
+      /* BALANCEO DE LA IMAGEN HOVER - CARD 2 */
+      .tarjeta:nth-child(2) .imagen-hover {
+        transform-origin: center center;
       }
 
-      .tarjeta:hover::after {
-        opacity: 1;
+      .tarjeta:nth-child(2):hover .imagen-hover {
+        animation: balanceo 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes balanceo {
+        0% {
+          transform: rotate(-4deg);
+        }
+
+        100% {
+          transform: rotate(4deg);
+        }
       }
 
       .texto-card {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        z-index: 2;
-        color: #222;
-        font-size: 24px;
-        font-weight: bold;
-        opacity: 0;
-        transform: translateY(8px);
-        transition: all 0.3s ease;
-      }
-
-      .tarjeta:hover .texto-card {
-        display: none;
-      }
-
-      /* CURSOR */
-
-      .cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 18px;
-        height: 18px;
-        background: black;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.25s,
-          height 0.25s,
-          background 0.25s;
-      }
-
-      .trail {
-        position: fixed;
-        width: 7px;
-        height: 7px;
-        background: #222;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        animation: desaparecer 0.6s ease-out forwards;
-      }
-
-      @keyframes desaparecer {
-        0% {
-          opacity: 0.6;
-          scale: 1;
-        }
-        100% {
-          opacity: 0;
-          scale: 0;
-        }
-      }
-
-      .cursor.activo {
-        width: 65px;
-        height: 65px;
-        background: black;
-      }
-
-      .cursor.footer-hover {
-        background: white;
-      }
-
-      .cursor-text {
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        background: black;
-        color: white;
-        padding: 9px 13px;
-        border-radius: 30px;
-        font-size: 10px;
-        letter-spacing: 1px;
-        opacity: 0;
-        z-index: 10000;
-        white-space: nowrap;
-        transform: translate(15px, 15px);
-        transition: opacity 0.2s;
-      }
-
-      .cursor-text.visible {
-        opacity: 1;
-      }
-
-      .cursor-text.copiado {
-        opacity: 1;
-      }
-
-      .intro {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .intro > * {
-        margin-left: 0;
-      }
-
-      .titulo-grande {
-        font-size: clamp(45px, 9vw, 130px);
-        font-weight: bold;
-        line-height: 0.9;
-        margin: 0 0 25px 0;
-        padding: 0;
-        text-align: left;
-        letter-spacing: -2px;
-        position: relative;
-        left: 0;
-        transform: none;
-        align-self: flex-start;
-        margin-left: -5px;
-      }
-
-      .descripcion {
-        font-size: 24px;
-        line-height: 1.5;
-        font-weight: normal;
-        color: black;
-        margin: 0 0 18px;
-        max-width: 620px;
-      }
-
-      /* EMAIL */
-
-      .email-copy {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-        border: none;
-        background: transparent;
-        color: #222;
-        padding: 8px 12px;
-        margin-left: -12px;
-        border-radius: 30px;
-        font-family: Arial, sans-serif;
+        display: block;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        color: #000000;
         font-size: 16px;
-        cursor: none;
-        transition:
-          background 0.3s,
-          color 0.3s;
-      }
-
-      .email-copy:hover {
-        background: black;
-        color: white;
-      }
-
-      .email-copy img {
-        width: 13px;
-        height: 13px;
-        object-fit: contain;
-        transition: filter 0.3s;
-      }
-
-      .email-copy:hover img {
-        filter: brightness(0) invert(1);
-      }
-
-      .copy-feedback {
-        display: none;
-        font-size: 9px;
-        letter-spacing: 1px;
-      }
-
-      .email-copy.copiado .copy-feedback {
-        display: inline;
-      }
-
-      @media (max-width: 700px) {
-        body {
-          padding: 80px 15px 30px;
-        }
-
-        .contenedor {
-          height: 900px;
-        }
-
-        .tarjeta {
-          width: 105px;
-          height: 105px;
-        }
-
-        .menu {
-          right: 15px;
-          top: 20px;
-        }
-
-        .descripcion {
-          font-size: 14px;
-        }
-        .titulo-grande {
-          letter-spacing: -2px;
-        }
-
-        .fun-link {
-          margin-top: 10px;
-          font-size: 12px;
-          padding: 10px 18px;
-        }
-
-        .fun-preview {
-          transform: translateX(-50%) scale(0.7);
-          transform-origin: bottom center;
-        }
-
-        .fun-wrapper:hover .fun-preview img {
-          opacity: 0;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .tarjeta {
-          animation: none;
-          transition: none;
-        }
-      }
-
-      body {
-        padding-bottom: 0;
-      }
-
-      body {
-        padding-bottom: 0;
+        font-weight: 500;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
       }
 
       /* FUN PROJECTS */
+      .fun-wrapper {
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+        margin: 88px auto 100px;
+        isolation: isolate;
+      }
 
       .fun-link {
+        position: relative;
+        z-index: 2;
         display: flex;
+        width: fit-content;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        width: fit-content;
-        margin: 32px auto 0;
-        margin-bottom: 80px;
-        padding: 12px 22px;
-        border: 1px solid #222;
-        border-radius: 40px;
-        color: #222;
+        margin: 0 auto;
+        padding: 12px 20px;
+        border: 1px solid var(--ink);
+        border-radius: 0;
+        color: var(--ink);
+        font-size: 15px;
         text-decoration: none;
-        font-size: 16px;
-        letter-spacing: 0.5px;
         transition:
-          background 0.3s ease,
-          color 0.3s ease,
-          transform 0.3s ease;
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+
+      .fun-link img {
+        width: 14px;
+        height: 14px;
       }
 
       .fun-link:hover {
         background: black;
         color: white;
-        transform: translateY(-4px);
       }
 
       .fun-link:hover img {
         filter: brightness(0) invert(1);
       }
 
-      .typing-cursor {
-        display: inline-block;
-        font-weight: normal;
-        margin-left: 3px;
-        animation: parpadear 0.7s steps(1) infinite;
+      .fun-preview {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 1;
+        width: 380px;
+        height: 190px;
+        transform: translateX(-50%);
+        pointer-events: none;
       }
 
-      .cursor-subtitulo {
-        font-size: 18px;
-        margin-left: 2px;
+      .fun-preview img {
+        position: absolute;
+        width: 85px;
+        height: 85px;
+        border-radius: 0;
+        object-fit: cover;
+        opacity: 0;
+        transform: translateY(28px) scale(0.8);
+        transition:
+          opacity 0.35s ease,
+          transform 0.45s ease;
       }
 
-      @keyframes parpadear {
-        50% {
-          opacity: 0;
-        }
+      .preview-1 {
+        left: 5px;
+        bottom: 0;
+        rotate: -12deg;
+      }
+      .preview-2 {
+        left: 85px;
+        bottom: 45px;
+        rotate: 8deg;
+      }
+      .preview-3 {
+        left: 165px;
+        bottom: 65px;
+        rotate: -6deg;
+      }
+      .preview-4 {
+        left: 245px;
+        bottom: 35px;
+        rotate: 12deg;
+      }
+      .preview-5 {
+        left: 300px;
+        bottom: -5px;
+        rotate: -10deg;
+      }
+
+      .fun-wrapper:hover .fun-preview img,
+      .fun-wrapper:focus-within .fun-preview img {
+        opacity: 1;
+      }
+
+      .fun-wrapper:hover .preview-1 {
+        transform: translateY(0) rotate(-12deg);
+      }
+      .fun-wrapper:hover .preview-2 {
+        transform: translateY(0) rotate(8deg);
+      }
+      .fun-wrapper:hover .preview-3 {
+        transform: translateY(0) rotate(-6deg);
+      }
+      .fun-wrapper:hover .preview-4 {
+        transform: translateY(0) rotate(12deg);
+      }
+      .fun-wrapper:hover .preview-5 {
+        transform: translateY(0) rotate(-10deg);
+      }
+
+      /* FOOTER */
+      footer {
+        position: relative;
+        width: 100vw;
+        min-height: 280px;
+        margin-left: calc(50% - 50vw);
+        overflow: hidden;
+        background: black;
+        color: white;
       }
 
       .footer-links {
         position: absolute;
-        top: 40px;
-        left: 40px;
-        right: 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 20px;
+        top: 38px;
+        left: clamp(30px, 3vw, 110px);
+        right: clamp(30px, 3vw, 110px);
         z-index: 5;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
       }
 
       .footer-col {
@@ -520,316 +416,460 @@
 
       .footer-heading {
         margin-bottom: 7px;
-        color: #ffffff;
-        font-size: 16px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
       }
 
       .footer-col a {
-        color: #ffffff;
+        color: white;
+        font-size: 15px;
         text-decoration: none;
-        font-size: 16px;
-        transition:
-          opacity 0.3s,
-          transform 0.3s;
+        transition: opacity 0.2s ease;
       }
 
       .footer-col a:hover {
-        transform: translateX(4px);
+        color: #396ebe;
       }
 
       .footer-bottom {
         position: absolute;
-        left: 40px;
-        right: 40px;
-        bottom: 20px;
-        z-index: 5;
+        left: clamp(30px, 3vw, 110px);
+        bottom: 18px;
         font-size: 14px;
       }
 
-      footer {
-        position: relative;
-        width: 100vw;
-        height: 280px;
-        margin: 120px 0 -40px;
-        margin-left: calc(50% - 50vw);
-        padding: 0;
-        background: #000000;
-        color: #ffffff;
-        overflow: hidden;
-      }
-
-      /* HOVER ESPECIAL CARD 2 */
-
-      .tarjeta:nth-child(2):hover {
-        transform: scale(1.15) rotate(-3deg);
-        box-shadow: none;
-      }
-
-      .tarjeta:nth-child(2):hover img {
-        transform: scale(1);
-      }
-
-      .tarjeta:nth-child(2)::after {
+      /* CUSTOM CURSOR */
+      .cursor,
+      .cursor-text {
         display: none;
       }
 
-      .tarjeta:nth-child(2) .texto-card {
+      /* Logo superior izquierdo */
+      .logo {
+        position: fixed;
+        top: 24px;
+        left: var(--gutter);
+        z-index: 20;
+        display: block;
+        width: 200px;
+        height: auto;
+      }
+
+      .logo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 76px 16px 0;
+        }
+
+        /* HEADER */
+        .logo {
+          width: 105px;
+          top: 22px;
+          left: 16px;
+        }
+
+        .menu-toggle {
+          top: 17px;
+          right: 14px;
+          width: 38px;
+          height: 38px;
+        }
+
+        .menu {
+          top: 65px;
+          right: 14px;
+          left: 14px;
+          padding: 18px 22px;
+          gap: 5px;
+        }
+
+        .menu a,
+        .menu.sobre-imagen a {
+          font-size: 14px;
+          padding: 7px 0;
+        }
+
+        .menu img {
+          width: 18px;
+          height: 18px;
+        }
+
+        /* PROJECTS */
+        .contenedor {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 180px;
+          gap: 28px;
+          margin-top: 28px;
+          margin-bottom: 75px;
+        }
+
+        .tarjeta:nth-child(n) {
+          grid-column: 1;
+          grid-row: span 2;
+        }
+
+        .imagen-card {
+          width: 100%;
+          min-height: 0;
+        }
+
+        .texto-card {
+          margin-top: 7px;
+          margin-bottom: 2px;
+          font-size: 13px;
+          line-height: 1.35;
+        }
+
+        /* FUN PROJECTS */
+        .fun-wrapper {
+          margin-top: 60px;
+          margin-bottom: 65px;
+        }
+
+        .fun-link {
+          padding: 10px 16px;
+          font-size: 13px;
+          gap: 8px;
+        }
+
+        .fun-link img {
+          width: 12px;
+          height: 12px;
+        }
+
+        .fun-preview {
+          width: min(320px, 92vw);
+          height: 155px;
+          transform: translateX(-50%) scale(0.75);
+          transform-origin: bottom center;
+        }
+
+        .fun-preview img {
+          width: 75px;
+          height: 75px;
+        }
+
+        /* FOOTER */
+        footer {
+          min-height: 230px;
+        }
+
+        .footer-links {
+          top: 25px;
+          left: 18px;
+          right: 18px;
+          gap: 20px;
+        }
+
+        .footer-col {
+          gap: 8px;
+        }
+
+        .footer-heading {
+          margin-bottom: 5px;
+          font-size: 11px;
+        }
+
+        .footer-col a {
+          font-size: 12px;
+        }
+
+        .footer-bottom {
+          bottom: 13px;
+          left: 18px;
+          right: 18px;
+          font-size: 10px;
+        }
+
+        .footer-art {
+          display: none;
+        }
+      }
+
+      /*
+                  @media (hover: hover) and (pointer: fine) {
+                    body.custom-cursor,
+                    body.custom-cursor * {
+                      cursor: none;
+                    }
+            */
+      /* CUSTOM CURSOR */
+      .cursor {
         display: none;
       }
 
-      /* FUN PROJECTS PREVIEW */
-
-      .fun-wrapper {
-        position: relative;
-        width: fit-content;
-        margin: 10px auto 100px;
-        isolation: isolate;
-      }
-
-      .fun-link {
-        position: relative;
-        z-index: 2;
-        margin: 0;
-      }
-
-      .fun-preview {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        width: 380px;
-        height: 190px;
-        transform: translateX(-50%);
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .fun-preview img {
-        position: absolute;
-        width: 85px;
-        height: 85px;
-        object-fit: cover;
-        border-radius: 3px;
+      .cursor-text {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        display: block;
+        padding: 8px 10px;
+        color: white;
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
         opacity: 0;
-        transform: translateY(35px) scale(0.7) rotate(0deg);
-        transition:
-          opacity 0.4s ease,
-          transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        pointer-events: none;
+        transform: translate(14px, 14px);
+        transition: opacity 0.15s;
       }
 
-      /* POSICIÓN DE LAS IMÁGENES */
-
-      .preview-1 {
-        left: 5px;
-        bottom: 0;
-        rotate: -12deg;
-      }
-
-      .preview-2 {
-        left: 85px;
-        bottom: 45px;
-        rotate: 8deg;
-      }
-
-      .preview-3 {
-        left: 165px;
-        bottom: 65px;
-        rotate: -6deg;
-      }
-
-      .preview-4 {
-        left: 245px;
-        bottom: 35px;
-        rotate: 12deg;
-      }
-
-      .preview-5 {
-        left: 300px;
-        bottom: -5px;
-        rotate: -10deg;
-      }
-
-      /* APARICIÓN AL HACER HOVER */
-
-      .fun-wrapper:hover .fun-preview img {
+      .cursor-text.visible {
         opacity: 1;
       }
 
-      .fun-wrapper:hover .preview-1 {
-        transform: translateY(0) scale(1) rotate(-12deg);
+      .cursor-icon {
+        width: 11px;
+        height: 11px;
+        margin-left: 5px;
+        vertical-align: middle;
       }
 
-      .fun-wrapper:hover .preview-2 {
-        transform: translateY(0) scale(1) rotate(8deg);
-      }
+      /* RESPONSIVE */
+      @media (min-width: 601px) and (max-width: 900px) {
+        .contenedor {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: clamp(150px, 22vw, 210px);
+          gap: 12px;
+        }
 
-      .fun-wrapper:hover .preview-3 {
-        transform: translateY(0) scale(1) rotate(-6deg);
-      }
-
-      .fun-wrapper:hover .preview-4 {
-        transform: translateY(0) scale(1) rotate(12deg);
-      }
-
-      .fun-wrapper:hover .preview-5 {
-        transform: translateY(0) scale(1) rotate(-10deg);
-      }
-
-      .footer-art pre {
-        font-family: monospace;
-        font-size: 7px;
-        line-height: 1;
-        color: #ffffff;
-        white-space: pre;
-        clip-path: inset(0 0 100% 0);
-        animation: crecerPalmera 3s ease-out forwards;
-      }
-
-      .footer-art .blink {
-        animation: randomBlink var(--duration) ease-in-out infinite;
-        animation-delay: var(--delay);
-        animation-play-state: paused;
-      }
-
-      @keyframes crecerPalmera {
-        to {
-          clip-path: inset(0);
+        .footer-art pre {
+          font-size: 5px;
         }
       }
 
-      @keyframes randomBlink {
-        0%,
-        100% {
-          opacity: 1;
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
-        50% {
-          opacity: 0.1;
+      }
+
+      /* TRANSICIÓN DE COLOR DEL HEADER */
+      .menu,
+      .menu a,
+      .menu-line,
+      .logo img {
+        transition:
+          color 0.25s ease,
+          filter 0.25s ease,
+          background-color 0.25s ease;
+      }
+
+      .menu.sobre-imagen a {
+        color: white;
+      }
+
+      .menu.sobre-imagen .menu-line {
+        background: white;
+      }
+
+      .menu.sobre-imagen img,
+      .logo.sobre-imagen img {
+        filter: brightness(0) invert(1);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        body.custom-cursor,
+        body.custom-cursor * {
+          cursor:
+            url("img/manita.png") 8 2,
+            pointer !important;
+        }
+      }
+
+      /* HAMBURGUESA: OCULTA EN ESCRITORIO */
+      .menu-toggle {
+        display: none;
+      }
+
+      /* MENÚ HAMBURGUESA EN MÓVIL */
+      @media (max-width: 600px) {
+        .menu-toggle {
+          position: fixed;
+          top: 20px;
+          right: 18px;
+          z-index: 120;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 6px;
+          width: 38px;
+          height: 38px;
+          padding: 7px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: #222;
+          transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+        }
+
+        .menu-toggle.open span:first-child {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.open span:last-child {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .menu {
+          display: none;
+          position: fixed;
+          top: 70px;
+          right: 0px;
+          left: 0px;
+          z-index: 110;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 22px;
+          background: white;
+        }
+
+        .menu.open {
+          display: flex;
+        }
+
+        .menu a,
+        .menu.sobre-imagen a {
+          padding: 8px 0;
+          margin-left: 0;
+          color: #222;
+          font-size: 16px;
+        }
+
+        .menu a:nth-child(4),
+        .menu a:nth-child(5) {
+          margin-left: 0;
+        }
+
+        .menu a:has(img) {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 0;
+        }
+
+        .menu img {
+          width: 20px;
+          height: 20px;
         }
       }
     </style>
   </head>
 
   <body>
+    <a href="index.html" class="logo">
+      <img src="images/lucíarodríguez.png" alt="Logo de Lucía Rodríguez" />
+    </a>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- MENU -->
     <div class="menu">
-      <a href="work.html" class="active">Work</a>
+      <a href="index.html">Work</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
 
       <a href="https://www.instagram.com/luciarodriguezcn/" target="_blank">
-        <img src="img/instagram2.png" alt="Instagram" />
+        <img src="images/instagram2.png" alt="Instagram" />
       </a>
-
-      <a
-        href="www.linkedin.com/in/lucía-rodríguez-cuenca-621636332"
-        target="_blank"
-      >
-        <img src="img/linkedin.png" alt="LinkedIn" />
+      <a href="https://www.instagram.com/luciarodriguezcn/" target="_blank">
+        <img src="images/linkedin.png" alt="LinkedIn" />
       </a>
     </div>
 
-    <div class="intro">
-      <h2 class="titulo-grande">
-        <span id="texto-escrito"></span
-        ><span class="typing-cursor" id="cursor-titulo">|</span>
-      </h2>
+    <!-- PROJECTS -->
+    <main class="contenedor">
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/20.png" alt="Lo Que Se Queda" />
+          <img src="images/14.jpg" alt="" class="imagen-hover" />
+        </div>
+        <span class="texto-card">Lo Que Se Queda</span>
+      </article>
 
-      <p class="descripcion">
-        <span id="texto-subtitulo"></span
-        ><span class="typing-cursor cursor-subtitulo">|</span>
-      </p>
+      <!-- CARD 2 -->
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/2.png" alt="Project 02" />
+          <img src="images/6.6.png" alt="" class="imagen-hover" />
+        </div>
+        <span class="texto-card">Bom</span>
+      </article>
 
-      <button class="email-copy" onclick="copiarEmail()">
-        <span>hola@luciarodriguezcn.com</span>
-        <img src="img/copy.png" alt="Copy email" />
-        <span class="copy-feedback">COPIED!</span>
-      </button>
-    </div>
+      <!-- CARD 3 -->
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/sudoku1.png" alt="Project 03" />
+          <!--<img src="images/232.jpg" alt="" class="imagen-hover" />-->
+        </div>
+        <span class="texto-card">Sudoku</span>
+      </article>
 
-    <div class="contenedor">
-      <a
-        href=""
-        class="tarjeta proximamente"
-        style="top: 5%; left: 10%; width: 220px; height: 130px"
-      >
-        <img src="img/16.jpg" alt="Lo que se queda" />
-        <span class="texto-card">01_</span>
-      </a>
+      <!-- CARD 4 -->
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/DSC08886.png" alt="Project 04" />
+          <img src="images/27.png" alt="" class="imagen-hover" />
+        </div>
+        <span class="texto-card">Peanut</span>
+      </article>
 
-      <div
-        class="tarjeta proximamente"
-        style="top: 20%; left: 40%"
-        onclick="mostrar(2)"
-      >
-        <img src="img/6.6.png" alt="Proyecto 2" />
-        <span class="texto-card">02_</span>
-      </div>
+      <!-- CARD 5 -->
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/3.jpeg" alt="Project 05" />
+          <img src="images/Section 7.png" alt="" class="imagen-hover" />
+        </div>
+        <span class="texto-card">Prototipo CNC</span>
+      </article>
 
-      <div
-        class="tarjeta proximamente"
-        style="top: 10%; left: 75%"
-        onclick="mostrar(6)"
-      >
-        <img src="img/1.22.jpg" alt="Proyecto 3" />
-        <span class="texto-card">03_</span>
-      </div>
+      <!-- CARD 6 -->
+      <article class="tarjeta">
+        <div class="imagen-card">
+          <img src="images/3.png" alt="Project 06" />
+          <!--  <img src="images/LaCaraB2.jpg" alt="" class="imagen-hover" /> -->
+        </div>
+        <span class="texto-card">La Cara B</span>
+      </article>
+    </main>
 
-      <div
-        class="tarjeta proximamente"
-        style="top: 55%; left: 20%"
-        onclick="mostrar(4)"
-      >
-        <img src="img/27.png" alt="Proyecto 4" />
-        <span class="texto-card">04_</span>
-      </div>
-
-      <div
-        class="tarjeta proximamente"
-        style="top: 65%; left: 55%; width: 220px; height: 130px"
-        onclick="mostrar(5)"
-      >
-        <img src="img/3.jpeg" alt="Proyecto 5" />
-        <span class="texto-card">05_</span>
-      </div>
-
-      <div
-        class="tarjeta proximamente"
-        style="top: 45%; left: 80%; width: 220px; height: 130px"
-        onclick="mostrar(3)"
-      >
-        <img src="img/3.png" alt="Proyecto 6" />
-        <span class="texto-card">06_</span>
-      </div>
-    </div>
-
-    <div class="fun-wrapper">
-      <div class="fun-preview">
-        <img src="img/1.jpg" class="preview-1" alt="" />
-        <img src="img/6.6.png" class="preview-2" alt="" />
-        <img
-          src="img/Gemini_Generated_Image_6cndgg6cndgg6cnd.jpg"
-          class="preview-3"
-          alt=""
-        />
-        <img src="img/6.png" class="preview-4" alt="" />
-        <img src="img/333.png" class="preview-5" alt="" />
-      </div>
-
-      <a href="fun.html" class="fun-link">
-        <span>fun projects</span>
-        <img
-          src="img/square-arrow-up-right-exit.png"
-          class="link-icon"
-          alt=""
-        />
-      </a>
-    </div>
-
+    <!-- CUSTOM CURSOR -->
     <div class="cursor"></div>
 
     <div class="cursor-text">
       <span class="cursor-label">VIEW PROJECT</span>
       <svg
         class="cursor-icon"
-        xmlns="http://www.w3.org/2000/svg"
         width="13"
         height="13"
         viewBox="0 0 24 24"
@@ -839,79 +879,35 @@
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
-        <path d="m21 3-9 9" />
-        <path d="M15 3h6v6" />
+        <path
+          d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+        ></path>
+        <path d="m21 3-9 9"></path>
+        <path d="M15 3h6v6"></path>
       </svg>
     </div>
 
+    <!-- FOOTER -->
     <footer>
       <div class="footer-links">
         <div class="footer-col">
           <span class="footer-heading">EXPLORE</span>
           <a href="work.html">Work ↗</a>
           <a href="about.html">About ↗</a>
-          <a href="fun.html">Secret stuff ↗</a>
+          <a href="contact.html">Contact ↗</a>
         </div>
 
         <div class="footer-art">
           <pre>
-         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⣠⢤⡤⡤⠤⣤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢾⣥⢻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⡱⣆⠤⡁⢎⡡⢵⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠆⣾⠸⣿⡎⢿⣿⣶⡀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⡿⢘⣠⠞⡧⣙⠤⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⢸⢿⡇⣿⣿⡘⣿⣿⣿⡀⠀⠀⠀⠀⢠⣼⣿⣿⣿⣿⡿⣃⣿⠣⢤⣤⢛⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⢥⣃⣏⣷⡜⣿⣧⠹⣿⣿⣿⡄⠀⠀⣴⣿⣿⣿⣿⣿⣯⢾⣿⣿⣾⡿⠶⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠵⣣⣟⣼⣷⣻⠸⣿⣦⠹⣿⣿⣿⡄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠭⣘⠻⣿⣧⣿⣾⣧⠘⣿⡿⣹⣽⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⡧⣼⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠤⡤⢤⠶⡤⣆⣤⡀⡄⠀⠀⠀⠈⠐⠃⢈⠻⢿⣿⣿⡇⠘⡍⡷⢘⣿⣌⡄⠀⣼⣿⣿⣿⣿⣿⡗⠺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠰⠀⣀⠦⣑⢦⡙⡲⢍⡶⣋⠶⣡⠞⡝⢯⢷⣞⣶⢠⠀⠀⠀⠠⠀⠙⢿⡝⡄⡇⢱⢸⡏⢸⠆⢸⡟⣿⣿⣿⣿⣿⣟⠥⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠆⠀⠌⡄⡙⡘⠎⢷⡩⢏⠶⣩⠳⣡⠛⢬⢣⡍⠺⢞⢇⣾⠿⠆⠀⢎⡀⡄⠙⢡⣎⠞⡘⢿⡐⢀⡟⣲⢻⣿⣿⣿⣿⣏⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠈⠀⢂⠌⡑⢹⣛⢦⠹⢜⡲⡡⠜⡤⢃⠀⠁⠺⢑⢪⣌⢋⣄⠀⠡⠈⠳⣦⠅⠀⠻⡆⠇⣾⡄⢸⠘⢰⣼⣿⣿⣿⡟⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠠⠂⠍⢢⠘⢎⠵⢢⠔⣉⡘⠔⠫⠜⢦⠠⡄⢌⠂⠳⣎⠷⣄⡀⠀⠀⠙⣆⠐⣿⡆⣿⠀⡧⠰⣟⣿⣻⣿⡟⠑⠀⢀⡀⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡄⠉⠎⡔⢃⠎⡱⠌⣙⠒⡆⣆⠀⠈⠃⠙⠀⠙⢼⣉⠷⢦⡐⠢⡘⢆⠙⢿⣿⠐⣱⠿⣀⣡⡶⠇⠀⢀⡐⣤⣻⣽⣯⣿⣶⣥⡄⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⡴⢠⢈⡐⠡⠒⠤⡈⢄⡘⢀⠀⠆⡡⠤⣀⣄⠰⠬⠡⢙⡳⢾⣮⣡⢌⠻⠀⡿⠙⡳⢃⠉⠀⠀⠈⣁⢋⠟⡻⠿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠲⢤⠓⣌⠲⠤⣄⣈⢂⠒⡌⢰⡐⠤⡈⢍⡛⡫⢭⣍⣓⢾⣿⣝⢷⠤⠀⠀⠀⠤⢒⡈⣋⢛⡒⠾⠶⣴⣦⣀⡈⠍⠛⢿⣿⣽⢦⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠚⠥⡳⡄⣙⢪⣝⠺⣧⢟⣷⡾⣧⣱⣦⠚⢀⣉⣓⣊⡙⣻⣆⠒⠄⡀⠈⢆⢳⡸⢯⣿⣿⣷⣶⣬⣙⣛⠻⢦⣤⣌⠛⣯⠓⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣀⠃⠮⢣⡹⢦⣛⠶⠛⠋⠀⢠⣳⡿⠟⠉⡼⢳⢌⡃⠌⠐⠀⠀⠎⠳⡛⠿⠛⡟⠿⠻⠿⢶⣻⠰⢦⡻⣝⢠⠏⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠄⢢⠐⠈⠄⠀⢄⠠⠀⢀⠀⡔⢁⠣⢃⠁⡐⢨⠑⡱⢊⠔⠈⠀⠀⢠⡈⡆⢁⣤⠡⠄⠄⠆⢁⡂⠰⠨⣥⢛⠬⡣⠍⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢂⠔⠈⣠⢮⡑⠊⠁⠈⠀⡠⠂⣸⠁⠨⠑⡂⢌⠀⢄⢣⣿⢨⠀⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠋⠺⠥⠃⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⢡⡞⣨⣾⣿⡗⠈⠁⠄⡡⢐⡁⢀⡏⣘⠀⢰⢁⡂⠀⣺⣼⣵⡎⠡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⢡⡗⣰⣿⣿⣿⣼⣷⡏⣄⠣⢠⠂⢸⣷⣿⡀⣿⡘⢇⢲⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⡟⣰⣿⣿⣿⣿⣿⡿⣟⡽⡂⠧⠀⣾⣿⣿⡟⣿⡇⣾⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡧⢁⣿⡟⣽⣿⣿⣿⡿⣉⡴⠳⠀⠀⣿⣿⣿⣧⢻⣇⢿⢾⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢻⡼⣽⣿⣿⣿⡿⠓⠈⠀⠀⠀⠀⢸⡟⢿⣿⣟⣿⣷⡌⢹⣿⣿⢿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠻⣜⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠘⣿⣼⣿⣿⡿⣽⣷⠀⡟⢿⣽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢣⡝⣿⣷⣿⣿⣧⠙⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠭⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⢾⣿⣿⣷⣿⣿⡄⣻⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠌⠛⠿⡏⠙⠁⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-  </pre
-          >
+        <!-- Puedes colocar aquí tu ilustración ASCII original del footer -->
+        </pre>
         </div>
 
         <div class="footer-col">
           <span class="footer-heading">SAY HELLO</span>
           <a href="mailto:hola@luciarc.com">Email ↗</a>
           <a
-            href="www.linkedin.com/in/lucía-rodríguez-cuenca-621636332
-
-"
+            href="https://www.linkedin.com/in/lucia-rodriguez-cuenca-621636332/"
             target="_blank"
             rel="noopener noreferrer"
             >LinkedIn ↗</a
@@ -926,194 +922,145 @@
       </div>
 
       <div class="footer-bottom">
-        <span>Lucía Rodríguez&emsp;© 2026 </span>
+        <span>Lucía Rodríguez ©</span>
       </div>
     </footer>
 
     <script>
-      // EFECTO DE ESCRITURA
-      const texto = "Hi, I'm Lucía.";
-      const subtitulo =
-        "I'm a multidisciplinary designer passionate about product design, communication and digital experiences.";
+      (() => {
+        const finePointer = window.matchMedia(
+          "(hover: hover) and (pointer: fine)",
+        ).matches;
 
-      const elementoTexto = document.getElementById("texto-escrito");
-      const elementoSubtitulo = document.getElementById("texto-subtitulo");
+        const cards = document.querySelectorAll(".tarjeta");
+        const footer = document.querySelector("footer");
+        const cursor = document.querySelector(".cursor");
+        const cursorText = document.querySelector(".cursor-text");
+        const cursorLabel = document.querySelector(".cursor-label");
+        const cursorIcon = document.querySelector(".cursor-icon");
 
-      let letra = 0;
-      let letraSubtitulo = 0;
+        const menu = document.querySelector(".menu");
+        const logo = document.querySelector(".logo");
 
-      function escribirTexto() {
-        if (letra < texto.length) {
-          elementoTexto.textContent += texto.charAt(letra);
-          letra++;
-          setTimeout(escribirTexto, 120);
-        } else {
-          document.getElementById("cursor-titulo").style.display = "none";
-          escribirSubtitulo();
-        }
-      }
+        // MENÚ HAMBURGUESA
+        const menuToggle = document.querySelector(".menu-toggle");
 
-      function escribirSubtitulo() {
-        if (letraSubtitulo < subtitulo.length) {
-          elementoSubtitulo.textContent += subtitulo.charAt(letraSubtitulo);
-          letraSubtitulo++;
-          setTimeout(escribirSubtitulo, 35);
-        }
-      }
+        menuToggle.addEventListener("click", () => {
+          const isOpen = menu.classList.toggle("open");
 
-      window.addEventListener("load", escribirTexto);
-
-      // ELEMENTOS DEL CURSOR
-      const cursor = document.querySelector(".cursor");
-      const cursorText = document.querySelector(".cursor-text");
-      const cursorLabel = document.querySelector(".cursor-label");
-      const cursorIcon = document.querySelector(".cursor-icon");
-      const tarjetas = document.querySelectorAll(".tarjeta");
-      const footer = document.querySelector("footer");
-
-      // MOVIMIENTO DEL CURSOR Y ESTELA
-      let ultimoTrail = 0;
-
-      document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-
-        cursorText.style.left = e.clientX + "px";
-        cursorText.style.top = e.clientY + "px";
-
-        const ahora = Date.now();
-
-        if (ahora - ultimoTrail >= 25) {
-          ultimoTrail = ahora;
-
-          const punto = document.createElement("div");
-          punto.className = "trail";
-          punto.style.left = e.clientX + "px";
-          punto.style.top = e.clientY + "px";
-
-          if (footer.matches(":hover")) {
-            punto.style.background = "white";
-          }
-
-          document.body.appendChild(punto);
-
-          setTimeout(() => punto.remove(), 600);
-        }
-      });
-
-      // TARJETAS: COMING SOON O VIEW PROJECT
-      tarjetas.forEach((tarjeta) => {
-        tarjeta.addEventListener("mouseenter", () => {
-          cursor.classList.add("activo");
-          cursorText.classList.add("visible");
-
-          if (tarjeta.classList.contains("proximamente")) {
-            cursorLabel.textContent = "COMING SOON";
-            cursorIcon.style.display = "none";
-          } else {
-            cursorLabel.textContent = "VIEW PROJECT";
-            cursorIcon.style.display = "";
-          }
+          menuToggle.classList.toggle("open", isOpen);
+          menuToggle.setAttribute("aria-expanded", isOpen);
+          menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Cerrar menú" : "Abrir menú",
+          );
         });
 
-        tarjeta.addEventListener("mouseleave", () => {
-          cursor.classList.remove("activo");
-          cursorText.classList.remove("visible");
-          cursorLabel.textContent = "VIEW PROJECT";
-          cursorIcon.style.display = "";
-        });
-      });
-
-      // TODOS LOS ENLACES MENOS LOS DE REDES SOCIALES
-      const enlaces = document.querySelectorAll(
-        'a:not([href*="instagram.com"]):not([href*="linkedin.com"]):not(.tarjeta)',
-      );
-
-      enlaces.forEach((enlace) => {
-        enlace.addEventListener("mouseenter", () => {
-          cursor.classList.add("activo");
-          cursorText.classList.add("visible");
-          cursorLabel.textContent = "COMING SOON";
-          cursorIcon.style.display = "none";
+        // Cerrar el menú al pulsar un enlace
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            menuToggle.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+          });
         });
 
-        enlace.addEventListener("mouseleave", () => {
-          cursor.classList.remove("activo");
-          cursorText.classList.remove("visible");
-          cursorLabel.textContent = "VIEW PROJECT";
-          cursorIcon.style.display = "";
-        });
-      });
+        // CURSOR PERSONALIZADO
+        if (finePointer && cursor && cursorText && cursorLabel && cursorIcon) {
+          document.body.classList.add("custom-cursor");
 
-      // COPIAR EMAIL
-      let timeoutCopiado;
+          document.addEventListener("mousemove", (event) => {
+            cursorText.style.left = `${event.clientX}px`;
+            cursorText.style.top = `${event.clientY}px`;
+          });
 
-      async function copiarEmail() {
-        const email = "hola@luciarc.com";
+          cards.forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              cursorText.classList.add("visible");
+              cursorLabel.textContent = "COMING SOON";
+              cursorIcon.style.display = "none";
+            });
 
-        try {
-          await navigator.clipboard.writeText(email);
-
-          clearTimeout(timeoutCopiado);
-
-          cursor.classList.add("activo");
-          cursorText.classList.add("visible", "copiado");
-          cursorLabel.textContent = "COPIED!";
-          cursorIcon.style.display = "none";
-
-          timeoutCopiado = setTimeout(() => {
-            cursorText.classList.remove("copiado");
-            cursorLabel.textContent = "VIEW PROJECT";
-            cursorIcon.style.display = "";
-
-            if (!document.querySelector(".tarjeta:hover")) {
-              cursor.classList.remove("activo");
+            card.addEventListener("mouseleave", () => {
               cursorText.classList.remove("visible");
-            }
-          }, 1500);
-        } catch (error) {
-          console.error("No se ha podido copiar el email", error);
-        }
-      }
-
-      // HOVER DEL FOOTER
-      footer.addEventListener("mouseenter", () => {
-        cursor.classList.add("footer-hover");
-      });
-
-      footer.addEventListener("mouseleave", () => {
-        cursor.classList.remove("footer-hover");
-      });
-
-      // ANIMACIÓN DE LA ILUSTRACIÓN DEL FOOTER
-      const dibujo = document.querySelector(".footer-art pre");
-      const textoOriginal = dibujo.textContent;
-
-      dibujo.innerHTML = "";
-
-      [...textoOriginal].forEach((caracter) => {
-        if (caracter.trim() !== "" && Math.random() < 0.12) {
-          const span = document.createElement("span");
-          span.classList.add("blink");
-
-          span.style.setProperty("--duration", `${0.5 + Math.random() * 1.5}s`);
-
-          span.style.setProperty("--delay", `${Math.random() * 2}s`);
-
-          span.textContent = caracter;
-          dibujo.appendChild(span);
-        } else {
-          dibujo.appendChild(document.createTextNode(caracter));
-        }
-      });
-
-      dibujo.addEventListener("animationend", (e) => {
-        if (e.animationName === "crecerPalmera") {
-          dibujo.querySelectorAll(".blink").forEach((elemento) => {
-            elemento.style.animationPlayState = "running";
+              cursorLabel.textContent = "VIEW PROJECT";
+              cursorIcon.style.display = "";
+            });
           });
         }
-      });
+        /*
+        // CURSOR PERSONALIZADO
+        if (finePointer && cursor && cursorText && cursorLabel && cursorIcon) {
+          document.body.classList.add("custom-cursor");
+
+          document.addEventListener("mousemove", (event) => {
+            cursor.style.left = `${event.clientX}px`;
+            cursor.style.top = `${event.clientY}px`;
+
+            cursorText.style.left = `${event.clientX}px`;
+            cursorText.style.top = `${event.clientY}px`;
+          });
+
+          cards.forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              cursor.classList.add("activo");
+              cursorText.classList.add("visible");
+              cursorLabel.textContent = "COMING SOON";
+              cursorIcon.style.display = "none";
+            });
+
+            card.addEventListener("mouseleave", () => {
+              cursor.classList.remove("activo");
+              cursorText.classList.remove("visible");
+              cursorLabel.textContent = "VIEW PROJECT";
+              cursorIcon.style.display = "";
+            });
+          });
+
+          footer?.addEventListener("mouseenter", () => {
+            cursor.classList.add("footer-hover");
+          });
+
+          footer?.addEventListener("mouseleave", () => {
+            cursor.classList.remove("footer-hover");
+          });
+        }
+          */
+
+        // DETECTAR IMÁGENES DEBAJO DEL HEADER
+        function isOverImage(element) {
+          const rect = element.getBoundingClientRect();
+
+          const points = [
+            [rect.left + rect.width / 2, rect.top + rect.height / 2],
+            [rect.left + 2, rect.top + rect.height / 2],
+            [rect.right - 2, rect.top + rect.height / 2],
+          ];
+
+          // Ocultamos temporalmente el elemento para detectar lo que hay detrás
+          element.style.visibility = "hidden";
+
+          const isImage = points.some(([x, y]) => {
+            const behind = document.elementFromPoint(x, y);
+            return !!behind?.closest(".imagen-card");
+          });
+
+          element.style.visibility = "";
+          return isImage;
+        }
+
+        function updateHeaderColors() {
+          menu.classList.toggle("sobre-imagen", isOverImage(menu));
+          logo.classList.toggle("sobre-imagen", isOverImage(logo));
+        }
+
+        window.addEventListener("scroll", updateHeaderColors, {
+          passive: true,
+        });
+
+        updateHeaderColors();
+      })();
     </script>
   </body>
 </html>
